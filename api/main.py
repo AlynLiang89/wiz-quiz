@@ -4,7 +4,7 @@ import json
 app = FastAPI()
 
 # Load data from questions.json file
-with open('api/questions.json', 'r') as file:
+with open('ghi/src/questions.json', 'r') as file:
     contents = file.read()
     data = json.loads(contents)
 
@@ -25,7 +25,7 @@ async def get_question(question_id: str):
 @app.post("/questions")
 async def create_question(new_question: dict):
     data.append(new_question)
-    with open('api/questions.json', 'w') as file:
+    with open('ghi/src/questions.json', 'w') as file:
         file.write(json.dumps(data, indent=2))
     return {"message": "Question created successfully"}
 
@@ -34,6 +34,6 @@ async def create_question(new_question: dict):
 async def delete_question(question_id: str):
     global data
     data = [question for question in data if question['id'] != question_id]
-    with open('api/questions.json', 'w') as file:
+    with open('ghi/src/questions.json', 'w') as file:
         file.write(json.dumps(data, indent=2))
     return {"message": "Question deleted successfully"}
