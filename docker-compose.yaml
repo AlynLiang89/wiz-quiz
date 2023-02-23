@@ -11,9 +11,8 @@ services:
     volumes:
       - ./api:/app
     environment:
-      DATABASE_URL: postgresql://wizquizdb:test-databases@postgres/wizquiz
-      # Placeholder for actual URL. Questions is whatever we call the database
-      WAIT_HOSTS: db:5432
+      DATABASE_URL: postgresql://wizquizdb:password@postgres/wizquizdb
+      WAIT_HOSTS: postgres:5432
       PORT: 8000
       SIGNING_KEY: 5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)
 
@@ -39,8 +38,8 @@ services:
       dockerfile: ./Dockerfile.dev
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_MULTIPLE_DATABASES=wizquizdb
-      - POSTGRES_PASSWORD=test-databases
+    # environment:
+    #   - POSTGRES_MULTIPLE_DATABASES=wizquizdb
+    #   - POSTGRES_PASSWORD=password
     ports:
       - 15432:5432
