@@ -59,8 +59,8 @@ class UserQueries:
                 ]
                 cur.execute(
                     """
-                    INSERT INTO users (first, last, avatar, email, username)
-                    VALUES (%s, %s, %s, %s, %s)
+                    INSERT INTO users (avatar, email, username, password)
+                    VALUES (%s, %s, %s, %s)
                     RETURNING id, first, last, avatar, email, username
                     """,
                     params,
@@ -82,7 +82,7 @@ class UserQueries:
                     data.avatar,
                     data.email,
                     data.username,
-                    #data.password,
+                    data.password,
                     user_id,
                 ]
                 cur.execute(
