@@ -4,12 +4,19 @@ volumes:
 services:
   fastapi:
     build:
-      context: sample_service
+      context: api
       dockerfile: Dockerfile.dev
     ports:
       - 8000:8000
     volumes:
-      - ./sample_service:/app
+      - ./api:/app
+    environment:
+      DATABASE_URL: postgresql://wizquizdb:test-databases@postgres/wizquiz
+      # Placeholder for actual URL. Questions is whatever we call the database
+      WAIT_HOSTS: db:5432
+      PORT: 8000
+      SIGNING_KEY: 5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)
+
 
   ghi:
     image: node:lts-bullseye
@@ -24,7 +31,7 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
+      REACT_APP_WIZQUIZ_API_HOST: http://localhost:8000
 
   postgres:
     build:

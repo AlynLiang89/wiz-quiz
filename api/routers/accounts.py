@@ -36,7 +36,7 @@ async def create_account(
     info: AccountIn,
     request: Request,
     response: Response,
-    accounts: AccountQueries = Depends(),
+    accounts: AccountQueries = Depends(authenticator.get_current_account_data),
 ):
     hashed_password = authenticator.hash_password(info.password)
     try:
