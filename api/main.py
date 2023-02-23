@@ -1,9 +1,14 @@
 from fastapi import FastAPI
+from authenticator import authenticator
+from routers import accounts
 import json
 from routers import users, questions
 
 
 app = FastAPI()
+app.include_router(authenticator.router)
+app.include_router(accounts.router)
+
 
 
 app.include_router(users.router)
@@ -12,7 +17,7 @@ app.include_router(questions.router)
 
 
 # Load data from questions.json file
-with open('ghi/src/questions.json', 'r') as file:
+with open('api/questions.json', 'r') as file:
     contents = file.read()
     data = json.loads(contents)
 
