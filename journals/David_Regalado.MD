@@ -28,3 +28,9 @@
 - Got it connected to beekeeper and got it runnin
 - made a table-branch so Christian can start working on the leaderboard stuff in seperate branch
 - Started making questions table, routers, and queries
+
+## Feb-23-23
+
+- Worked on database and got connected to beekeeper for accounts and questions
+- Rewrote the main.py file with CORS requirements
+- Updated migrations file
