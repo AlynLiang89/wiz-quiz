@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS questions;
 
-CREATE TABLE users (
+CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
             avatar_img VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
@@ -19,12 +19,12 @@ CREATE TABLE questions (
         );
 
 
-INSERT INTO users VALUES
-  (1, '1780000.jpeg', 'David@gmail.com', 'DavReg', 'test'),
-  (2, '178030988.jpeg', 'Dave@gmail.com', 'Djones', 'test'),
-  (3, '17800.jpeg', 'Patrick@gmail.com', 'Placquer', 'test'),
-  (4, '10000.jpeg', 'Abbie@gmail.com', 'Aschabbie', 'test'),
-  (5, '170000.jpeg', 'David@gmail.com', 'Dagarwal', 'test'),
+INSERT INTO accounts VALUES
+  (1, '1780000.jpeg', 'David@aol.com', 'DavReg', 'test'),
+  (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', 'test'),
+  (3, '17800.jpeg', 'chrissy@yahoo.com', 'cupcake', 'test'),
+  (4, '10000.jpeg', 'sean@gmail.com', 'funwithmckee', 'test'),
+  (5, '170000.jpeg', 'christian@gmail.com', 'bare', 'test'),
   (6, '1678000.jpeg', 'alyn@aol.com', 'Drilleranew', 'test');
 
 
@@ -37,8 +37,12 @@ INSERT INTO questions VALUES
   (5, 'What is the name of Quints shark-hunting boat in Jaws?', 'The Orca', 'Two Ladies from Spain', 'The Dolls Eyes', 'The White Whale'),
   (6, 'In the action thriller Speed, why is Annie (Sandra Bullock)s drivers license suspended?', 'Speeding', 'Reckless Driving', 'Rolling Stop', 'Illegal Turn'),
   (7, 'The Battle of Thermopylae served as the basis of what highly stylized 2006 action flick?', '300', 'Meet the Spartans', 'Movie 42', 'Rocky'),
-  (8, 'Who wrote the screenplay for Rocky?', 'Sylvester Stallone', 'Bullwinkle', 'Arnold Schwarzenegger', 'Jean-Claude Van Damme');
+  (8, 'Who wrote the screenplay for Rocky?', 'Sylvester Stallone', 'Bullwinkle', 'Arnold Schwarzenegger', 'Jean-Claude Van Damme'),
+  (9, 'What is the real name of Uma Thurmans "The Bride" character from Kill Bill?', 'Beatrix Kiddo', 'Luna Lovegood', 'Katherine Banks', 'Lady Death'),
+  (10,'How many suns does Lukes home planet of Tatooine have in Star Wars?', '2', '1', '30', '3'),
+  (11,'What Martin Scorsese movie holds the record for F-bombs?', 'The Wolf of Wall Street', 'Taxi Driver', 'Hugo', 'The Irishman');
 
 
-SELECT setval('users_id_seq', (SELECT MAX(id) + 1 FROM users));
+
+SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
 SELECT setval('questions_id_seq', (SELECT MAX(id) + 1 FROM questions));
