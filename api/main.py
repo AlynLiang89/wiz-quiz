@@ -42,5 +42,3 @@ async def delete_question(question_id: str):
     with open('ghi/src/questions.json', 'w') as file:
         file.write(json.dumps(data, indent=2))
     return {"message": "Question deleted successfully"}
-
-

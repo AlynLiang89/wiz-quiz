@@ -1,49 +1,54 @@
 import React, { useState } from "react";
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("");
+function LogInForm() {
+  const { token, login } = useToken();
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [formError, setFormError] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const handleUserNameChange = (e) => {
+    const value = e.target.value;
+    setUserName(value);
+  };
 
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+  };
 
-    if (!email || !password) {
-      setFormError("Email and Password are required");
-      return;
-    }
-
-
-    const data = { email, password };
-    console.log(data);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password);
+    console.log("login successful +++++++++++++++");
   };
 
   return (
-    <section>
-      <div className="login">
-        <div className="col-1">
-          <h2>Login</h2>
-          <span>Login in to your account</span>
-
-          <form id="form" className="flex flex-col" onSubmit={onSubmit}>
+    <div className="Auth-form-container">
+      <form className="Auth-form" onSubmit={handleSubmit}>
+        <h2 className="Auth-form-title">Log In</h2>
+        <div className="Auth-form-content">
+          <div className="Auth-form-field">
+            <label>Email:</label>
             <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="Email"
+              type="text"
+              value={username}
+              onChange={handleUserNameChange}
             />
+          </div>
+          <div className="Auth-form-field">
+            <label>Password:</label>
             <input
               type="password"
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="Password"
+              onChange={handlePasswordChange}
             />
-            {formError && <span className="error">{formError}</span>}
-            <button className="btn">Login</button>
-          </form>
+          </div>
+          <button className="Auth-form-submit" type="submit">
+            Log In
+          </button>
         </div>
-      </div>
-    </section>
+      </form>
+    </div>
   );
 }
+
+export default LogInForm;

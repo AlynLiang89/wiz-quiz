@@ -1,68 +1,69 @@
 import React, { useState } from "react";
 
-export default function SignUpForm() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+function SignupForm() {
+  const { token, signup } = useToken();
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPwd, setConfirmPwd] = useState("");
-  const [formError, setFormError] = useState("");
+  const [email, setEmail] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const handleUserNameChange = (e) => {
+    const value = e.target.value;
+    setUserName(value);
+  };
 
-    // Perform form validation here
-    if (!username || !email || !password || !confirmPwd) {
-      setFormError("All fields are required");
-      return;
-    }
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+  };
 
-    if (password !== confirmPwd) {
-      setFormError("Passwords do not match");
-      return;
-    }
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+  };
 
-    // If all validations pass, submit the form
-    const data = { username, email, password, confirmPwd };
-    console.log(data);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await signup(email, password, username);
+    console.log(response);
   };
 
   return (
-    <section>
-      <div className="register">
-        <div className="col-1">
-          <h2>Sign Up</h2>
-          <span>Register and enjoy the service</span>
-
-          <form id="form" className="flex flex-col" onSubmit={onSubmit}>
-            <input
-              type="text"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              placeholder="Username"
-            />
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="Password"
-            />
-            <input
-              type="password"
-              value={confirmPwd}
-              onChange={(event) => setConfirmPwd(event.target.value)}
-              placeholder="Confirm Password"
-            />
-            {formError && <span className="error">{formError}</span>}
-            <button className="btn">Sign Up</button>
-          </form>
+    <form onSubmit={handleSubmit} className="Auth-form">
+      <div className="Auth-form-content">
+        <h2 className="Auth-form-title">Sign up for an account</h2>
+        <div className="Auth-form-field">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={handleUserNameChange}
+          />
         </div>
+        <div className="Auth-form-field">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <div className="Auth-form-field">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
+        <button type="submit" className="Auth-form-submit">
+          Sign Up!
+        </button>
       </div>
-    </section>
+    </form>
   );
 }
+
+export default SignupForm;

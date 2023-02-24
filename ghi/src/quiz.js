@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import data from "./questions.json";
-import "./style.css";
+import "./quiz.css";
 
 export const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
