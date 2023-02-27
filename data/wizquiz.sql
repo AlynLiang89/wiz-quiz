@@ -40,7 +40,10 @@ INSERT INTO questions VALUES
   (8, 'Who wrote the screenplay for Rocky?', 'Sylvester Stallone', 'Bullwinkle', 'Arnold Schwarzenegger', 'Jean-Claude Van Damme'),
   (9, 'What is the real name of Uma Thurmans "The Bride" character from Kill Bill?', 'Beatrix Kiddo', 'Luna Lovegood', 'Katherine Banks', 'Lady Death'),
   (10,'How many suns does Lukes home planet of Tatooine have in Star Wars?', '2', '1', '30', '3'),
-  (11,'What Martin Scorsese movie holds the record for F-bombs?', 'The Wolf of Wall Street', 'Taxi Driver', 'Hugo', 'The Irishman');
+  (11,'What Martin Scorsese movie holds the record for F-bombs?', 'The Wolf of Wall Street', 'Taxi Driver', 'Hugo', 'The Irishman'),
+  (12,'What is the highest grossing horror of all time?', 'It', 'The Sixth Sense', 'Ghostbusters', 'Us');
+
+
 
 
 
