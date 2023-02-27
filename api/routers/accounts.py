@@ -1,10 +1,11 @@
+from typing import Union
 from fastapi import (
-    Depends,
     HTTPException,
     status,
     Response,
     APIRouter,
     Request,
+    Depends,
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
@@ -12,6 +13,7 @@ from authenticator import authenticator
 from pydantic import BaseModel
 
 from queries.accounts import (
+    Error,
     AccountIn,
     AccountOut,
     AccountQueries,
@@ -69,3 +71,31 @@ async def get_protected(
 ):
     return True
 # This will throw a 401 error if anyone is not logged in and tries to access protected info
+
+
+
+@router.put("/api/accounts/{user_id}")
+def update_account(
+    user_id: int,
+    account: AccountIn,
+    response: Response,
+    repo: AccountQueries = Depends(),
+    data: dict = Depends(authenticator.try_get_current_account_data),
+):
+    hashed_password = authenticator.hash_password(account.password)
+    if data:
+        return repo.update(user_id, account, hashed_password)
+    else:
+        response.status_code = 401
+        return {"message": "invalid token"}
+
+
+
+@router.delete("/api/accounts/{user_id}", response_model=bool)
+def delete_user(
+    user_id: int,
+    queries: AccountQueries = Depends(),
+    data: dict = Depends(authenticator.get_current_account_data),
+):
+    if data:
+        return queries.delete(user_id)
