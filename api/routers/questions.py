@@ -36,14 +36,14 @@ class QuestionsOut(BaseModel):
     questions: list[Question]
 
 
-@router.get("/api/questions", response_model=QuestionsOut)
+@router.get("/questions", response_model=QuestionsOut)
 def questions_list(queries: QuestionQueries = Depends()):
     return {
         "questions": queries.get_all(),
     }
 
 
-@router.get("/api/questions/{question_id}", response_model=Question)
+@router.get("/questions/{question_id}", response_model=Question)
 def get_question(
     question_id: int,
     response: Response,
@@ -56,7 +56,7 @@ def get_question(
         return record
 
 
-@router.put("/api/questions/{question_id}", response_model=QuestionOut)
+@router.put("/questions/{question_id}", response_model=QuestionOut)
 def update_question(
     question_id: int,
     question: QuestionUpdate,
@@ -71,19 +71,19 @@ def update_question(
         return updated_question
 
 
-@router.delete("/api/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_question(
     question_id: int,
     response: Response,
     queries: QuestionQueries = Depends(),
 ):
-    record = queries.get_by(question_id)
+    record = queries.get_by_id(question_id)
     if record is None:
         response.status_code = status.HTTP_404_NOT_FOUND
     else:
         queries.delete(question_id)
 
-@router.post("/api/questions/", response_model=QuestionOut)
+@router.post("/questions", response_model=QuestionOut)
 def create_question(
     question: QuestionIn,
     response: Response,
@@ -91,4 +91,5 @@ def create_question(
 ):
     record = queries.create(question.dict())
     response.status_code = status.HTTP_201_CREATED
+    print ("THE QUESTION WAS CREATED")
     return record

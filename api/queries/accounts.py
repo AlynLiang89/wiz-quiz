@@ -28,7 +28,7 @@ class AccountOutWithPassword(AccountOut):
 
 
 class AccountQueries:
-    def get_one(self, username: str) -> Optional[AccountOutWithPassword]:
+    def get(self, username: str) -> Optional[AccountOutWithPassword]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -38,7 +38,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
-                        FROM users
+                        FROM accounts
                         WHERE username = %s
                         """,
                         [username],
@@ -62,7 +62,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
-                        FROM users
+                        FROM accounts
                         WHERE id = %s
                         """,
                         [user_id],
@@ -86,7 +86,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
-                        FROM users
+                        FROM accounts
                         ORDER BY username;
                         """
                     )
@@ -112,7 +112,7 @@ class AccountQueries:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        UPDATE users
+                        UPDATE accounts
                         SET email = %s
                          , username = %s
                          , password = %s
@@ -139,7 +139,7 @@ class AccountQueries:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        DELETE FROM users
+                        DELETE FROM accounts
                         WHERE id = %s
                         """,
                         [user_id],
@@ -157,10 +157,10 @@ class AccountQueries:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        INSERT INTO users
+                        INSERT INTO accounts
                             (email, username, password)
                         VALUES
-                            (%s, %s, %s, %s, %s)
+                            (%s, %s, %s)
                         RETURNING id;
                         """,
                         [
