@@ -9,9 +9,7 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
 from pydantic import BaseModel
-
 from queries.accounts import (
     Error,
     AccountIn,
@@ -36,7 +34,6 @@ router = APIRouter()
 @router.post("/accounts", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
-    # Should this be AccountInWithPassword?
     request: Request,
     response: Response,
     accounts: AccountQueries = Depends(),
@@ -68,13 +65,12 @@ async def get_token(
             "account": account,
         }
 
+
 @router.get("/protected", response_model=bool)
 async def get_protected(
     account_data: dict = Depends(authenticator.get_current_account_data)
 ):
     return True
-# This will throw a 401 error if anyone is not logged in and tries to access protected info
-
 
 
 @router.put("/accounts/{user_id}")
@@ -91,7 +87,6 @@ def update_account(
     else:
         response.status_code = 401
         return {"message": "invalid token"}
-
 
 
 @router.delete("/accounts/{user_id}", response_model=bool)
