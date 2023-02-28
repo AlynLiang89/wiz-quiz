@@ -58,7 +58,7 @@ def update_question(
     updated_question = queries.update(question_id, question)
     if isinstance(updated_question, Error):
         response.status_code = status.HTTP_404_NOT_FOUND
-        return {"detail": updated_question.message}
+        return {"message": updated_question.message}
     else:
         return updated_question
 
