@@ -8,25 +8,29 @@ router = APIRouter()
 
 
 class LeaderboardIn(BaseModel):
-    account: str
-    score: str
+    rank: int
+    account: int
+    score: int
 
 class LeaderboardUpdate(BaseModel):
-    account: str
-    score: str
+    rank: int
+    account: int
+    score: int
 
 
 class LeaderboardOut(BaseModel):
+    id: int
     rank: int
-    account: str
-    score: str
+    avatar_img: str
+    username: str
+    score: int
 
 
 class LeaderboardsOut(BaseModel):
     leader_boards: list[Leaderboard]
 
 
-@router.get("/api/leaderboards", response_model=Leaderboard)
+@router.get("/api/leaderboards/", response_model=Leaderboard)
 def get_leaderboard(
     leaderboard_id: int,
     response: Response,
@@ -38,7 +42,7 @@ def get_leaderboard(
     else:
         return record
 
-@router.put("/api/leaderboards", response_model=LeaderboardOut)
+@router.put("/api/leaderboards/", response_model=LeaderboardOut)
 def update_leaderboard(
     leaderboard_id: int,
     leaderboard: LeaderboardUpdate,
@@ -51,3 +55,13 @@ def update_leaderboard(
     else:
         updated_leaderboard = queries.update(leaderboard_id, leaderboard.dict())
         return updated_leaderboard
+
+@router.post("/api/leaderboards/", response_model=LeaderboardOut)
+def create_leaderboard(
+    leaderboard: LeaderboardIn,
+    response: Response,
+    queries: LeaderboardQueries = Depends(),
+):
+    record = queries.create(leaderboard.dict())
+    response.status_code = status.HTTP_201_CREATED
+    return record
