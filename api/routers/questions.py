@@ -1,7 +1,7 @@
-from queries.questions import QuestionQueries, Question
+from queries.questions import QuestionQueries, Question, Error
 from fastapi import APIRouter, Depends, Response, status
 from pydantic import BaseModel
-
+from typing import Optional
 
 
 router = APIRouter()
@@ -15,16 +15,8 @@ class QuestionIn(BaseModel):
     option_3: str
 
 
-class QuestionUpdate(BaseModel):
-    question: str
-    answer: str
-    option_1: str
-    option_2: str
-    option_3: str
-
-
 class QuestionOut(BaseModel):
-    id: int
+    id: Optional[int] = None
     question: str
     answer: str
     option_1: str
@@ -59,15 +51,15 @@ def get_question(
 @router.put("/api/questions/{question_id}", response_model=QuestionOut)
 def update_question(
     question_id: int,
-    question: QuestionUpdate,
+    question: QuestionIn,
     response: Response,
     queries: QuestionQueries = Depends(),
 ):
-    record = queries.get_by_id(question_id)
-    if record is None:
+    updated_question = queries.update(question_id, question)
+    if isinstance(updated_question, Error):
         response.status_code = status.HTTP_404_NOT_FOUND
+        return {"detail": updated_question.message}
     else:
-        updated_question = queries.update(question_id, question.dict())
         return updated_question
 
 
@@ -77,11 +69,12 @@ def delete_question(
     response: Response,
     queries: QuestionQueries = Depends(),
 ):
-    record = queries.get_by(question_id)
+    record = queries.get_by_id(question_id)
     if record is None:
         response.status_code = status.HTTP_404_NOT_FOUND
     else:
         queries.delete(question_id)
+
 
 @router.post("/api/questions/", response_model=QuestionOut)
 def create_question(
@@ -89,6 +82,7 @@ def create_question(
     response: Response,
     queries: QuestionQueries = Depends(),
 ):
-    record = queries.create(question.dict())
+    new_question = Question(**question.dict())
+    record = queries.create(new_question)
     response.status_code = status.HTTP_201_CREATED
     return record
