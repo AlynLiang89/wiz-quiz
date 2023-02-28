@@ -33,16 +33,19 @@ class HttpError(BaseModel):
 router = APIRouter()
 
 
-@router.post("/api/accounts", response_model=AccountToken | HttpError)
+@router.post("/accounts", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
+    # Should this be AccountInWithPassword?
     request: Request,
     response: Response,
-    accounts: AccountQueries = Depends(authenticator.get_current_account_data),
+    accounts: AccountQueries = Depends(),
 ):
     hashed_password = authenticator.hash_password(info.password)
+    print(hashed_password, "\nTHIS IS HASHED PASSWORD")
     try:
         account = accounts.create(info, hashed_password)
+        print(account, "\n\n\nTHIS IS ACCOUNT")
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -65,7 +68,7 @@ async def get_token(
             "account": account,
         }
 
-@router.get("/api/protected", response_model=bool)
+@router.get("/protected", response_model=bool)
 async def get_protected(
     account_data: dict = Depends(authenticator.get_current_account_data)
 ):
@@ -74,7 +77,7 @@ async def get_protected(
 
 
 
-@router.put("/api/accounts/{user_id}")
+@router.put("/accounts/{user_id}")
 def update_account(
     user_id: int,
     account: AccountIn,
@@ -91,7 +94,7 @@ def update_account(
 
 
 
-@router.delete("/api/accounts/{user_id}", response_model=bool)
+@router.delete("/accounts/{user_id}", response_model=bool)
 def delete_user(
     user_id: int,
     queries: AccountQueries = Depends(),

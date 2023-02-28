@@ -36,14 +36,14 @@ class QuestionsOut(BaseModel):
     questions: list[Question]
 
 
-@router.get("/api/questions", response_model=QuestionsOut)
+@router.get("/questions", response_model=QuestionsOut)
 def questions_list(queries: QuestionQueries = Depends()):
     return {
         "questions": queries.get_all(),
     }
 
 
-@router.get("/api/questions/{question_id}", response_model=Question)
+@router.get("/questions/{question_id}", response_model=Question)
 def get_question(
     question_id: int,
     response: Response,

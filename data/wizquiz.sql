@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS questions;
 
 CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
-            avatar_img VARCHAR(255) NOT NULL,
+            avatar_img VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL,
             password TEXT NOT NULL
