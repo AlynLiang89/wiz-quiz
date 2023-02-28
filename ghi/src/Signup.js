@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useToken } from "./auth";
 
-function SignupForm() {
-  const { token, signup } = useToken();
+function SignUpForm() {
+  const signup = useToken()[1];
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ function SignupForm() {
       <div className="Auth-form-content">
         <h2 className="Auth-form-title">Sign up for an account</h2>
         <div className="Auth-form-field">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username"> Create Username:</label>
           <input
             type="text"
             id="username"
@@ -66,4 +67,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default SignUpForm;

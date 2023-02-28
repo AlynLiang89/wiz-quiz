@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useToken } from "./auth";
 
 function LogInForm() {
-  const { token, login } = useToken();
+  const login = useToken()[1];
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,7 +28,7 @@ function LogInForm() {
         <h2 className="Auth-form-title">Log In</h2>
         <div className="Auth-form-content">
           <div className="Auth-form-field">
-            <label>Email:</label>
+            <label>Username:</label>
             <input
               type="text"
               value={username}

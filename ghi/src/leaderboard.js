@@ -10,6 +10,7 @@ function Leaderboard({ users }) {
       <table>
         <thead>
           <tr>
+            <th>rank</th>
             <th>Profile Pic</th>
             <th>Username</th>
             <th>Score</th>
@@ -18,9 +19,8 @@ function Leaderboard({ users }) {
         <tbody>
           {sortedUsers.map((user, index) => (
             <tr key={user.username}>
-              <td>
-                <img src={user.profilePic} alt={user.username} />
-              </td>
+              <td>{user.rank}</td>
+              <td>{user.avatar_img}</td>
               <td>{user.username}</td>
               <td>{user.score}</td>
             </tr>
