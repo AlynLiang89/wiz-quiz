@@ -41,3 +41,10 @@
 - Starting to help with leaderboard backend tables, routes, and queries
 - Once leaderboard is done then backend should be set up
 - Researching front end auth material
+
+## Feb-27-23
+
+- Finished the leaderboard table and got it connected to beekeeper
+- wrote the leaderboard.py for the routers directory and still need to check it
+- updated the migrations file with the leaderboard table included
+- Updated the main.py now that the leaderboard is hooked up I added the route to the file

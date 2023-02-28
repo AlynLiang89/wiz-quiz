@@ -1,4 +1,4 @@
-from queries.questions import LeaderboardQueries, Leaderboard
+from queries.leaderboard import LeaderboardQueries, Leaderboard
 from fastapi import APIRouter, Depends, Response, status
 from pydantic import BaseModel
 
