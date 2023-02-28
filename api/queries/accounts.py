@@ -150,7 +150,7 @@ class AccountQueries:
             return {"message": "Could not delete account."}
 
     def create(
-        self, account: AccountIn, hashed_password: str
+        self, info: AccountIn, hashed_password: str
     ) -> AccountOutWithPassword:
         try:
             with pool.connection() as conn:
@@ -164,13 +164,13 @@ class AccountQueries:
                         RETURNING id;
                         """,
                         [
-                            account.email,
-                            account.username,
+                            info.email,
+                            info.username,
                             hashed_password,
                         ],
                     )
                     id = result.fetchone()[0]
-                    old_data = account.dict()
+                    old_data = info.dict()
 
                     return AccountOutWithPassword(
                         id=id, hashed_password=hashed_password, **old_data

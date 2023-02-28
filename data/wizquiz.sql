@@ -146,11 +146,3 @@ INSERT INTO questions VALUES
 
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
 SELECT setval('questions_id_seq', (SELECT MAX(id) + 1 FROM questions));
-
-{
-  "question": "who are you",
-  "answer": "yes",
-  "option_1": "twelve",
-  "option_2": "11",
-  "option_3": "you"
-}
