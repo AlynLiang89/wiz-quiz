@@ -22,8 +22,7 @@ app.add_middleware(
 )
 
 
-
-app.include_router(authenticator.router)
 app.include_router(accounts.router)
 app.include_router(questions.router)
 app.include_router(leaderboard.router)
+app.include_router(authenticator.router)
