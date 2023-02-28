@@ -2,7 +2,7 @@ steps = [
     [
         # "Up" SQL statement
         """
-        CREATE TABLE users (
+        CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
             avatar_img() NOT NULL,
             email VARCHAR(255) NOT NULL UNIQUE,

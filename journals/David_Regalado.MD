@@ -34,3 +34,10 @@
 - Worked on database and got connected to beekeeper for accounts and questions
 - Rewrote the main.py file with CORS requirements
 - Updated migrations file
+
+## Feb-24-23
+
+- Finished database tables and got to a good place for backend
+- Starting to help with leaderboard backend tables, routes, and queries
+- Once leaderboard is done then backend should be set up
+- Researching front end auth material
