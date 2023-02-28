@@ -28,14 +28,14 @@ class QuestionsOut(BaseModel):
     questions: list[Question]
 
 
-@router.get("/api/questions", response_model=QuestionsOut)
+@router.get("/questions", response_model=QuestionsOut)
 def questions_list(queries: QuestionQueries = Depends()):
     return {
         "questions": queries.get_all(),
     }
 
 
-@router.get("/api/questions/{question_id}", response_model=Question)
+@router.get("/questions/{question_id}", response_model=Question)
 def get_question(
     question_id: int,
     response: Response,
@@ -48,7 +48,7 @@ def get_question(
         return record
 
 
-@router.put("/api/questions/{question_id}", response_model=QuestionOut)
+@router.put("/questions/{question_id}", response_model=QuestionOut)
 def update_question(
     question_id: int,
     question: QuestionIn,
@@ -63,7 +63,7 @@ def update_question(
         return updated_question
 
 
-@router.delete("/api/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_question(
     question_id: int,
     response: Response,
@@ -85,4 +85,5 @@ def create_question(
     new_question = Question(**question.dict())
     record = queries.create(new_question)
     response.status_code = status.HTTP_201_CREATED
+    print ("THE QUESTION WAS CREATED")
     return record

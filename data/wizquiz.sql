@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS questions;
 
 CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
-            avatar_img VARCHAR(255) NOT NULL,
+            avatar_img VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL,
             password TEXT NOT NULL
@@ -146,3 +146,11 @@ INSERT INTO questions VALUES
 
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
 SELECT setval('questions_id_seq', (SELECT MAX(id) + 1 FROM questions));
+
+{
+  "question": "who are you",
+  "answer": "yes",
+  "option_1": "twelve",
+  "option_2": "11",
+  "option_3": "you"
+}
