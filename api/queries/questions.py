@@ -51,7 +51,7 @@ class QuestionQueries:
                     record = db.fetchone()
 
                     if record is None:
-                        return {"message": "Question not found."}
+                        return Error(message="Question not found.")
                     return Question(**dict(zip(["id", "question", "answer", "option_1", "option_2", "option_3"], record)))
         except Exception as e:
             print(e)
@@ -73,8 +73,7 @@ class QuestionQueries:
             print(e)
             return {"message": "Could not get all questions."}
 
-
-    def update(self, question_id: int, question: Question) -> Union[Question, Error]:
+    def update(self, question_id: int, question: Question) -> Union[Error, Question]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -83,12 +82,15 @@ class QuestionQueries:
                         UPDATE questions
                         SET question = %s, answer = %s, option_1 = %s, option_2 = %s, option_3 = %s
                         WHERE id = %s
+                        RETURNING id
                         """,
                         [question.question, question.answer, question.option_1, question.option_2, question.option_3, question_id],
                     )
-                    return question
+                    updated_question = question.copy(update={"id": db.fetchone()[0]})
+                    return updated_question
         except Exception as e:
             print(e)
+            return {"message": "Could not update question."}
 
     def delete(self, question_id: int) -> Union[Error, str]:
         try:
@@ -102,7 +104,7 @@ class QuestionQueries:
                         [question_id],
                     )
                     if db.rowcount == 0:
-                        return {"message": "Question not found."}
+                        return Error(message="Question not found.")
                     return "Question deleted successfully."
         except Exception as e:
             print(e)
