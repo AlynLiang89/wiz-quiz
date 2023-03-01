@@ -1,14 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(10);
+
+  const timerRef = useRef(null);
 
   useEffect(() => {
     fetchQuestions();
   }, []);
+
+  useEffect(() => {
+    if (currentQuestionIndex > 0) {
+      setSecondsLeft(10);
+      timerRef.current = setInterval(() => {
+        setSecondsLeft((prevSeconds) => prevSeconds - 1);
+      }, 1000);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    if (secondsLeft === 0) {
+      handleAnswer("");
+    }
+  }, [secondsLeft]);
 
   const fetchQuestions = () => {
     fetch("http://localhost:8000/api/questions")
@@ -46,6 +65,8 @@ const Quiz = () => {
   };
 
   const handleAnswer = (selectedOption) => {
+    clearInterval(timerRef.current);
+
     const currentQuestion = questions[currentQuestionIndex];
     if (selectedOption === currentQuestion.answer) {
       setScore(score + 1);
@@ -72,7 +93,7 @@ const Quiz = () => {
         <p>
           You scored {score} out of {questions.length}.
         </p>
-        <button onClick={restartQuiz}>Start Over</button>
+        <button onClick={restartQuiz}>Restart Quiz</button>
       </div>
     );
   }
@@ -88,16 +109,12 @@ const Quiz = () => {
             {option}
           </button>
         ))}
+        <p>Time Left: {secondsLeft}s</p>
         <p>Score: {score}</p>
       </div>
     );
   }
 
-  return (
-    <div>
-      <p>Loading questions...</p>
-    </div>
-  );
 };
 
 export default Quiz;
