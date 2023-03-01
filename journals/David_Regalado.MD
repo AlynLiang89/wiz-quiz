@@ -48,3 +48,17 @@
 - wrote the leaderboard.py for the routers directory and still need to check it
 - updated the migrations file with the leaderboard table included
 - Updated the main.py now that the leaderboard is hooked up I added the route to the file
+
+## Feb-28-23
+
+- Helped Christian with leaderboard queries had some progress
+- Started researching unit tests and writing it
+- Had some issues with the unit test but still in research development stages
+
+## March-1-23
+
+- Was having problems with the unit test but figured out you had to exec into the right container
+- Finished unit test for "get all questions" and got to pass
+- Helping Christian debug some leaderboard stuff
+- Once leaderboard is set up then backend stuff should be all set up
+- Gonna start helping Gio frontend nav.js

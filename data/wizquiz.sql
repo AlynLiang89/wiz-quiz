@@ -21,13 +21,6 @@ CREATE TABLE questions (
             option_3 VARCHAR(1000) NOT NULL
         );
 
-CREATE TABLE leaderboard (
-            id SERIAL PRIMARY KEY NOT NULL,
-            rank INTEGER NOT NULL,
-            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-            score INTEGER NOT NULL
-        );
-
 
 CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
