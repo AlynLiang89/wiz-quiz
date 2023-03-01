@@ -8,7 +8,6 @@ router = APIRouter()
 
 
 class LeaderboardIn(BaseModel):
-    rank: int
     account: int
     score: int
 
