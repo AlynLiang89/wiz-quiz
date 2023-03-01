@@ -11,6 +11,7 @@ CREATE TABLE accounts (
             password TEXT NOT NULL
         );
 
+
 CREATE TABLE questions (
             id SERIAL PRIMARY KEY NOT NULL,
             question VARCHAR(1000) NOT NULL,
@@ -28,6 +29,13 @@ CREATE TABLE leaderboard (
         );
 
 
+CREATE TABLE leaderboard (
+            id SERIAL PRIMARY KEY NOT NULL,
+            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
+            score INTEGER NOT NULL
+        );
+
+
 INSERT INTO accounts VALUES
   (1, '1780000.jpeg', 'David@aol.com', 'DavReg', 'test'),
   (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', 'test'),
@@ -38,7 +46,6 @@ INSERT INTO accounts VALUES
 
 
 INSERT INTO questions VALUES
-
   (1, 'Whats the name of the skyscraper in Die Hard?', 'Nakatomi Plaza', 'Naturo Highrise', 'Empire State Building', 'Sony Headquarters'),
   (2, 'For what movie did Steven Spielberg win his first Oscar for Best Director?', 'Schindlers List', 'Saving Private Ryan', 'Lincoln', 'Raiders of the Lost Ark'),
   (3, 'Who is the only actor to receive an Oscar nomination for acting in a Lord of the Rings movie?', 'Ian Mckellen', 'Sean Bean', 'Andy Serkis', 'Elijah Wood'),
@@ -157,6 +164,15 @@ INSERT INTO leaderboard VALUES
   (4, 4, 5, 520),
   (5, 5, 2, 515),
   (6, 6, 1, 420);
+
+
+INSERT INTO leaderboard VALUES
+  (1, 4, 536),
+  (2, 6, 530),
+  (3, 3, 525),
+  (4, 5, 520),
+  (5, 2, 515),
+  (6, 1, 420);
 
 
 
