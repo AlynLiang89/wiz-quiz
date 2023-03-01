@@ -21,13 +21,6 @@ CREATE TABLE questions (
             option_3 VARCHAR(1000) NOT NULL
         );
 
-CREATE TABLE leaderboard (
-            id SERIAL PRIMARY KEY NOT NULL,
-            rank INTEGER NOT NULL,
-            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-            score INTEGER NOT NULL
-        );
-
 
 CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -157,14 +150,6 @@ INSERT INTO questions VALUES
   (109,'What is the name of the Infinity Stone that is associated with reality?', 'Reality Stone', 'Power Stone', 'Time Stone', 'Soul Stone'),
   (110,'In Tron: Legacy, where is the entrance to the digital world found?', 'In an arcade', 'At a library', 'In a zoo', 'In a bathroom');
 
-INSERT INTO leaderboard VALUES
-  (1, 1, 4, 536),
-  (2, 2, 6, 530),
-  (3, 3, 3, 525),
-  (4, 4, 5, 520),
-  (5, 5, 2, 515),
-  (6, 6, 1, 420);
-
 
 INSERT INTO leaderboard VALUES
   (1, 4, 536),
@@ -173,7 +158,6 @@ INSERT INTO leaderboard VALUES
   (4, 5, 520),
   (5, 2, 515),
   (6, 1, 420);
-
 
 
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
