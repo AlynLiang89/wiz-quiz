@@ -1,8 +1,7 @@
 import React from "react";
 
 function Leaderboard({ users }) {
-  // right here is where we sort the users by score in descending order
-  const sortedUsers = users.sort((a, b) => b.score - a.score);
+  const sortedUsers = [...users].sort((a, b) => b.score - a.score);
 
   return (
     <div className="Leaderboard">
@@ -10,17 +9,22 @@ function Leaderboard({ users }) {
       <table>
         <thead>
           <tr>
-            <th>rank</th>
-            <th>Profile Pic</th>
-            <th>Username</th>
-            <th>Score</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Profile Picture</th>
+            <th scope="col">Username</th>
+            <th scope="col">Score</th>
           </tr>
         </thead>
         <tbody>
           {sortedUsers.map((user, index) => (
             <tr key={user.username}>
               <td>{user.rank}</td>
-              <td>{user.avatar_img}</td>
+              <td>
+                <img
+                  src={user.avatar_img}
+                  alt={`${user.username}'s profile picture`}
+                />
+              </td>
               <td>{user.username}</td>
               <td>{user.score}</td>
             </tr>

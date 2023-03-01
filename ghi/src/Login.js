@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useToken } from "./auth";
+import { useNavigate } from "react-router-dom";
 
 function LogInForm() {
   const login = useToken()[1];
@@ -16,11 +17,17 @@ function LogInForm() {
     setPassword(value);
   };
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(username, password);
     console.log("login successful +++++++++++++++");
+    navigate("/");
   };
+
+  function handleClick() {
+    navigate("/signup");
+  }
 
   return (
     <div className="Auth-form-container">
@@ -46,6 +53,11 @@ function LogInForm() {
           <button className="Auth-form-submit" type="submit">
             Log In
           </button>
+          <div className="button">
+            <button onClick={handleClick}>
+              Don't have an account? Sign up here
+            </button>
+          </div>
         </div>
       </form>
     </div>

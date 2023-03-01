@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useToken } from "./auth";
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const signup = useToken()[1];
@@ -22,11 +23,18 @@ function SignUpForm() {
     setEmail(value);
   };
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await signup(email, password, username);
+    navigate("/");
     console.log(response);
   };
+
+    function handleClick() {
+      navigate("/login");
+    }
+
 
   return (
     <form onSubmit={handleSubmit} className="Auth-form">
@@ -62,6 +70,11 @@ function SignUpForm() {
         <button type="submit" className="Auth-form-submit">
           Sign Up!
         </button>
+        <div className="button">
+          <button onClick={handleClick}>
+            Already have an account? Login here
+          </button>
+        </div>
       </div>
     </form>
   );
