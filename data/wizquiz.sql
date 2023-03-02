@@ -160,7 +160,6 @@ INSERT INTO leaderboard VALUES
   (6, 1, 420);
 
 
-
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
 SELECT setval('questions_id_seq', (SELECT MAX(id) + 1 FROM questions));
 SELECT setval('leaderboard_id_seq', (SELECT MAX(id) + 1 FROM leaderboard));
