@@ -21,6 +21,7 @@ from queries.accounts import (
 class AccountForm(BaseModel):
     username: str
     password: str
+    avatar_img: str | None = None
 
 class AccountToken(Token):
     account: AccountOut
@@ -48,7 +49,7 @@ async def create_account(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(username=info.username, password=info.password)
+    form = AccountForm(username=info.username, password=info.password, avatar_img=info.avatar_img)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 

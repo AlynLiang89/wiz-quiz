@@ -15,12 +15,14 @@ class AccountIn(BaseModel):
     email: str
     username: str
     password: str
+    avatar_img: str | None = None
 
 
 class AccountOut(BaseModel):
     id: int
     email: str
     username: str
+    avatar_img: str | None = None
 
 
 class AccountOutWithPassword(AccountOut):
@@ -38,6 +40,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         WHERE username = %s
                         """,
@@ -62,6 +65,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         WHERE id = %s
                         """,
@@ -86,6 +90,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         ORDER BY username;
                         """
@@ -97,6 +102,7 @@ class AccountQueries:
                             last_name=record[2],
                             email=record[3],
                             username=record[4],
+                            avatar_img=record[5],
                         )
                         for record in db
                     ]
@@ -116,6 +122,7 @@ class AccountQueries:
                         SET email = %s
                          , username = %s
                          , password = %s
+                         , avatar_img = %s
                         WHERE id = %s
                         """,
                         [
@@ -123,6 +130,7 @@ class AccountQueries:
                             account.username,
                             hashed_password,
                             user_id,
+                            account.avatar_img,
                         ],
                     )
 
@@ -158,15 +166,16 @@ class AccountQueries:
                     result = db.execute(
                         """
                         INSERT INTO accounts
-                            (email, username, password)
+                            (email, username, password, avatar_img)
                         VALUES
-                            (%s, %s, %s)
+                            (%s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
                             info.email,
                             info.username,
                             hashed_password,
+                            info.avatar_img
                         ],
                     )
                     id = result.fetchone()[0]
@@ -193,4 +202,5 @@ class AccountQueries:
             email=record[1],
             username=record[2],
             hashed_password=record[3],
+            avatar_img=record[4],
         )
