@@ -39,7 +39,6 @@ steps = [
         """
        CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
-            rank INTEGER NOT NULL,
             account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
             score INTEGER NOT NULL
         );
