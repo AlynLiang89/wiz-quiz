@@ -11,7 +11,6 @@ from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 from pydantic import BaseModel
 from queries.accounts import (
-    Error,
     AccountIn,
     AccountOut,
     AccountQueries,
@@ -40,10 +39,8 @@ async def create_account(
     accounts: AccountQueries = Depends(),
 ):
     hashed_password = authenticator.hash_password(info.password)
-    print(hashed_password, "\nTHIS IS HASHED PASSWORD")
     try:
         account = accounts.create(info, hashed_password)
-        print(account, "\n\n\nTHIS IS ACCOUNT")
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
