@@ -10,8 +10,6 @@ router = APIRouter()
 class LeaderboardUpdate(BaseModel):
     account: int
     score: int
-
-
 class LeaderboardsOut(BaseModel):
     leader_boards: list[LeaderboardGoingOut]
 
@@ -21,8 +19,6 @@ def leaderboard_list(queries: LeaderboardQueries = Depends()):
     return {
         "leader_boards": queries.get_all(),
     }
-
-
 @router.put("/api/leaderboards/", response_model=LeaderboardOut)
 def update_leaderboard(
     leaderboard_id: int,
