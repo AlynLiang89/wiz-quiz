@@ -3,7 +3,7 @@ steps = [
         # "Up" SQL statement
         """
         CREATE TABLE accounts (
-            id SERIAL PRIMARY KEY NULL,
+            id SERIAL PRIMARY KEY NOT NULL,
             avatar_img VARCHAR(1000) NOT NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL,
@@ -15,7 +15,7 @@ steps = [
         DROP TABLE accounts;
         """,
     ]
-
+,
     [
         # "Up" SQL statement
         """
@@ -31,6 +31,21 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE questions;
+        """,
+    ]
+,
+    [
+        # "Up" SQL statement
+        """
+       CREATE TABLE leaderboard (
+            id SERIAL PRIMARY KEY NOT NULL,
+            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
+            score INTEGER NOT NULL
+        );
+        """,
+        # "Down" SQL statement
+        """
+        DROP TABLE leaderboard;
         """,
     ]
 

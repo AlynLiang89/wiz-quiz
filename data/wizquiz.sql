@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS leaderboard;
+
 
 CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -9,6 +11,7 @@ CREATE TABLE accounts (
             password TEXT NOT NULL
         );
 
+
 CREATE TABLE questions (
             id SERIAL PRIMARY KEY NOT NULL,
             question VARCHAR(1000) NOT NULL,
@@ -16,6 +19,13 @@ CREATE TABLE questions (
             option_1 VARCHAR(1000) NOT NULL,
             option_2 VARCHAR(1000) NOT NULL,
             option_3 VARCHAR(1000) NOT NULL
+        );
+
+
+CREATE TABLE leaderboard (
+            id SERIAL PRIMARY KEY NOT NULL,
+            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
+            score INTEGER NOT NULL
         );
 
 
@@ -29,7 +39,6 @@ INSERT INTO accounts VALUES
 
 
 INSERT INTO questions VALUES
-
   (1, 'Whats the name of the skyscraper in Die Hard?', 'Nakatomi Plaza', 'Naturo Highrise', 'Empire State Building', 'Sony Headquarters'),
   (2, 'For what movie did Steven Spielberg win his first Oscar for Best Director?', 'Schindlers List', 'Saving Private Ryan', 'Lincoln', 'Raiders of the Lost Ark'),
   (3, 'Who is the only actor to receive an Oscar nomination for acting in a Lord of the Rings movie?', 'Ian Mckellen', 'Sean Bean', 'Andy Serkis', 'Elijah Wood'),
@@ -142,7 +151,15 @@ INSERT INTO questions VALUES
   (110,'In Tron: Legacy, where is the entrance to the digital world found?', 'In an arcade', 'At a library', 'In a zoo', 'In a bathroom');
 
 
+INSERT INTO leaderboard VALUES
+  (1, 4, 536),
+  (2, 6, 530),
+  (3, 3, 525),
+  (4, 5, 520),
+  (5, 2, 515),
+  (6, 1, 420);
 
 
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));
 SELECT setval('questions_id_seq', (SELECT MAX(id) + 1 FROM questions));
+SELECT setval('leaderboard_id_seq', (SELECT MAX(id) + 1 FROM leaderboard));
