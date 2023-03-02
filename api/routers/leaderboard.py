@@ -1,7 +1,7 @@
-from queries.leaderboard import LeaderboardQueries, LeaderboardOut, LeaderboardIn, LeaderboardOuter
+from queries.leaderboard import LeaderboardQueries, LeaderboardOut, LeaderboardIn, Error, LeaderboardGoingOut
 from fastapi import APIRouter, Depends, Response, status
 from pydantic import BaseModel
-
+from typing import Union
 
 
 router = APIRouter()
@@ -13,7 +13,7 @@ class LeaderboardUpdate(BaseModel):
 
 
 class LeaderboardsOut(BaseModel):
-    leader_boards: list[LeaderboardOut]
+    leader_boards: list[LeaderboardGoingOut]
 
 
 @router.get("/api/leaderboards/", response_model=LeaderboardsOut)
@@ -38,13 +38,13 @@ def update_leaderboard(
         return updated_leaderboard
 
 
-@router.post("/api/leaderboards/", response_model=LeaderboardOuter)
+@router.post("/api/leaderboards", response_model=Union[LeaderboardOut, Error])
 def create_leaderboard(
     leaderboard: LeaderboardIn,
     response: Response,
     queries: LeaderboardQueries = Depends(),
 ):
-    print(leaderboard.dict(),"LEADERBOARD")
-    record = queries.create(leaderboard.dict())
-    response.status_code = status.HTTP_201_CREATED
+    record = queries.create_leaderboard(leaderboard)
+    if record==None:
+        response.status_code = 404
     return record

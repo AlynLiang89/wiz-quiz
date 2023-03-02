@@ -1,4 +1,4 @@
-from typing import Optional, Union, List
+from typing import Union, List
 from queries.pool import pool
 from pydantic import BaseModel
 
@@ -12,21 +12,18 @@ class LeaderboardIn(BaseModel):
 
 
 class LeaderboardOut(BaseModel):
-    username: str
-    avatar_img: str
+    id: int
     score: int
 
-
-class LeaderboardOuter(BaseModel):
-     id: int
-     account_id: int
+class LeaderboardGoingOut(BaseModel):
+     username: str
+     avatar_img: str | None = None
      score: int
 
 
 
-
 class LeaderboardQueries:
-    def get_all(self) -> Union[Error, List[LeaderboardOut]]:
+    def get_all(self) -> Union[Error, List[LeaderboardGoingOut]]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -47,14 +44,15 @@ class LeaderboardQueries:
             return {"message": "Could not get all leaderboards"}
 
 
-    def create(self, leaderboard: LeaderboardIn) -> Union[LeaderboardOuter, Error]:
+    def create_leaderboard(self, leaderboard: LeaderboardIn) -> Union[LeaderboardOut, Error]:
                 print(leaderboard, "BEFORETRY")
                 try:
+                    id = None
                     print(leaderboard, "AFTERTRY")
                     with pool.connection() as conn:
-                        print("LINE49")
+                        print("LINE53")
                         with conn.cursor() as db:
-                            print('LINE51')
+                            print('LINE55')
                             result = db.execute(
                                 """
                                 INSERT INTO leaderboard(
@@ -72,21 +70,23 @@ class LeaderboardQueries:
                             )
                             print(result, "RESULT")
                             id = result.fetchone()[0]
+                            print(id, "LINE73")
                             print(leaderboard, "CREATELEADERBOARD")
-                            return self.leaderboard_in_to_out(id, leaderboard)
+                            old_data = leaderboard.dict()
+                            return LeaderboardOut(id=id, **old_data)
                 except Exception:
                     return {"message": "Create did not work"}
 
 
     def record_to_leaderboard_out(self, record):
-        return LeaderboardOut(
+        print(record, "LINE80")
+        return LeaderboardGoingOut(
             username=record[0],
             avatar_img=record[1],
             score=record[2],
         )
 
 
-    def leaderboard_in_to_out(self, id: int, leaderboard: LeaderboardIn):
-         old_data = leaderboard.dict()
-         print(old_data, "OLD_DATA")
-         return LeaderboardOut(id=id, **old_data)
+    # def leaderboard_in_to_out(self, id: int, leaderboard: LeaderboardIn):
+    #      old_data = leaderboard.dict()
+    #      return LeaderboardOut(id=id, **old_data)
