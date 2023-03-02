@@ -1,11 +1,12 @@
+import React from "react";
 import "./App.css";
-import Form from "./components/Form";
-// import  from App
+import Quiz from "./components/quiz";
+import "./components/style.css";
 
 function App() {
   return (
     <div className="App">
-      <Form></Form>
+      <Quiz></Quiz>
     </div>
   );
 }
