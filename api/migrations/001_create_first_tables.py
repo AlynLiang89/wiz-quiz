@@ -2,9 +2,9 @@ steps = [
     [
         # "Up" SQL statement
         """
-        CREATE TABLE users (
-            id SERIAL PRIMARY KEY NOT NULL,
-            avatar_img() NOT NULL,
+        CREATE TABLE accounts (
+            id SERIAL PRIMARY KEY NULL,
+            avatar_img VARCHAR(1000) NOT NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL,
             password TEXT NOT NULL
@@ -12,7 +12,7 @@ steps = [
         """,
         # "Down" SQL statement
         """
-        DROP TABLE users;
+        DROP TABLE accounts;
         """,
     ]
 
@@ -30,7 +30,7 @@ steps = [
         """,
         # "Down" SQL statement
         """
-        DROP TABLE users;
+        DROP TABLE questions;
         """,
     ]
 
