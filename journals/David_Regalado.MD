@@ -28,3 +28,23 @@
 - Got it connected to beekeeper and got it runnin
 - made a table-branch so Christian can start working on the leaderboard stuff in seperate branch
 - Started making questions table, routers, and queries
+
+## Feb-23-23
+
+- Worked on database and got connected to beekeeper for accounts and questions
+- Rewrote the main.py file with CORS requirements
+- Updated migrations file
+
+## Feb-24-23
+
+- Finished database tables and got to a good place for backend
+- Starting to help with leaderboard backend tables, routes, and queries
+- Once leaderboard is done then backend should be set up
+- Researching front end auth material
+
+## Feb-27-23
+
+- Finished the leaderboard table and got it connected to beekeeper
+- wrote the leaderboard.py for the routers directory and still need to check it
+- updated the migrations file with the leaderboard table included
+- Updated the main.py now that the leaderboard is hooked up I added the route to the file
