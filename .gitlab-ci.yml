@@ -4,9 +4,12 @@ stages:
   - deploy
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 8648e1b201cf94ccd8e100c45719f2bee6b3241a
+=======
+>>>>>>> 978af8e389010448412f079d1dc74def5ce43dd1
 lint-test-job:
   image: python:3-bullseye
   stage: test
@@ -15,9 +18,12 @@ lint-test-job:
     - flake8 sample_service
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 8648e1b201cf94ccd8e100c45719f2bee6b3241a
+=======
+>>>>>>> 978af8e389010448412f079d1dc74def5ce43dd1
 build-front-end-job:
   stage: build
   image: node:lts-bullseye

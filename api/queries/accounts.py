@@ -15,12 +15,14 @@ class AccountIn(BaseModel):
     email: str
     username: str
     password: str
+    avatar_img: str | None = None
 
 
 class AccountOut(BaseModel):
     id: int
     email: str
     username: str
+    avatar_img: str | None = None
 
 
 class AccountOutWithPassword(AccountOut):
@@ -38,18 +40,17 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         WHERE username = %s
                         """,
                         [username],
                     )
                     record = result.fetchone()
-                    print("record", record)
                     if record is None:
                         return None
                     return self.record_to_account_out(record)
         except Exception as e:
-            print(e)
             return {"message": "Could not get that account"}
 
     def get_by_id(self, user_id: int) -> Optional[AccountOutWithPassword]:
@@ -62,6 +63,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         WHERE id = %s
                         """,
@@ -73,7 +75,6 @@ class AccountQueries:
                         return None
                     return self.record_to_account_out(record)
         except Exception as e:
-            print(e)
             return {"message": "Could not get that account"}
 
     def get_all(self) -> Union[Error, List[AccountOut]]:
@@ -86,6 +87,7 @@ class AccountQueries:
                             , email
                             , username
                             , password
+                            , avatar_img
                         FROM accounts
                         ORDER BY username;
                         """
@@ -97,11 +99,11 @@ class AccountQueries:
                             last_name=record[2],
                             email=record[3],
                             username=record[4],
+                            avatar_img=record[5],
                         )
                         for record in db
                     ]
         except Exception as e:
-            print(e)
             return {"message": "Could not get all accounts"}
 
     def update(
@@ -116,21 +118,21 @@ class AccountQueries:
                         SET email = %s
                          , username = %s
                          , password = %s
+                         , avatar_img = %s
                         WHERE id = %s
                         """,
                         [
                             account.email,
                             account.username,
                             hashed_password,
+                            account.avatar_img,
                             user_id,
                         ],
                     )
 
                     old_data = account.dict()
-                    print(old_data)
                     return AccountOut(id=user_id, **old_data)
         except Exception as e:
-            print(e)
             return {"message": "Could not update account."}
 
     def delete(self, user_id: int):
@@ -146,7 +148,6 @@ class AccountQueries:
                     )
                     return True
         except Exception as e:
-            print(e)
             return {"message": "Could not delete account."}
 
     def create(
@@ -158,15 +159,16 @@ class AccountQueries:
                     result = db.execute(
                         """
                         INSERT INTO accounts
-                            (email, username, password)
+                            (email, username, password, avatar_img)
                         VALUES
-                            (%s, %s, %s)
+                            (%s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
                             info.email,
                             info.username,
                             hashed_password,
+                            info.avatar_img
                         ],
                     )
                     id = result.fetchone()[0]
@@ -193,4 +195,5 @@ class AccountQueries:
             email=record[1],
             username=record[2],
             hashed_password=record[3],
+            avatar_img=record[4],
         )
