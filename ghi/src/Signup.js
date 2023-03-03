@@ -3,12 +3,13 @@ import { useToken } from "./auth";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
-
 function SignUpForm() {
-  const signup = useToken()[1];
+  const { signup } = useToken();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [ setErrorMessage ] = useState("");
 
   const handleUserNameChange = (e) => {
     const value = e.target.value;
@@ -25,28 +26,31 @@ function SignUpForm() {
     setEmail(value);
   };
 
-  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await signup(email, password, username);
-    navigate("/");
-    console.log(response);
+    try {
+      await signup(email, password, username);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(String(error));
+    }
   };
 
-  function handleClick() {
+  const handleClick = () => {
     navigate("/login");
-  }
+  };
 
-  function handleClickhome2() {
+  const handleClickhome2 = () => {
     navigate("/");
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="Auth-form">
       <div className="Auth-form-content">
         <h2 className="Auth-form-title">Sign up for an account</h2>
         <div className="Auth-form-field">
-          <label htmlFor="username"> Create Username:</label>
+          <label htmlFor="username">Create Username:</label>
           <input
             type="text"
             id="username"
@@ -79,10 +83,10 @@ function SignUpForm() {
           <button onClick={handleClick}>
             Already have an account? Login here
           </button>
-        <div className="home-button2">
-          <button onClick={handleClickhome2}>
-            <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
-          </button>
+          <div className="home-button2">
+            <button onClick={handleClickhome2}>
+              <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
+            </button>
           </div>
         </div>
       </div>

@@ -1,127 +1,158 @@
+.Auth-form-container {
+position: relative;
+}
+
+
+/* this is where you move the button */
 .home-button2 {
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  background-color: #973382;
+  top: -787px;
+  left: -820px;
+  box-shadow: 0px 0px 2px 5px rgba(0, 0, 0, 0.2);
+  animation: rainbow 2s linear infinite;
 }
 
-.Auth-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-}
-
-.Auth-form {
-  width: 440px;
-  box-shadow: rgb(0 0 0 / 30%) 1px 1px 70px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 12px;
-  padding-left: 20px;
-  background-color: rgb(255, 255, 255);
-  margin: auto; /* remember for myself gio, that this centers horizontally */
-  margin-top: 30vh; /* this moves down from the top */
-  margin-bottom: 10vh; /* this moves up from the bottom */
-}
-
-/* RAINBOW CODE */
-.Auth-form:before {
-  content: "";
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-auth-form2 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 12px;
-}
-
-@keyframes glowing-auth-form2 {
+@keyframes rainbow {
   0% {
-    background-position: 0 0;
+    box-shadow: 0px 0px 2px 5px rgba(255, 0, 0, 0.8);
   }
-  50% {
-    background-position: 400% 0;
+  20% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 140, 0, 0.8);
+  }
+  40% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 255, 0, 0.8);
+  }
+  60% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 128, 0, 0.8);
+  }
+  80% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 0, 255, 0.8);
   }
   100% {
-    background-position: 0 0;
+    box-shadow: 0px 0px 2px 5px rgba(128, 0, 128, 0.8);
   }
 }
 
-/* RAINBOW CODE */
+
+.Auth-form-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100vh;
+}
+/* this is where you move the form up and down */
+.Auth-form {
+  width: 420px;
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  margin: 35vh auto 10vh;
+  position: relative;
+}
+
+.Auth-form:before {
+content: "";
+position: absolute;
+top: -10px;
+left: -10px;
+right: -10px;
+bottom: -10px;
+z-index: -1;
+background-image: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+background-size: 400%;
+border-radius: 22px;
+animation: glowing-border 20s linear infinite;
+}
+
+@keyframes glowing-border {
+0% {
+background-position: 0 0;
+}
+50% {
+background-position: 400% 0;
+}
+100% {
+background-position: 0 0;
+}
+}
 
 .Auth-form-content {
-  padding-left: 12%;
-  padding-right: 18%;
-  color: black;
+padding: 0 12%;
+color: #000;
 }
 
 .Auth-form-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 24px;
-  color: rgb(0, 0, 0);
-  font-weight: 800;
+text-align: center;
+margin-bottom: 1em;
+font-size: 34px;
+color: #000;
+font-weight: 800;
 }
 
 .Auth-form-field {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
 label {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgb(34, 34, 34);
+font-size: 14px;
+font-weight: 600;
+color: #222;
 }
 
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 3px solid black; /*  this is reminder on how to add a solid black border */
-  border-radius: 4px;
-  background-color: rgb(255, 255, 255);
-  margin-left: -10px;
+width: 100%;
+padding: 10px;
+font-size: 14px;
+border: 3px solid #000;
+border-radius: 4px;
+background-color: #ffffff;
 }
 
 button.Auth-form-submit {
-  text-align: center;
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  border-radius: 4px;
-  border: 2px solid black;
-  background-color: #933dc5;
-  margin-left: 35px;
+text-align: center;
+width: 80%;
+padding: 10px;
+font-size: 16px;
+font-weight: 600;
+color: #ffffff;
+border-color: #000000;
+border-radius: 4px;
+border: 2px solid #000;
+background-color: #933dc5;
+margin-left: 34px;
 }
 
-button.Auth-form-submit:hover {
-  background-color: #973382; 
+.Auth-form-submit:hover {
+background-color: #973382;
 }
 
 .button {
-  text-align: center;
-  width: 87%;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-left: 24px;
-  margin-top: 15px; 
+text-align: center;
+width: 85%;
+font-size: 16px;
+font-weight: 600;
+color: #ffffff;
+margin-left: 26px;
+margin-top: 15px;
+box-sizing: border-box;
+position: relative;
 }
 
+.button:hover {
+background-color: #ffffff;
+z-index: 1;
+}
 
-button:hover {
-  background-color: #bbbbbb;
+.button::before {
+content: "";
+position: absolute;
+top: -15px;
+left: -26px;
+right: -26px;
+bottom: -15px;
+background-color: transparent;
+z-index: -1;
 }

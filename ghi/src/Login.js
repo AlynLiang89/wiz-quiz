@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function LogInForm() {
-  const login = useToken()[1];
+  const { login } = useToken();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
