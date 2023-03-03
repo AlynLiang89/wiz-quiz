@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useToken } from "./auth";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css";
+
 
 function SignUpForm() {
   const signup = useToken()[1];
