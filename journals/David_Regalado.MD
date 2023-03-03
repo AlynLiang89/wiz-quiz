@@ -62,3 +62,10 @@
 - Helping Christian debug some leaderboard stuff
 - Once leaderboard is set up then backend stuff should be all set up
 - Gonna start helping Gio frontend nav.js
+
+## March-2-23
+
+- Did two merges with alyn and christian to main
+- Trying to figure out Nav.js stuff, realized frontend development is hard for me lol
+- Backend is very close to being done, one final feature for avatar img in accounts and all is well
+- Finished the Nav.js file but cannot test yet waiting for Gio to finish the app.js with the routes
