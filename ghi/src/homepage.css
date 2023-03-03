@@ -1,5 +1,5 @@
 body{
-  background-color: #e0d1e9;
+  background-color: #8f71a0;
   font-family: "Arial", sans-serif;
 }
 
@@ -10,15 +10,15 @@ body{
 }
 
 .login-button {
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 .signup-button {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .login-button {
-  padding: 0.6em 2em;
+  padding: 1em 4.5em;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
@@ -85,7 +85,7 @@ body{
 }
 
 .signup-button {
-  padding: 0.6em 2em;
+  padding: 1em 4.5em;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
@@ -168,14 +168,15 @@ body{
 }
 
 .quiz-button {
-  padding: 0.6em 2em;
+  padding: 3em 11em;
+  font-size: xx-large;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
   background: #111;
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;

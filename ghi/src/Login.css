@@ -1,46 +1,49 @@
-.LogInForm {
-  background-color: rgb(255, 255, 255);
+.home-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  background-color: #973382;
 }
 
-.Auth-form-container {
+.Auth-form-container2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
-.Auth-form {
+.Auth-form2 {
   width: 420px;
-  box-shadow: rgb(0 0 0 / 60%) 10px 10px 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.3);
+  padding: 20px;
   border-radius: 12px;
-  background-color: rgb(255, 255, 255);
-  margin: 0 auto;
+  background-color: #fff;
+  margin: 15vh auto 10vh;
 }
 
-.Auth-form-content {
-  padding-left: 12%;
-  padding-right: 12%;
+.Auth-form-content2 {
+  padding: 0 12%;
+  color: #000;
 }
 
-.Auth-form-title {
+.Auth-form-title2 {
   text-align: center;
   margin-bottom: 1em;
   font-size: 24px;
-  color: rgb(0, 0, 0);
+  color: #000;
   font-weight: 800;
 }
 
-.Auth-form-field {
+.Auth-form-field2 {
   margin-bottom: 10px;
 }
 
 label {
   font-size: 14px;
   font-weight: 600;
-  color: rgb(34, 34, 34);
+  color: #222;
 }
 
 input[type="text"],
@@ -48,25 +51,34 @@ input[type="password"] {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  border: 90px;
+  border: 3px solid #000;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
 }
 
-.Auth-form-submit {
-  width: 100%;
+button.Auth-form-submit2 {
+  text-align: center;
+  width: 80%;
   padding: 10px;
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
-  background-color: #182f47;
-  border: none;
+  color: #fff;
   border-radius: 4px;
+  border: 2px solid #000;
+  background-color: #933dc5;
+  margin-left: 34px;
 }
 
-.Auth-form-submit:hover {
-  background-color: #0069d9;
+.Auth-form-submit2:hover {
+  background-color: #973382;
 }
 
-
-
+.button2 {
+  text-align: center;
+  width: 80%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-left: 35px;
+  margin-top: 15px;
+}

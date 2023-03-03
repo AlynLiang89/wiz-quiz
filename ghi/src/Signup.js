@@ -37,6 +37,10 @@ function SignUpForm() {
     navigate("/login");
   }
 
+  function handleClickhome2() {
+    navigate("/");
+  }
+
   return (
     <form onSubmit={handleSubmit} className="Auth-form">
       <div className="Auth-form-content">
@@ -75,6 +79,11 @@ function SignUpForm() {
           <button onClick={handleClick}>
             Already have an account? Login here
           </button>
+        <div className="home-button2">
+          <button onClick={handleClickhome2}>
+            <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
+          </button>
+          </div>
         </div>
       </div>
     </form>

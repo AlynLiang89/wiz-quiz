@@ -30,12 +30,16 @@ function LogInForm() {
     navigate("/signup");
   }
 
+  function handleClickhome() {
+    navigate("/");
+  }
+
   return (
-    <div className="Auth-form-container">
-      <form className="Auth-form" onSubmit={handleSubmit}>
-        <h2 className="Auth-form-title">Log In</h2>
-        <div className="Auth-form-content">
-          <div className="Auth-form-field">
+    <div className="Auth-form-container2">
+      <form className="Auth-form2" onSubmit={handleSubmit}>
+        <h2 className="Auth-form-title2">Log In</h2>
+        <div className="Auth-form-content2">
+          <div className="Auth-form-field2">
             <label>Username:</label>
             <input
               type="text"
@@ -43,7 +47,7 @@ function LogInForm() {
               onChange={handleUserNameChange}
             />
           </div>
-          <div className="Auth-form-field">
+          <div className="Auth-form-field2">
             <label>Password:</label>
             <input
               type="password"
@@ -51,12 +55,17 @@ function LogInForm() {
               onChange={handlePasswordChange}
             />
           </div>
-          <button className="Auth-form-submit" type="submit">
+          <button className="Auth-form-submit2" type="submit">
             Log In
           </button>
-          <div className="button">
+          <div className="button2">
             <button onClick={handleClick}>
               Don't have an account? Sign up here
+            </button>
+          </div>
+          <div className="home-button">
+            <button onClick={handleClickhome}>
+              <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
             </button>
           </div>
         </div>
