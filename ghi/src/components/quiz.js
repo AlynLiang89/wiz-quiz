@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

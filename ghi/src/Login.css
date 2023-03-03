@@ -62,7 +62,8 @@ button.Auth-form-submit2 {
   padding: 10px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #ffffff;
+  border-color: #000000;
   border-radius: 4px;
   border: 2px solid #000;
   background-color: #933dc5;
@@ -75,10 +76,28 @@ button.Auth-form-submit2 {
 
 .button2 {
   text-align: center;
-  width: 80%;
+  width: 85%;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
-  margin-left: 35px;
+  color: #ffffff;
+  margin-left: 26px;
   margin-top: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.button2:hover {
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.button2::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -26px;
+  right: -26px;
+  bottom: -15px;
+  background-color: transparent;
+  z-index: -1;
 }
