@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -111,6 +112,7 @@ const Quiz = () => {
         ))}
         <p>Time Left: {secondsLeft}s</p>
         <p>Score: {score}</p>
+        <Link to="/">Home</Link>
       </div>
     );
   }
