@@ -76,8 +76,3 @@ class LeaderboardQueries:
             avatar_img=record[1],
             score=record[2],
         )
-
-
-    # def leaderboard_in_to_out(self, id: int, leaderboard: LeaderboardIn):
-    #      old_data = leaderboard.dict()
-    #      return LeaderboardOut(id=id, **old_data)
