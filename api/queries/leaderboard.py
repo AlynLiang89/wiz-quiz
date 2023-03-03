@@ -40,19 +40,14 @@ class LeaderboardQueries:
                         for record in result
                     ]
         except Exception as e:
-            print(e)
             return {"message": "Could not get all leaderboards"}
 
 
     def create_leaderboard(self, leaderboard: LeaderboardIn) -> Union[LeaderboardOut, Error]:
-                print(leaderboard, "BEFORETRY")
                 try:
                     id = None
-                    print(leaderboard, "AFTERTRY")
                     with pool.connection() as conn:
-                        print("LINE53")
                         with conn.cursor() as db:
-                            print('LINE55')
                             result = db.execute(
                                 """
                                 INSERT INTO leaderboard(
@@ -68,10 +63,7 @@ class LeaderboardQueries:
                                     leaderboard.score
                                 ]
                             )
-                            print(result, "RESULT")
                             id = result.fetchone()[0]
-                            print(id, "LINE73")
-                            print(leaderboard, "CREATELEADERBOARD")
                             old_data = leaderboard.dict()
                             return LeaderboardOut(id=id, **old_data)
                 except Exception:
@@ -79,14 +71,8 @@ class LeaderboardQueries:
 
 
     def record_to_leaderboard_out(self, record):
-        print(record, "LINE80")
         return LeaderboardGoingOut(
             username=record[0],
             avatar_img=record[1],
             score=record[2],
         )
-
-
-    # def leaderboard_in_to_out(self, id: int, leaderboard: LeaderboardIn):
-    #      old_data = leaderboard.dict()
-    #      return LeaderboardOut(id=id, **old_data)
