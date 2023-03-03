@@ -22,10 +22,42 @@
   border-radius: 12px;
   padding-left: 20px;
   background-color: rgb(255, 255, 255);
-  margin: auto; /* remember for me gio that this centers horizontally */
+  margin: auto; /* remember for myself gio, that this centers horizontally */
   margin-top: 30vh; /* this moves down from the top */
   margin-bottom: 10vh; /* this moves up from the bottom */
 }
+
+/* RAINBOW CODE */
+.Auth-form:before {
+  content: "";
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-auth-form2 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 12px;
+}
+
+@keyframes glowing-auth-form2 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* RAINBOW CODE */
 
 .Auth-form-content {
   padding-left: 12%;

@@ -1,8 +1,11 @@
+.Auth-form-container2 {
+  position: relative;
+}
+
 .home-button {
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
+  top: -320px;
+  left: -730px;
   background-color: #973382;
 }
 
@@ -18,9 +21,36 @@
   width: 420px;
   box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  border-radius: 12px;
-  background-color: #fff;
+  border-radius: 22px;
+  background-color: #ffffff;
   margin: 15vh auto 10vh;
+  position: relative;
+}
+
+.Auth-form2:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background-image: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+  background-size: 400%;
+  border-radius: 22px;
+  animation: glowing-border 20s linear infinite;
+}
+
+@keyframes glowing-border {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 
 .Auth-form-content2 {
@@ -31,7 +61,7 @@
 .Auth-form-title2 {
   text-align: center;
   margin-bottom: 1em;
-  font-size: 24px;
+  font-size: 34px;
   color: #000;
   font-weight: 800;
 }
