@@ -6,10 +6,6 @@ from queries.questions import QuestionQueries
 client = TestClient(app=app)
 
 
-class EmptyQuestionQueries:
-    def get_questions(self):
-        return []
-
 def test_get_all_questions():
     #Arrange
     app.dependency_overrides[QuestionQueries] = QuestionQueries
