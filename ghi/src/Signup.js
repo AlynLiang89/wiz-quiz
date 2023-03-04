@@ -9,7 +9,7 @@ function SignUpForm() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  const [ setErrorMessage ] = useState("");
+  const [setErrorMessage] = useState("");
 
   const handleUserNameChange = (e) => {
     const value = e.target.value;
@@ -46,51 +46,56 @@ function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="Auth-form">
-      <div className="Auth-form-content">
-        <h2 className="Auth-form-title">Sign up for an account</h2>
-        <div className="Auth-form-field">
-          <label htmlFor="username">Create Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={handleUserNameChange}
-          />
-        </div>
-        <div className="Auth-form-field">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div className="Auth-form-field">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
-        <button type="submit" className="Auth-form-submit">
-          Sign Up!
-        </button>
-        <div className="button">
-          <button onClick={handleClick}>
-            Already have an account? Login here
+    <div className="Auth-form-container">
+      <h1 className="Quizard-text">
+        Do you have what it takes to become the most powerful Quizard?
+      </h1>
+      <form onSubmit={handleSubmit} className="Auth-form">
+        <div className="Auth-form-content">
+          <h2 className="Auth-form-title">Sign up for an account</h2>
+          <div className="Auth-form-field">
+            <label htmlFor="username">Create Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUserNameChange}
+            />
+          </div>
+          <div className="Auth-form-field">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div className="Auth-form-field">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <button type="submit" className="Auth-form-submit">
+            Sign Up!
           </button>
-          <div className="home-button2">
-            <button onClick={handleClickhome2}>
-              <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+          <div className="button">
+            <button onClick={handleClick}>
+              Already have an account? Login here
             </button>
+            <div className="home-button2">
+              <button onClick={handleClickhome2}>
+                <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
