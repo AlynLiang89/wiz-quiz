@@ -2,8 +2,6 @@ stages:
   - test
   - build
 
-<<<<<<< HEAD
-=======
 api-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -20,7 +18,6 @@ api-unit-test-job:
     - pip install -r requirements.txt
     - python -m pytest
 
->>>>>>> ac4b56437c283b7ba340d5d73d05bddf1d8b1db6
 lint-test-job:
   image: python:3-bullseye
   stage: test
@@ -28,8 +25,6 @@ lint-test-job:
     - pip install flake8
     - flake8 api
 
-<<<<<<< HEAD
-=======
 front-end-build-job:
   stage: build
   image: node:lts-bullseye
@@ -41,7 +36,6 @@ front-end-build-job:
     - npm install
     - npm run build
 
->>>>>>> ac4b56437c283b7ba340d5d73d05bddf1d8b1db6
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
