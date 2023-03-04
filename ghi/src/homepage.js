@@ -18,7 +18,7 @@ function HomePage() {
   return (
     <div className="header">
       <div className="logo">
-        <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
+        <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
       </div>
       <div className="buttons">
         <Link to="/login">

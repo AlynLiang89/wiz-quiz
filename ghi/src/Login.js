@@ -7,15 +7,18 @@ function LogInForm() {
   const { login } = useToken();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleUserNameChange = (e) => {
     const value = e.target.value;
     setUserName(value);
+    setIsButtonDisabled(value === "" || password === "");
   };
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
+    setIsButtonDisabled(value === "" || username === "");
   };
 
   const navigate = useNavigate();
@@ -55,7 +58,11 @@ function LogInForm() {
               onChange={handlePasswordChange}
             />
           </div>
-          <button className="Auth-form-submit2" type="submit">
+          <button
+            className="Auth-form-submit2"
+            type="submit"
+            disabled={isButtonDisabled}
+          >
             Log In
           </button>
           <div className="button2">
@@ -65,7 +72,7 @@ function LogInForm() {
           </div>
           <div className="home-button">
             <button onClick={handleClickhome}>
-              <img src="https://i.imgur.com/89pNxOm.png" alt="wizard" />
+              <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
             </button>
           </div>
         </div>
