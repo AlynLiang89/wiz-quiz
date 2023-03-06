@@ -8,7 +8,7 @@ export function getToken() {
 }
 
 export async function getTokenInternal() {
-  const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/token`;
+  const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
   try {
     const response = await fetch(url, {
       credentials: "include",
@@ -76,7 +76,7 @@ export function useToken() {
 
   async function logout() {
     if (token) {
-      const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/token`;
+      const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
       await fetch(url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
@@ -85,7 +85,7 @@ export function useToken() {
   }
 
   async function login(username, password) {
-    const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/token`;
+    const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
@@ -104,7 +104,8 @@ export function useToken() {
   }
 
   async function signup(username, password, email) {
-    const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/sign_up`;
+    const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts`;
+    console.log("signup");
     const response = await fetch(url, {
       method: "post",
       body: JSON.stringify({
@@ -118,12 +119,14 @@ export function useToken() {
     });
     if (response.ok) {
       await login(username, password);
+      console.log("Signup was Successful");
+    } else {
+      return false;
     }
-    return false;
   }
 
   async function update(username, password, email) {
-    const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/accounts`;
+    const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts`;
     const response = await fetch(url, {
       method: "patch",
       body: JSON.stringify({
@@ -153,7 +156,7 @@ export const useUser = (token) => {
     }
 
     async function getUser() {
-      const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/current_user`;
+      const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/current_user`;
       const response = await fetch(url, {
         credentials: "include",
       });

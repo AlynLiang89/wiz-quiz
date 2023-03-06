@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Leaderboard() {
   const [leaderboards, setLeaderboards] = useState([]);
@@ -31,7 +32,17 @@ function Leaderboard() {
           ))}
         </tbody>
       </table>
+      <button
+        className="btn btn-primary mt-3"
+        onClick={() => (window.location.href = "/")}
+      >
+        Main Page
+      </button>
+      <button onClick={() => (window.location.href = "/quiz")}>
+        Take Quiz
+      </button>
     </div>
   );
 }
+
 export default Leaderboard;

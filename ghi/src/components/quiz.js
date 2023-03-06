@@ -95,6 +95,9 @@ const Quiz = () => {
           You scored {score} out of {questions.length}.
         </p>
         <button onClick={restartQuiz}>Restart Quiz</button>
+        <button onClick={() => (window.location.href = "/leaderboard")}>
+          Leaderboard
+        </button>
       </div>
     );
   }
@@ -112,7 +115,9 @@ const Quiz = () => {
         ))}
         <p>Time Left: {secondsLeft}s</p>
         <p>Score: {score}</p>
-        <Link to="/">Home</Link>
+        <button className="btn btn-primary mt-3" onClick={() => (window.location.href = "/")}>
+          Main Page
+        </button>
       </div>
     );
   }

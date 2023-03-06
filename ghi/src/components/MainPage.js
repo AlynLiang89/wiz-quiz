@@ -9,9 +9,12 @@ function MainPage() {
         <p className="lead mb-4">
           Do you have what it takes to become the most powerful Quizard?
         </p>
-        <Link to="/quiz" className="btn btn-primary btn-lg">
-          Start your Quizard journey
-        </Link>
+        <button onClick={() => (window.location.href = "/quiz")}>
+          Start Your Quizard Journey
+        </button>
+        <button onClick={() => (window.location.href = "/leaderboard")}>
+          Leaderboard
+        </button>
       </div>
     </div>
   );

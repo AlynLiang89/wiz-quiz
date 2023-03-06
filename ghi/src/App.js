@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Quiz from "./components/quiz";
 import "./components/style.css";
-import MainPage from "./MainPage";
+import MainPage from "./components/MainPage";
 import Leaderboard from "./components/leaderboard";
 
 function App() {
