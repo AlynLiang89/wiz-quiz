@@ -39,6 +39,10 @@ function LogInForm() {
 
   return (
     <div className="Auth-form-container2">
+      <h1 className="Quizard-welcome-back">
+        "The Quizarding world welcomes you back, ready to put your trivia skills to the
+        test you Quizard?"
+      </h1>
       <form className="Auth-form2" onSubmit={handleSubmit}>
         <h2 className="Auth-form-title2">Log In</h2>
         <div className="Auth-form-content2">

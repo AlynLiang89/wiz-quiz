@@ -11,10 +11,14 @@ body{
 
 .login-button {
   margin-right: 25px;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .signup-button {
   margin-right: 15px;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .login-button {
@@ -165,6 +169,8 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .quiz-button {
