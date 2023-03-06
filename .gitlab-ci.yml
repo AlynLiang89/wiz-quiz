@@ -7,6 +7,7 @@ api-unit-test-job:
   image: python:3-bullseye
   stage: test
   script:
+    - export SIGNING_KEY="5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)"
     - export DATABASE_URL="postgresql://wizquizdb:password@postgres/wizquizdb"
     - cd api
     - pip install -r requirements.txt
