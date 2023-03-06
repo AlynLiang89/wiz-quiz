@@ -16,6 +16,8 @@ steps = [
         """,
     ],
 
+    ],
+
     [
         # "Up" SQL statement
         """
@@ -33,7 +35,7 @@ steps = [
         DROP TABLE questions;
         """,
     ],
-    
+
     [
         # "Up" SQL statement
         """
