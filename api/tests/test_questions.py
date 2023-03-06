@@ -3,7 +3,7 @@ from main import app
 from queries.questions import QuestionQueries
 
 
-client = TestClient(app=app)
+client = TestClient(app)
 
 
 class EmptyQuestionQueries:

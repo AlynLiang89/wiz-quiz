@@ -10,12 +10,6 @@ export default function leaderBoard() {
       <h1 className="leaderboard">Leaderboard</h1>
 
       <div className="duration">
-        <button onClick={handleClick} data-id="7">
-          7 Days
-        </button>
-        <button onClick={handleClick} data-id="30">
-          30 Days
-        </button>
         <button onClick={handleClick} data-id="0">
           All-Time
         </button>
