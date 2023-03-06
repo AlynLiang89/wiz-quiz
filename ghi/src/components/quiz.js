@@ -97,7 +97,7 @@ const Quiz = () => {
         <button onClick={() => (window.location.href = "/leaderboard")}>
           Leaderboard
         </button>
-        <button onClick={() => (window.location.href = "/quiz")}>
+        <button onClick={() => (window.location.href = "/")}>
           Main Page
         </button>
       </div>
