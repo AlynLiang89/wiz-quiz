@@ -18,7 +18,7 @@ steps = [
 
     ],
 
-    [
+[
         # "Up" SQL statement
         """
         CREATE TABLE questions (
@@ -36,7 +36,7 @@ steps = [
         """,
     ],
 
-    [
+[
         # "Up" SQL statement
         """
        CREATE TABLE leaderboard (
@@ -49,6 +49,6 @@ steps = [
         """
         DROP TABLE leaderboard;
         """,
-    ]
+    ],
 
 ]
