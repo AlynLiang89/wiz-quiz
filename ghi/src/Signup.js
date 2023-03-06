@@ -8,8 +8,8 @@ function SignUpForm() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const navigate = useNavigate();
   const [setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleUserNameChange = (e) => {
     const value = e.target.value;

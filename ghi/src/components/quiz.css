@@ -50,7 +50,7 @@ body {
   position: relative;
 }
 
-.answer-button::before {
+.answer-button:before {
   content: "";
   position: absolute;
   top: -4px;
@@ -59,17 +59,26 @@ body {
   bottom: -4px;
   border-radius: 5px;
   z-index: -1;
-  background-image: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #8B00FF);
+  border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
   background-size: 1000%;
-  animation: rainbow 10s linear infinite;
+  animation: rainbow 2s ease infinite;
 }
 
 @keyframes rainbow {
   0% {
-    background-position: 0% 0%;
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+  }
+  25% {
+    border-image: linear-gradient(to right, orange, yellow, green, blue, indigo, violet, red) 1;
+  }
+  50% {
+    border-image: linear-gradient(to right, yellow, green, blue, indigo, violet, red, orange) 1;
+  }
+  75% {
+    border-image: linear-gradient(to right, green, blue, indigo, violet, red, orange, yellow) 1;
   }
   100% {
-    background-position: 100% 0%;
+    border-image: linear-gradient(to right, blue, indigo, violet, red, orange, yellow, green) 1;
   }
 }
 
@@ -80,7 +89,7 @@ body {
 
 .time-left {
   font-size: 2.5rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
   font-weight: bold;
   font-family: "Lucida Console", "Courier New", monospace;
@@ -103,9 +112,18 @@ body {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
+.score-result {
+  font-size: 3.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+
 .restart-button {
-  font-size: 1.2rem;
-  padding: 0.5rem 1.5rem;
+  font-size: 3rem;
+  padding: 3.5rem 1.5rem;
   border: none;
   border-radius: 5px;
   background-color: #ffffff;
@@ -114,20 +132,123 @@ body {
   transition: background-color 0.3s ease-in-out;
   text-align: center;
   width: 40%;
-  margin-top: 0.5rem; /* added to separate buttons */
-  margin-left: 33rem;
+  margin-top: 3rem; /* added to separate buttons */
+  margin-left: 37rem;
   font-family: "Lucida Console", "Courier New", monospace;
   position: relative;
+  animation: rainbow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    border: 3px solid red;
+  }
+  20% {
+    border: 3px solid orange;
+  }
+  40% {
+    border: 3px solid yellow;
+  }
+  60% {
+    border: 3px solid green;
+  }
+  80% {
+    border: 3px solid blue;
+  }
+  100% {
+    border: 3px solid violet;
+  }
 }
 
 .restart-button:hover {
   background-color: #a29ca5;
 }
 
-.score-result {
-  font-size: 3.5rem;
-  margin-top: 2rem;
+
+.go-home {
+  font-size: 3rem;
+  padding: 3.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
   text-align: center;
-  font-weight: bold;
+  width: 40%;
+  margin-top: 5rem;
+  margin-left: 37rem;
   font-family: "Lucida Console", "Courier New", monospace;
+  position: relative;
+  
+  /* Rainbow animated border */
+  animation: rainbow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    border: 3px solid red;
+  }
+  20% {
+    border: 3px solid orange;
+  }
+  40% {
+    border: 3px solid yellow;
+  }
+  60% {
+    border: 3px solid green;
+  }
+  80% {
+    border: 3px solid blue;
+  }
+  100% {
+    border: 3px solid violet;
+  }
+}
+
+.go-home:hover {
+  background-color: #a29ca5;
+}
+
+.see-leaderboard  {
+  font-size: 3rem;
+  padding: 3.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+  width: 40%;
+  margin-top: 5rem; /* added to separate buttons */
+  margin-left: 37rem;
+  font-family: "Lucida Console", "Courier New", monospace;
+  position: relative;
+  animation: rainbow 2s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    border: 3px solid red;
+  }
+  20% {
+    border: 3px solid orange;
+  }
+  40% {
+    border: 3px solid yellow;
+  }
+  60% {
+    border: 3px solid green;
+  }
+  80% {
+    border: 3px solid blue;
+  }
+  100% {
+    border: 3px solid violet;
+  }
+}
+
+.see-leaderboard:hover {
+  background-color: #a29ca5;
 }

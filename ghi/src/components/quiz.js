@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./quiz.css"
 
 const Quiz = () => {
@@ -7,6 +8,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(10);
+  const navigate = useNavigate();
 
   const timerRef = useRef(null);
 
@@ -80,6 +82,13 @@ const Quiz = () => {
     }
   };
 
+  const handleHomeClick = () => {
+    navigate("/");
+  };
+  
+  const handleLeaderboardClick = () => {
+    navigate("/leaderboard");
+  };
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -95,7 +104,13 @@ const Quiz = () => {
           You scored {score} out of {questions.length}.
         </p>
         <button className="restart-button" onClick={restartQuiz}>
-          Restart Quiz
+          New Quiz
+        </button>
+        <button className="go-home" onClick={handleHomeClick}>
+          Go back Home
+        </button>
+        <button className="see-leaderboard" onClick={handleLeaderboardClick}>
+          View Leader Board
         </button>
       </div>
     );

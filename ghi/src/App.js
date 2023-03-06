@@ -5,6 +5,8 @@ import LogInForm from "./Login";
 import SignupForm from "./Signup";
 import HomePage from "./homepage";
 import Quiz from "./components/quiz";
+// import Leaderboard from "./leaderboard";
+
 
 function GetToken() {
   // Get token from cookie only if logged in 
@@ -24,6 +26,7 @@ function App() {
             <Route path="/login" element={<LogInForm />} />
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/quiz" element={<Quiz />} />
+            {/* <Route path="/leaderboard" element={<Leaderboard />} /> */}
           </Routes>
           <div />
         </AuthProvider>
