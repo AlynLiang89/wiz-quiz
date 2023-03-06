@@ -11,7 +11,7 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [fetchQuestions]);
 
   useEffect(() => {
     if (currentQuestionIndex > 0) {
@@ -27,7 +27,7 @@ const Quiz = () => {
     if (secondsLeft === 0) {
       handleAnswer("");
     }
-  }, [secondsLeft]);
+  }, [secondsLeft, handleAnswer]);
 
   const fetchQuestions = () => {
     fetch("http://localhost:8000/api/questions")
