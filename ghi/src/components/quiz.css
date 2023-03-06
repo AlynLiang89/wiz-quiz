@@ -19,11 +19,12 @@ body {
 }
 
 .question-text {
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 2.5rem;
   text-align: center;
   font-weight: bold;
   font-family: "Lucida Console", "Courier New", monospace;
+  margin-top: 4rem;
 }
 
 .button-container {
@@ -42,10 +43,34 @@ body {
   transition: background-color 0.3s ease-in-out;
   text-align: center;
   width: 40%;
-  margin-top: 3.5rem; /* added to separate buttons */
+  margin-top: 3.5rem;
   margin-left: 7.9rem;
   font-weight: bold;
   font-family: "Lucida Console", "Courier New", monospace;
+  position: relative;
+}
+
+.answer-button::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 5px;
+  z-index: -1;
+  background-image: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #8B00FF);
+  background-size: 1000%;
+  animation: rainbow 10s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 
