@@ -16,6 +16,8 @@ steps = [
         """,
     ],
 
+    ],
+
     [
         # "Up" SQL statement
         """
