@@ -33,7 +33,7 @@ steps = [
         DROP TABLE questions;
         """,
     ],
-    
+
     [
         # "Up" SQL statement
         """

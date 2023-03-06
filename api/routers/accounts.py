@@ -21,11 +21,14 @@ class AccountForm(BaseModel):
     password: str
     avatar_img: str | None = None
 
+
 class AccountToken(Token):
     account: AccountOut
 
+
 class HttpError(BaseModel):
     detail: str
+
 
 router = APIRouter()
 
