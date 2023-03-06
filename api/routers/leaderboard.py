@@ -41,6 +41,6 @@ def create_leaderboard(
     queries: LeaderboardQueries = Depends(),
 ):
     record = queries.create_leaderboard(leaderboard)
-    if record==None:
+    if record is None:
         response.status_code = 404
     return record
