@@ -28,6 +28,7 @@ steps = [
         DROP TABLE questions;
         """,
     ],
+
     [
         """
        CREATE TABLE leaderboard (
