@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./quiz.css"
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -89,11 +90,13 @@ const Quiz = () => {
   if (showResults) {
     return (
       <div>
-        <h2>Results</h2>
-        <p>
+        <h2 className="results-title">Results</h2>
+        <p className="results-score">
           You scored {score} out of {questions.length}.
         </p>
-        <button onClick={restartQuiz}>Restart Quiz</button>
+        <button className="restart-button" onClick={restartQuiz}>
+          Restart Quiz
+        </button>
       </div>
     );
   }
@@ -102,15 +105,19 @@ const Quiz = () => {
     const currentQuestion = questions[currentQuestionIndex];
     return (
       <div>
-        <h2>Question {currentQuestionIndex + 1}</h2>
-        <p>{currentQuestion.question}</p>
+        <h2 className="question-title">Question {currentQuestionIndex + 1}</h2>
+        <p className="question-text">{currentQuestion.question}</p>
         {currentQuestion.options.map((option) => (
-          <button key={option} onClick={() => handleAnswer(option)}>
+          <button
+            key={option}
+            className="answer-button"
+            onClick={() => handleAnswer(option)}
+          >
             {option}
           </button>
         ))}
-        <p>Time Left: {secondsLeft}s</p>
-        <p>Score: {score}</p>
+        <p className="time-left">Time Left: {secondsLeft}s</p>
+        <p className= "score-result">Score: {score}</p>
       </div>
     );
   }
