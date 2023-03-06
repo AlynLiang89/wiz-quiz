@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -97,6 +96,9 @@ const Quiz = () => {
         <button onClick={restartQuiz}>Restart Quiz</button>
         <button onClick={() => (window.location.href = "/leaderboard")}>
           Leaderboard
+        </button>
+        <button onClick={() => (window.location.href = "/quiz")}>
+          Main Page
         </button>
       </div>
     );
