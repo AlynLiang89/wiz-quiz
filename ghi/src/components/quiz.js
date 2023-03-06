@@ -16,15 +16,14 @@ const Quiz = () => {
     fetchQuestions();
   }, []);
 
-  useEffect(() => {
-    if (currentQuestionIndex > 0) {
-      setSecondsLeft(10);
-      timerRef.current = setInterval(() => {
-        setSecondsLeft((prevSeconds) => prevSeconds - 1);
-      }, 1000);
-    }
-    return () => clearInterval(timerRef.current);
-  }, [currentQuestionIndex]);
+useEffect(() => {
+  setSecondsLeft(10);
+  timerRef.current = setInterval(() => {
+    setSecondsLeft((prevSeconds) => prevSeconds - 1);
+  }, 1000);
+
+  return () => clearInterval(timerRef.current);
+}, [currentQuestionIndex]);
 
   useEffect(() => {
     if (secondsLeft === 0) {
