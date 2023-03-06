@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class Error(BaseModel):
     message: str
 
+
 class LeaderboardIn(BaseModel):
     account_id: int
     score: int
@@ -14,6 +15,7 @@ class LeaderboardIn(BaseModel):
 class LeaderboardOut(BaseModel):
     id: int
     score: int
+
 
 class LeaderboardGoingOut(BaseModel):
     username: str
@@ -41,8 +43,9 @@ class LeaderboardQueries:
         except Exception as e:
             return {"message": "Could not get all leaderboards"}
 
-
-    def create_leaderboard(self, leaderboard: LeaderboardIn) -> Union[LeaderboardOut, Error]:
+    def create_leaderboard(
+        self, leaderboard: LeaderboardIn
+    ) -> Union[LeaderboardOut, Error]:
         try:
             id = None
             with pool.connection() as conn:
@@ -57,17 +60,13 @@ class LeaderboardQueries:
                             (%s, %s)
                         RETURNING id;
                         """,
-                        [
-                            leaderboard.account_id,
-                            leaderboard.score
-                        ]
+                        [leaderboard.account_id, leaderboard.score],
                     )
                     id = result.fetchone()[0]
                     old_data = leaderboard.dict()
                     return LeaderboardOut(id=id, **old_data)
         except Exception:
             return {"message": "Create did not work"}
-
 
     def record_to_leaderboard_out(self, record):
         return LeaderboardGoingOut(

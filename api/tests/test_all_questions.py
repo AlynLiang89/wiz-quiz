@@ -15,5 +15,6 @@ def test_get_all_questions():
 
     assert response.status_code == 200
 
+
 def test_init():
     assert 1 == 1

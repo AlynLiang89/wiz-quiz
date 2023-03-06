@@ -13,8 +13,7 @@ steps = [
         DROP TABLE accounts;
         """,
     ],
-
-[
+    [
         """
         CREATE TABLE questions (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -29,8 +28,7 @@ steps = [
         DROP TABLE questions;
         """,
     ],
-
-[
+    [
         """
        CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -42,5 +40,4 @@ steps = [
         DROP TABLE leaderboard;
         """,
     ],
-
 ]

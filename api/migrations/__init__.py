@@ -19,7 +19,9 @@ class MigrationRecord(BaseModel):
     def __eq__(self, other):
         return (
             other
-            and isinstance(other, MigrationRecord) and self.name == other.name and self.digest == other.digest
+            and isinstance(other, MigrationRecord)
+            and self.name == other.name
+            and self.digest == other.digest
         )
 
     def __str__(self):
