@@ -63,7 +63,9 @@ def update_question(
         return updated_question
 
 
-@router.delete("/api/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/api/questions/{question_id}", status_code=status.HTTP_204_NO_CONTENT
+)
 def delete_question(
     question_id: int,
     response: Response,

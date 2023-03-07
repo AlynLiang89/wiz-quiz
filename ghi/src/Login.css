@@ -1,0 +1,188 @@
+.Auth-form-container2 {
+  position: relative;
+}
+
+.home-button button {
+  background-color: transparent;
+  border: none;
+}
+
+.home-button {
+  position: absolute;
+  top: -315px;
+  left: -724px;
+  box-shadow: none; /* Removed the rainbow effect for the home button - Gio */
+  background-color: transparent;
+}
+
+.home-button span {
+  background-color: transparent;
+}
+
+/* Do not remove this there is two of these on purpose. if you remove this rainbow code it will mess up the other rainbow code  */
+
+@keyframes rainbow {
+  0% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 0, 0, 0.8);
+  }
+  20% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 140, 0, 0.8);
+  }
+  40% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 255, 0, 0.8);
+  }
+  60% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 128, 0, 0.8);
+  }
+  80% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 0, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 2px 5px rgba(128, 0, 128, 0.8);
+  }
+}
+
+
+.Auth-form-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.Auth-form2 {
+  width: 420px;
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  margin: 15vh auto 10vh;
+  position: relative;
+}
+
+.Auth-form2:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background-image: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+  background-size: 400%;
+  border-radius: 22px;
+  animation: glowing-border 20s linear infinite;
+}
+
+@keyframes glowing-border {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.Auth-form-content2 {
+  padding: 0 12%;
+  color: #000;
+}
+
+.Auth-form-title2 {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 34px;
+  color: #000;
+  font-weight: 800;
+}
+
+.Auth-form-field2 {
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 3px solid #000;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+button.Auth-form-submit2 {
+  text-align: center;
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  border-color: #000000;
+  border-radius: 4px;
+  border: 2px solid #000;
+  background-color: #933dc5;
+  margin-left: 34px;
+}
+
+.Auth-form-submit2:hover {
+  background-color: #973382;
+}
+
+.button2 {
+  text-align: center;
+  width: 85%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-left: 26px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.button2:hover {
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.button2::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -26px;
+  right: -26px;
+  bottom: -15px;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.Quizard-welcome-back {
+  position: absolute;
+  top: 20%;
+  left: 55%;
+  transform: translate(-65%, -50%);
+  font-size: 19px;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+  background-color: white;
+  border-radius: 6px;
+  text-align: center;
+  width: 600px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+  animation: rainbow-border 2s ease infinite;
+}
