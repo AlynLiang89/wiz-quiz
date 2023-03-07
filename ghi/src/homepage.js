@@ -1,18 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useToken } from "./auth";
 import "./homepage.css";
 
 function HomePage() {
-  function handleLoginClick() {
-    window.location.href = "/login";
-  }
-
-  function handleSignupClick() {
-    window.location.href = "/signup";
-  }
+  const { token, logout } = useToken();
 
   function handleQuizClick() {
-    window.location.href = "/quiz";
+    if (token) {
+      window.location.href = "/quiz";
+    } else {
+      window.alert("You need to be logged in to take the quiz.");
+    }
   }
 
   function handleupdateClick() {
@@ -29,29 +28,33 @@ function HomePage() {
         <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
       </div>
       <div className="buttons">
-        <Link to="/login">
-          <button className="login-button" onClick={handleLoginClick}>
-            Login
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button className="signup-button" onClick={handleSignupClick}>
-            Sign Up
-          </button>
-        </Link>
-        <Link to="/quiz">
-          <button className="quiz-button" onClick={handleQuizClick}>
-            Start Quiz
-          </button>
-        </Link>
+        {token ? (
+          <>
+            <Link to="/update">
+              <button className="update-button" onClick={handleupdateClick}>
+                Update account
+              </button>
+            </Link>
+            <button className="logout-button" onClick={logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="login-button">Login</button>
+            </Link>
+            <Link to="/signup">
+              <button className="signup-button">Sign Up</button>
+            </Link>
+          </>
+        )}
+        <button className="quiz-button" onClick={handleQuizClick}>
+          Start Quiz
+        </button>
         <Link to="/leaderboard">
           <button className="view-leaderboard" onClick={handleboardClick}>
-            View leaderboard
-          </button>
-        </Link>
-        <Link to="/update">
-          <button className="update-button" onClick={handleupdateClick}>
-            update account
+            View Leaderboard
           </button>
         </Link>
       </div>
