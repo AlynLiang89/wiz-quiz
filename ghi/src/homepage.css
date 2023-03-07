@@ -243,3 +243,10 @@ body{
   top: 0;
   border-radius: 10px;
 }
+
+
+.logged-out-button {
+  left: 0;
+  top: 0;
+  border-color: #00ffd5;
+}

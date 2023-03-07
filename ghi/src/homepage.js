@@ -19,6 +19,10 @@ function HomePage() {
     window.location.href = "/update";
   }
 
+  function handleboardClick() {
+    window.location.href = "/leaderboard";
+  }
+
   return (
     <div className="header">
       <div className="logo">
@@ -38,6 +42,11 @@ function HomePage() {
         <Link to="/quiz">
           <button className="quiz-button" onClick={handleQuizClick}>
             Start Quiz
+          </button>
+        </Link>
+        <Link to="/leaderboard">
+          <button className="view-leaderboard" onClick={handleboardClick}>
+            View leaderboard
           </button>
         </Link>
         <Link to="/update">
