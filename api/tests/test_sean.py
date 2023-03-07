@@ -1,21 +1,27 @@
-# from fastapi.testclient import TestClient
-# from main import app
-# from queries.accounts import AccountQueries
+from fastapi.testclient import TestClient
+from main import app
+from queries.accounts import AccountQueries
+from authenticator import authenticator
 
 
-# client = TestClient(app)
-# accounts = [{"id": 11, "email": "test@teeeest.gov", "username": "oingo boingo", "password": "test", "avatar_img": "1230982.23904"}]
-
-# class MockAccountQueries:
-#     def get_all(self):
-#         return [account for account in accounts]
+client = TestClient(app)
+test_user = {"id": 42, "email": "emailll@email.email", "username": "dummydata", "avatar_img": "12321312"}
 
 
-# def test_get_all_accounts():
-#     app.dependency_overrides[AccountQueries] = MockAccountQueries
-#     response = client.get("/api/accounts")
-#     assert response.status_code == 200
-#     app.dependency_overrides = {}
+class TestAccountQueries:
+    def get_all_accounts(self):
+        return [test_user]
 
-# def test_init():
-#     assert 1 == 1
+def accounts_override():
+    return test_user
+
+def test_get_all_accounts():
+    app.dependency_overrides[AccountQueries] = TestAccountQueries
+    app.dependency_overrides[authenticator.try_get_current_account_data] = accounts_override
+    response = client.get("/accounts")
+    assert response.json() == {"accounts":[test_user]}
+    assert response.status_code == 200
+    app.dependency_overrides = {}
+
+def test_init():
+    assert 1 == 1

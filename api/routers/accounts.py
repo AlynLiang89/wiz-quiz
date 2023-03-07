@@ -13,6 +13,7 @@ from queries.accounts import (
     AccountIn,
     AccountOut,
     AccountQueries,
+    AccountsOut,
     DuplicateAccountError,
 )
 
@@ -32,6 +33,16 @@ class HttpError(BaseModel):
 
 
 router = APIRouter()
+
+@router.get("/accounts", response_model=AccountsOut)
+def accounts_list(
+    queries: AccountQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    if account_data:
+        return {
+            "accounts": queries.get_all_accounts(),
+        }
 
 
 @router.post("/accounts", response_model=AccountToken | HttpError)
