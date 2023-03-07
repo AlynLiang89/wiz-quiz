@@ -20,25 +20,14 @@ lint-test-job:
     - pip install flake8
     - flake8 api
 
-front-end-build-job:
-  stage: build
-  image: node:lts-bullseye
-  needs:
-    - api-unit-test-job
-    - lint-test-job
-  script:
-    - cd ghi
-    - npm install
-    - npm run build
-
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
   needs:
     - lint-test-job
   variables:
-    PUBLIC_URL: https://grupo-cinco.gitlab.io/wizquiz/
-    REACT_APP_SAMPLE_SERVICE_API_HOST: https://WEBSERVICE_NAME.onrender.com
+    PUBLIC_URL: https://grupo-cinco.gitlab.io/wiz-quiz/
+    REACT_APP_WIZQUIZ_API_HOST: https://wiz-quiz.nov-pt-5.mod3projects.com
   script:
     - cd ghi
     - npm install
@@ -61,7 +50,7 @@ pages:
     paths:
       - public
 
-build-docker-master:
+build-api:
   image: docker:19.03.1
   stage: build
   services:
@@ -77,13 +66,12 @@ build-docker-master:
   script:
     - cd api
     - echo "Building..."
-    - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/my-build-image:$COMMIT_HASH
-    - docker build -f ./Dockerfile --pull -t api_img .
-    - docker tag api_img "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
+    - export CONTAINER_FULL_IMAGE_NAME_WITH_TAG=$IMAGE_NAME_WITH_REGISTRY_PREFIX/api-image:$COMMIT_HASH
+    - docker build -f ./Dockerfile --pull -t built-api_img .
+    - docker tag built-api_img "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
     - docker push "$CONTAINER_FULL_IMAGE_NAME_WITH_TAG"
     - echo $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
     - echo "Deploying on CapRover..."
     - docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl $CAPROVER_URL --caproverPassword $CAPROVER_PASSWORD --caproverApp $CAPROVER_APP --imageName $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
   only:
     - main
-    - deploy-branch
