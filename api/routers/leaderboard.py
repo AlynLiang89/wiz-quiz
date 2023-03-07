@@ -15,7 +15,6 @@ router = APIRouter()
 
 class LeaderboardUpdate(BaseModel):
     account: int
-    score: int
 
 
 class LeaderboardsOut(BaseModel):
