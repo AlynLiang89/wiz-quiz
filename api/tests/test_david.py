@@ -4,7 +4,17 @@ from queries.questions import QuestionQueries
 
 
 client = TestClient(app=app)
-questions = [{'id': 1, "question": "strsdfadf", "answer": "strasfd43", "option_1": "strdfad", "option_2": "stssssr", "option_3": "stsr"}]
+questions = [
+    {
+        "id": 1,
+        "question": "strsdfadf",
+        "answer": "strasfd43",
+        "option_1": "strdfad",
+        "option_2": "stssssr",
+        "option_3": "stsr",
+    }
+]
+
 
 class MockQuestionQueries:
     def get_all(self):
@@ -15,6 +25,7 @@ def test_get_all_questions():
     response = client.get("/api/questions")
     assert response.status_code == 200
     app.dependency_overrides = {}
+
 
 def test_init():
     assert 1 == 1
