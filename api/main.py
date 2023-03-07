@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
 from routers import accounts, questions, leaderboard
-import os
+
 
 app = FastAPI()
 

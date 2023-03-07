@@ -1,0 +1,207 @@
+.Auth-form-container {
+position: relative;
+}
+
+.Quizard-text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+  background-color: white;
+  border-radius: 6px;
+  text-align: center;
+  width: 600px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+  animation: rainbow-border 2s ease infinite;
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+  }
+  25% {
+    border-image: linear-gradient(to right, orange, yellow, green, blue, indigo, violet, red) 1;
+  }
+  50% {
+    border-image: linear-gradient(to right, yellow, green, blue, indigo, violet, red, orange) 1;
+  }
+  75% {
+    border-image: linear-gradient(to right, green, blue, indigo, violet, red, orange, yellow) 1;
+  }
+  100% {
+    border-image: linear-gradient(to right, blue, indigo, violet, red, orange, yellow, green) 1;
+  }
+}
+
+
+
+.home-button2 button {
+  background-color: transparent;
+  border: none;
+}
+
+/* this is where you move the button */
+.home-button2 {
+  position: absolute;
+  top: -787px;
+  left: -820px;
+  box-shadow: none; /* Removed the rainbow effect for the home button - Gio */
+  background-color: transparent;
+}
+
+.home-button2 span {
+  background-color: transparent;
+}
+
+@keyframes rainbow {
+  0% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 0, 0, 0.8);
+  }
+  20% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 140, 0, 0.8);
+  }
+  40% {
+    box-shadow: 0px 0px 2px 5px rgba(255, 255, 0, 0.8);
+  }
+  60% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 128, 0, 0.8);
+  }
+  80% {
+    box-shadow: 0px 0px 2px 5px rgba(0, 0, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 2px 5px rgba(128, 0, 128, 0.8);
+  }
+}
+
+
+.Auth-form-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100vh;
+}
+/* this is where you move the form up and down */
+.Auth-form {
+  width: 420px;
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 22px;
+  background-color: #ffffff;
+  margin: 35vh auto 10vh;
+  position: relative;
+}
+
+.Auth-form:before {
+content: "";
+position: absolute;
+top: -10px;
+left: -10px;
+right: -10px;
+bottom: -10px;
+z-index: -1;
+background-image: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+background-size: 400%;
+border-radius: 22px;
+animation: glowing-border 20s linear infinite;
+}
+
+@keyframes glowing-border {
+0% {
+background-position: 0 0;
+}
+50% {
+background-position: 400% 0;
+}
+100% {
+background-position: 0 0;
+}
+}
+
+.Auth-form-content {
+padding: 0 12%;
+color: #000;
+}
+
+.Auth-form-title {
+text-align: center;
+margin-bottom: 1em;
+font-size: 34px;
+color: #000;
+font-weight: 800;
+}
+
+.Auth-form-field {
+margin-bottom: 10px;
+}
+
+label {
+font-size: 14px;
+font-weight: 600;
+color: #222;
+}
+
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+font-size: 14px;
+border: 3px solid #000;
+border-radius: 4px;
+background-color: #ffffff;
+}
+
+button.Auth-form-submit {
+text-align: center;
+width: 80%;
+padding: 10px;
+font-size: 16px;
+font-weight: 600;
+color: #ffffff;
+border-color: #000000;
+border-radius: 4px;
+border: 2px solid #000;
+background-color: #933dc5;
+margin-left: 34px;
+}
+
+.Auth-form-submit:hover {
+background-color: #973382;
+}
+
+.button {
+text-align: center;
+width: 85%;
+font-size: 16px;
+font-weight: 600;
+color: #ffffff;
+margin-left: 26px;
+margin-top: 15px;
+box-sizing: border-box;
+position: relative;
+}
+
+.button:hover {
+background-color: #ffffff;
+z-index: 1;
+}
+
+.button::before {
+content: "";
+position: absolute;
+top: -15px;
+left: -26px;
+right: -26px;
+bottom: -15px;
+background-color: transparent;
+z-index: -1;
+}
