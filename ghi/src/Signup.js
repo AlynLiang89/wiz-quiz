@@ -29,7 +29,7 @@ function SignUpForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signup(email, password, username);
+      await signup(username, password, email);
       navigate("/");
     } catch (error) {
       console.log(error);

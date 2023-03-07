@@ -24,9 +24,11 @@ function LogInForm() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("======================================")
+    console.log(username,password)
     await login(username, password);
     console.log("login successful +++++++++++++++");
-    navigate("/");
+    // navigate("/");
   };
 
   function handleClick() {
