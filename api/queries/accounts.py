@@ -200,6 +200,7 @@ class AccountQueries:
             hashed_password=record[3],
             avatar_img=record[4],
         )
+    
     def get_all_accounts(self):
         try:
             with pool.connection() as conn:
