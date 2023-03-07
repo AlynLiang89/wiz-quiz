@@ -20,7 +20,6 @@ class MockQuestionQueries:
     def get_all(self):
         return [question for question in questions]
 
-
 def test_get_all_questions():
     app.dependency_overrides[QuestionQueries] = MockQuestionQueries
     response = client.get("/api/questions")

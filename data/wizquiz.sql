@@ -8,7 +8,8 @@ CREATE TABLE accounts (
             avatar_img VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL UNIQUE,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            score INTEGER NOT NULL
         );
 
 
@@ -24,18 +25,17 @@ CREATE TABLE questions (
 
 CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
-            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-            score INTEGER NOT NULL
+            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE
         );
 
 
 INSERT INTO accounts VALUES
-  (1, '1780000.jpeg', 'David@aol.com', 'DavReg', 'test'),
-  (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', 'test'),
-  (3, '17800.jpeg', 'chrissy@yahoo.com', 'cupcake', 'test'),
-  (4, '10000.jpeg', 'sean@gmail.com', 'funwithmckee', 'test'),
-  (5, '170000.jpeg', 'christian@gmail.com', 'bare', 'test'),
-  (6, '1678000.jpeg', 'alyn@aol.com', 'Drilleranew', 'test');
+  (1, '1780000.jpeg', 'David@aol.com', 'DavReg', 'test', 19),
+  (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', 'test', 16),
+  (3, '17800.jpeg', 'chrissy@yahoo.com', 'cupcake', 'test', 2),
+  (4, '10000.jpeg', 'sean@gmail.com', 'funwithmckee', 'test', 20),
+  (5, '170000.jpeg', 'christian@gmail.com', 'moo', 'test', 14),
+  (6, '1678000.jpeg', 'alyn@aol.com', 'Drilleranew', 'test', 22);
 
 
 INSERT INTO questions VALUES
@@ -152,12 +152,12 @@ INSERT INTO questions VALUES
 
 
 INSERT INTO leaderboard VALUES
-  (1, 4, 536),
-  (2, 6, 530),
-  (3, 3, 525),
-  (4, 5, 520),
-  (5, 2, 515),
-  (6, 1, 420);
+  (1, 4),
+  (2, 6),
+  (3, 3),
+  (4, 5),
+  (5, 2),
+  (6, 1);
 
 
 SELECT setval('accounts_id_seq', (SELECT MAX(id) + 1 FROM accounts));

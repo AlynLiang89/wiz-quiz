@@ -9,18 +9,16 @@ class Error(BaseModel):
 
 class LeaderboardIn(BaseModel):
     account_id: int
-    score: int
 
 
 class LeaderboardOut(BaseModel):
     id: int
-    score: int
 
 
 class LeaderboardGoingOut(BaseModel):
     username: str
     avatar_img: str | None = None
-    score: int
+    score: int | None = None
 
 
 class LeaderboardQueries:
@@ -33,7 +31,7 @@ class LeaderboardQueries:
                         SELECT username, avatar_img, score
                         FROM leaderboard
                         LEFT JOIN accounts ON leaderboard.account_id=accounts.id
-                        ORDER BY leaderboard.score DESC;
+                        ORDER BY accounts.score DESC;
                         """
                     )
                     return [
@@ -53,14 +51,13 @@ class LeaderboardQueries:
                     result = db.execute(
                         """
                         INSERT INTO leaderboard(
-                            account_id,
-                            score
+                            account_id
                         )
                         VALUES
-                            (%s, %s)
+                            (%s)
                         RETURNING id;
                         """,
-                        [leaderboard.account_id, leaderboard.score],
+                        [leaderboard.account_id],
                     )
                     id = result.fetchone()[0]
                     old_data = leaderboard.dict()
