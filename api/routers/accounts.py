@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import (
     HTTPException,
     status,
@@ -17,16 +16,20 @@ from queries.accounts import (
     DuplicateAccountError,
 )
 
+
 class AccountForm(BaseModel):
     username: str
     password: str
     avatar_img: str | None = None
 
+
 class AccountToken(Token):
     account: AccountOut
 
+
 class HttpError(BaseModel):
     detail: str
+
 
 router = APIRouter()
 
@@ -46,7 +49,11 @@ async def create_account(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(username=info.username, password=info.password, avatar_img=info.avatar_img)
+    form = AccountForm(
+        username=info.username,
+        password=info.password,
+        avatar_img=info.avatar_img,
+    )
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 
@@ -54,7 +61,7 @@ async def create_account(
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: AccountIn = Depends(authenticator.try_get_current_account_data)
+    account: AccountIn = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {
@@ -66,7 +73,7 @@ async def get_token(
 
 @router.get("/protected", response_model=bool)
 async def get_protected(
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return True
 
