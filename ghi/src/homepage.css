@@ -310,7 +310,7 @@ body{
   border-radius: 10px;
 }
 
-@keyframes glowingview-leaderboard {
+@keyframes glowing-view-leaderboard {
   0% {
     background-position: 0 0;
   }
@@ -321,6 +321,7 @@ body{
     background-position: 0 0;
   }
 }
+
 
 .view-leaderboard:after {
   z-index: -1;
