@@ -24,6 +24,7 @@ class AccountOut(BaseModel):
     username: str
     avatar_img: str | None = None
 
+
 class AccountsOut(BaseModel):
     accounts: list[AccountOut]
 
@@ -200,7 +201,7 @@ class AccountQueries:
             hashed_password=record[3],
             avatar_img=record[4],
         )
-    
+
     def get_all_accounts(self):
         try:
             with pool.connection() as conn:
@@ -217,7 +218,7 @@ class AccountQueries:
                             id=record[0],
                             email=record[1],
                             username=record[2],
-                            avatar_img=record[3]
+                            avatar_img=record[3],
                         )
                         for record in cur
                     ]

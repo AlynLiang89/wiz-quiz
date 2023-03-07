@@ -34,6 +34,7 @@ class HttpError(BaseModel):
 
 router = APIRouter()
 
+
 @router.get("/accounts", response_model=AccountsOut)
 def accounts_list(
     queries: AccountQueries = Depends(),
