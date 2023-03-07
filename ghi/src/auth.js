@@ -105,7 +105,7 @@ export function useToken() {
 
   async function signup(username, password, email) {
     const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts`;
-    console.log("signup")
+    console.log("signup");
     const response = await fetch(url, {
       method: "post",
       body: JSON.stringify({

@@ -84,7 +84,7 @@ useEffect(() => {
   const handleHomeClick = () => {
     navigate("/");
   };
-  
+
   const handleLeaderboardClick = () => {
     navigate("/leaderboard");
   };
@@ -102,14 +102,12 @@ useEffect(() => {
         <p className="results-score">
           You scored {score} out of {questions.length}.
         </p>
-        <button className="restart-button" onClick={restartQuiz}>
-          New Quiz
+        <button onClick={restartQuiz}>Restart Quiz</button>
+        <button onClick={() => (window.location.href = "/leaderboard")}>
+          Leaderboard
         </button>
-        <button className="go-home" onClick={handleHomeClick}>
-          Go back Home
-        </button>
-        <button className="see-leaderboard" onClick={handleLeaderboardClick}>
-          View Leader Board
+        <button onClick={() => (window.location.href = "/")}>
+          Main Page
         </button>
       </div>
     );
@@ -130,8 +128,11 @@ useEffect(() => {
             {option}
           </button>
         ))}
-        <p className="time-left">Time Left: {secondsLeft}s</p>
-        <p className= "score-result">Score: {score}</p>
+        <p>Time Left: {secondsLeft}s</p>
+        <p>Score: {score}</p>
+        <button className="btn btn-primary mt-3" onClick={() => (window.location.href = "/")}>
+          Main Page
+        </button>
       </div>
     );
   }
