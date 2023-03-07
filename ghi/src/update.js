@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useToken } from "./auth";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
+import "./update.css";
 
 function UpdateProfile() {
   const { updateProfile } = useToken();
@@ -43,8 +43,15 @@ function UpdateProfile() {
     }
   };
 
+  const handleClickhome4 = () => {
+    navigate("/");
+  };
+
   return (
     <div className="Auth-form-container">
+      <button onClick={handleClickhome4} className="update-home-button">
+        <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+      </button>
       <h1 className="Quizard-text">Update your Quizardry!</h1>
       <form onSubmit={handleSubmit} className="Auth-form">
         <div className="Auth-form-content">
