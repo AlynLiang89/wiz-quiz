@@ -28,7 +28,7 @@ function LogInForm() {
     console.log(username,password)
     await login(username, password);
     console.log("login successful +++++++++++++++");
-    // navigate("/");
+    navigate("/");
   };
 
   function handleClick() {
