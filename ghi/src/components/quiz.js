@@ -12,6 +12,7 @@ const Quiz = () => {
 
   const timerRef = useRef(null);
 
+  useEffect
   const fetchQuestions = () => {
     fetch("http://localhost:8000/api/questions")
       .then((response) => {
