@@ -42,7 +42,7 @@ function HomePage() {
         ) : (
           <>
             <Link to="/login">
-              <button className="login-button">Login</button>
+              <button className="login-button">Logins</button>
             </Link>
             <Link to="/signup">
               <button className="signup-button">Sign Up</button>
