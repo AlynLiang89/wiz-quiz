@@ -27,7 +27,7 @@ build-front-end-job:
     - lint-test-job
   variables:
     PUBLIC_URL: https://grupo-cinco.gitlab.io/wiz-quiz/
-    REACT_APP_SAMPLE_SERVICE_API_HOST: https://WEBSERVICE_NAME.onrender.com
+    REACT_APP_WIZQUIZ_API_HOST: https://wiz-quiz.nov-pt-5.mod3projects.com
   script:
     - cd ghi
     - npm install
@@ -62,7 +62,7 @@ build-api:
     - export COMMIT_HASH=$CI_COMMIT_SHA
     - export IMAGE_NAME_WITH_REGISTRY_PREFIX=$CI_REGISTRY_IMAGE
     - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY_URL
-    
+
   script:
     - cd api
     - echo "Building..."
@@ -75,4 +75,3 @@ build-api:
     - docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl $CAPROVER_URL --caproverPassword $CAPROVER_PASSWORD --caproverApp $CAPROVER_APP --imageName $CONTAINER_FULL_IMAGE_NAME_WITH_TAG
   only:
     - main
-    - deploy-branch
