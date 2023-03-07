@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AuthProvider, useToken } from "./auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogInForm from "./Login";
@@ -9,7 +8,7 @@ import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
 
 function GetToken() {
-  // Get token from cookie only if logged in 
+  // Get token from cookie only if logged in
   useToken();
   return null;
 }
