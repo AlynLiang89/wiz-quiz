@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./quiz.css"
+import "./quiz.css";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
