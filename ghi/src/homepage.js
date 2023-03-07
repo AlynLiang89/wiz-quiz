@@ -16,7 +16,7 @@ function HomePage() {
   }
 
   function handleupdateClick() {
-    window.location.href = "/account";
+    window.location.href = "/update";
   }
 
   return (
