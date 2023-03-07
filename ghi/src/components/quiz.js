@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./quiz.css"
+import "./quiz.css";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -12,25 +12,7 @@ const Quiz = () => {
 
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    fetchQuestions();
-  }, [fetchQuestions]);
-
-useEffect(() => {
-  setSecondsLeft(10);
-  timerRef.current = setInterval(() => {
-    setSecondsLeft((prevSeconds) => prevSeconds - 1);
-  }, 1000);
-
-  return () => clearInterval(timerRef.current);
-}, [currentQuestionIndex]);
-
-  useEffect(() => {
-    if (secondsLeft === 0) {
-      handleAnswer("");
-    }
-  }, [secondsLeft, handleAnswer]);
-
+  useEffect
   const fetchQuestions = () => {
     fetch("http://localhost:8000/api/questions")
       .then((response) => {
@@ -58,6 +40,25 @@ useEffect(() => {
       });
   };
 
+  useEffect(() => {
+    fetchQuestions();
+  }, [fetchQuestions]);
+
+  useEffect(() => {
+    setSecondsLeft(10);
+    timerRef.current = setInterval(() => {
+      setSecondsLeft((prevSeconds) => prevSeconds - 1);
+    }, 1000);
+
+    return () => clearInterval(timerRef.current);
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    if (secondsLeft === 0) {
+      handleAnswer("");
+    }
+  }, [secondsLeft, handleAnswer]);
+
   const shuffleQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
   };
@@ -84,10 +85,11 @@ useEffect(() => {
   const handleHomeClick = () => {
     navigate("/");
   };
-  
+
   const handleLeaderboardClick = () => {
     navigate("/leaderboard");
   };
+
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -131,7 +133,7 @@ useEffect(() => {
           </button>
         ))}
         <p className="time-left">Time Left: {secondsLeft}s</p>
-        <p className= "score-result">Score: {score}</p>
+        <p className="score-result">Score: {score}</p>
       </div>
     );
   }

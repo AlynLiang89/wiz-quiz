@@ -2,7 +2,7 @@ volumes:
   postgres-data:
     external: true
 services:
-  fastapi:
+  wiz-quiz:
     build:
       context: api
       dockerfile: Dockerfile.dev
