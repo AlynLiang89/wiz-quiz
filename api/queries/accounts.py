@@ -25,6 +25,10 @@ class AccountOut(BaseModel):
     avatar_img: str | None = None
 
 
+class AccountsOut(BaseModel):
+    accounts: list[AccountOut]
+
+
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
 
@@ -197,3 +201,26 @@ class AccountQueries:
             hashed_password=record[3],
             avatar_img=record[4],
         )
+
+    def get_all_accounts(self):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        SELECT id, email, username, avatar_img
+                        FROM accounts
+                        ORDER BY id;
+                    """
+                    )
+                    return [
+                        AccountOut(
+                            id=record[0],
+                            email=record[1],
+                            username=record[2],
+                            avatar_img=record[3],
+                        )
+                        for record in cur
+                    ]
+        except Exception:
+            return {"message": "Could not get all accounts"}
