@@ -1,6 +1,5 @@
 steps = [
     [
-        # "Up" SQL statement
         """
         CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -10,14 +9,11 @@ steps = [
             password TEXT NOT NULL
         );
         """,
-        # "Down" SQL statement
         """
         DROP TABLE accounts;
         """,
-    ]
-,
+    ],
     [
-        # "Up" SQL statement
         """
         CREATE TABLE questions (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -28,14 +24,12 @@ steps = [
             option_3 VARCHAR(1000) NOT NULL
         );
         """,
-        # "Down" SQL statement
         """
         DROP TABLE questions;
         """,
-    ]
-,
+    ],
+
     [
-        # "Up" SQL statement
         """
        CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -43,10 +37,8 @@ steps = [
             score INTEGER NOT NULL
         );
         """,
-        # "Down" SQL statement
         """
         DROP TABLE leaderboard;
         """,
-    ]
-
+    ],
 ]
