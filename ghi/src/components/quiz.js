@@ -41,7 +41,7 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [fetchQuestions]);
 
   useEffect(() => {
     setSecondsLeft(10);
@@ -56,7 +56,7 @@ const Quiz = () => {
     if (secondsLeft === 0) {
       handleAnswer("");
     }
-  }, [secondsLeft]);
+  }, [secondsLeft, handleAnswer]);
 
   const shuffleQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
