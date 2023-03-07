@@ -12,6 +12,7 @@ const Quiz = () => {
 
   const timerRef = useRef(null);
 
+  useEffect
   const fetchQuestions = () => {
     fetch("http://localhost:8000/api/questions")
       .then((response) => {
@@ -41,7 +42,7 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [fetchQuestions]);
 
   useEffect(() => {
     setSecondsLeft(10);
@@ -56,7 +57,7 @@ const Quiz = () => {
     if (secondsLeft === 0) {
       handleAnswer("");
     }
-  }, [secondsLeft]);
+  }, [secondsLeft, handleAnswer]);
 
   const shuffleQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
