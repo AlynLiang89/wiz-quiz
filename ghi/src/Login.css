@@ -2,21 +2,19 @@
   position: relative;
 }
 
+.home-button {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .home-button button {
   background-color: transparent;
   border: none;
 }
 
-.home-button {
-  position: absolute;
-  top: -315px;
-  left: -724px;
-  box-shadow: none; /* Removed the rainbow effect for the home button - Gio */
-  background-color: transparent;
-}
-
-.home-button span {
-  background-color: transparent;
+.home-button img {
+  max-width: 100%;
 }
 
 /* Do not remove this there is two of these on purpose. if you remove this rainbow code it will mess up the other rainbow code  */

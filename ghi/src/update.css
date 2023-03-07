@@ -205,3 +205,15 @@ bottom: -15px;
 background-color: transparent;
 z-index: -1;
 }
+
+.update-home-button {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  border: none; /* Add this line */
+}
+
+.update-home-button span {
+  background-color: transparent;
+}
