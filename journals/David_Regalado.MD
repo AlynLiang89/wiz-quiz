@@ -70,3 +70,13 @@
 - Backend is very close to being done, one final feature for avatar img in accounts and all is well
 - Finished the Nav.js file but cannot test yet waiting for Gio to finish the app.js with the routes
 - Starting on the leaderboard.js file for frontend
+
+## March-3-23
+
+- Helping others write unit tests
+- Starting the update profile.js file
+
+## March-6-23
+
+- Finished the update profile.js file
+- gonna do a final merge for front and backend stuff and hopefully the mvp is done
