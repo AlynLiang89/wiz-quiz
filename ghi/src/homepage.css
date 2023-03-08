@@ -1,5 +1,4 @@
-
-body{
+body {
   background-color: #a762cf;
 }
 
@@ -244,7 +243,6 @@ body{
   border-radius: 10px;
 }
 
-
 .view-leaderboard {
   display: block;
   margin: 0 auto;
@@ -322,7 +320,6 @@ body{
   }
 }
 
-
 .view-leaderboard:after {
   z-index: -1;
   content: "";
@@ -334,7 +331,6 @@ body{
   top: 0;
   border-radius: 10px;
 }
-
 
 .logout-button {
   padding: 1em 4.5em;
@@ -402,9 +398,6 @@ body{
   top: 0;
   border-radius: 10px;
 }
-
-
-
 
 .update-button {
   padding: 1em 4.5em;

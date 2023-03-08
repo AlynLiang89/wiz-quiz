@@ -80,3 +80,14 @@
 
 - Finished the update profile.js file
 - gonna do a final merge for front and backend stuff and hopefully the mvp is done
+
+## March-7-23
+
+- Starting docs stuff
+- mvp not done yet still working on some leaderboard kinks
+
+## March-8-23
+
+- Continuing docs
+- Helping debug some pipeline job errors
+- Hoping the app will be done today
