@@ -10,7 +10,7 @@ test_user = {
     "email": "emailll@email.email",
     "username": "dummydata",
     "avatar_img": "12321312",
-    "score": 30
+    "score": 30,
 }
 
 
