@@ -8,7 +8,7 @@ import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
 
 function GetToken() {
-  // Get token from cookie only if logged in
+
   useToken();
   return null;
 }
@@ -26,7 +26,7 @@ function App() {
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/update" element={<UpdateProfile/>} />
+            <Route path="/update" element={<UpdateProfile />} />
           </Routes>
           <div />
         </AuthProvider>

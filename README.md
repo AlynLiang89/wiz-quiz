@@ -1,3 +1,40 @@
+## WizQuiz
+
+#### Created by:
+
+- Sean Mckee
+- Alyn Liang
+- Gio Garcia
+- David Regalado
+- Christian Hanna
+
+Do you have what it takes to be a Quizard?
+
+This website is to see how good your movie knowledge really is. Take a quiz to challenge what you know and see where you rank amoung others.
+
+### Design
+
+- API design
+- Data model
+- GHI
+- Integrations
+
+### Functionality
+
+- A user will be able to take a multiple choice quiz
+  - each question is timed (10 seconds)
+  - if the user is signed in, there score will be put on the leaderboard
+  - for each question the user gets correct, a point will be added for them on the leaderboard
+- the leaderboard will have the users rank, username, profile picture, and score
+- Users can create an account with a username, email, password, and profile picture
+- Users not signed in can see the leaderboard, but will not be able to get their quiz scores on it
+- Users with an account can sign back into that same account
+- A user can sign out of their account
+
+### Project Initialization
+
+1. Fork and clone the project
+
 # Module3 Project Gamma
 
 ## Getting started
