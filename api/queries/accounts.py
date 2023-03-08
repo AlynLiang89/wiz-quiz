@@ -23,6 +23,11 @@ class AccountOut(BaseModel):
     email: str
     username: str
     avatar_img: str | None = None
+    score: int | None = None
+
+
+class AccountsOut(BaseModel):
+    accounts: list[AccountOut]
 
 
 class AccountOutWithPassword(AccountOut):
@@ -41,6 +46,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         WHERE username = %s
                         """,
@@ -64,6 +70,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         WHERE id = %s
                         """,
@@ -88,6 +95,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         ORDER BY username;
                         """
@@ -100,6 +108,7 @@ class AccountQueries:
                             email=record[3],
                             username=record[4],
                             avatar_img=record[5],
+                            score=record[6],
                         )
                         for record in db
                     ]
@@ -159,9 +168,9 @@ class AccountQueries:
                     result = db.execute(
                         """
                         INSERT INTO accounts
-                            (email, username, password, avatar_img)
+                            (email, username, password, avatar_img, score)
                         VALUES
-                            (%s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -169,6 +178,7 @@ class AccountQueries:
                             info.username,
                             hashed_password,
                             info.avatar_img,
+                            0
                         ],
                     )
                     id = result.fetchone()[0]
@@ -196,4 +206,28 @@ class AccountQueries:
             username=record[2],
             hashed_password=record[3],
             avatar_img=record[4],
+            score=record[5],
         )
+
+    def get_all_accounts(self):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        SELECT id, email, username, avatar_img
+                        FROM accounts
+                        ORDER BY id;
+                    """
+                    )
+                    return [
+                        AccountOut(
+                            id=record[0],
+                            email=record[1],
+                            username=record[2],
+                            avatar_img=record[3],
+                        )
+                        for record in cur
+                    ]
+        except Exception:
+            return {"message": "Could not get all accounts"}
