@@ -6,7 +6,6 @@ import HomePage from "./homepage";
 import Quiz from "./components/quiz";
 import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
-import NavBar from "./NavBar";
 
 function GetToken() {
   useToken();
@@ -22,7 +21,6 @@ function App() {
       <BrowserRouter basename={basename}>
         <AuthProvider>
           <GetToken />
-          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogInForm />} />
