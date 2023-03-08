@@ -48,3 +48,35 @@
 - wrote the leaderboard.py for the routers directory and still need to check it
 - updated the migrations file with the leaderboard table included
 - Updated the main.py now that the leaderboard is hooked up I added the route to the file
+
+## Feb-28-23
+
+- Helped Christian with leaderboard queries had some progress
+- Started researching unit tests and writing it
+- Had some issues with the unit test but still in research development stages
+
+## March-1-23
+
+- Was having problems with the unit test but figured out you had to exec into the right container
+- Finished unit test for "get all questions" and got to pass
+- Helping Christian debug some leaderboard stuff
+- Once leaderboard is set up then backend stuff should be all set up
+- Gonna start helping Gio frontend nav.js
+
+## March-2-23
+
+- Did two merges with alyn and christian to main
+- Trying to figure out Nav.js stuff, realized frontend development is hard for me lol
+- Backend is very close to being done, one final feature for avatar img in accounts and all is well
+- Finished the Nav.js file but cannot test yet waiting for Gio to finish the app.js with the routes
+- Starting on the leaderboard.js file for frontend
+
+## March-3-23
+
+- Helping others write unit tests
+- Starting the update profile.js file
+
+## March-6-23
+
+- Finished the update profile.js file
+- gonna do a final merge for front and backend stuff and hopefully the mvp is done

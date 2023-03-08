@@ -12,37 +12,6 @@ const Quiz = () => {
 
   const timerRef = useRef(null);
 
-  // const fetchQuestions = () => {
-  //   fetch("http://localhost:8000/api/questions")
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       const shuffledQuestions = shuffleQuestions(data.questions)
-  //         .slice(0, 10)
-  //         .map((question) => {
-  //           const shuffledOptions = shuffleArray([
-  //             question.option_1,
-  //             question.option_2,
-  //             question.option_3,
-  //             question.answer,
-  //           ]);
-  //           return { ...question, options: shuffledOptions };
-  //         });
-  //       setQuestions(shuffledQuestions);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data: ", error);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   fetchQuestions();
-  // }, []);
-
   useEffect(() => {
     const fetchQuestions = () => {
       fetch("http://localhost:8000/api/questions")
@@ -99,7 +68,6 @@ const Quiz = () => {
         }
       };
       handleAnswer();
-      // handleAnswer("");
     }
   }, [secondsLeft, currentQuestionIndex, score, questions]);
 
@@ -138,7 +106,6 @@ const Quiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResults(false);
-    // fetchQuestions();
     const fetchQuestions = () => {
       fetch("http://localhost:8000/api/questions")
         .then((response) => {
