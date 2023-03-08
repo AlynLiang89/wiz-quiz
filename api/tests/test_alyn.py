@@ -14,7 +14,7 @@ class CreateQuestionQueries:
             "option_1": "string",
             "option_2": "string",
             "option_3": "string",
-        }
+                }
 
         result.update(question)
         return result
@@ -30,7 +30,7 @@ def test_question_create():
         "option_1": "Peter Cullen",
         "option_2": "David Kayne",
         "option_3": "Gary Chaulk",
-    }
+        }
 
     expected = {
         "id": None,
@@ -39,7 +39,7 @@ def test_question_create():
         "option_1": "Peter Cullen",
         "option_2": "David Kayne",
         "option_3": "Gary Chaulk",
-    }
+        }
 
     response = client.post("/api/questions/", json=json)
 
