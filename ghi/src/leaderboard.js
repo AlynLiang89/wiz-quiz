@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./leaderboard.css"
+import "./leaderboard.css";
 
 function Leaderboard() {
   const [leaderboards, setLeaderboards] = useState([]);
@@ -25,9 +25,9 @@ function Leaderboard() {
         <tbody>
           {leaderboards.map((leaderboard, index) => (
             <tr key={leaderboard.id}>
-              <td>{index + 1}</td>
-              <td>{leaderboard.username}</td>
-              <td>{leaderboard.score}</td>
+              <td key={`rank-${index}`}>{index + 1}</td>
+              <td key={`username-${index}`}>{leaderboard.username}</td>
+              <td key={`score-${index}`}>{leaderboard.score}</td>
             </tr>
           ))}
         </tbody>
@@ -35,12 +35,14 @@ function Leaderboard() {
       <button
         className="leaderboard-btn"
         onClick={() => (window.location.href = "/")}
+        key="main-page-btn"
       >
         Main Page
       </button>
       <button
         className="leaderboard-btn"
         onClick={() => (window.location.href = "/quiz")}
+        key="take-quiz-btn"
       >
         Take Quiz
       </button>

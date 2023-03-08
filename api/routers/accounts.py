@@ -106,6 +106,21 @@ def update_account(
         return {"message": "invalid token"}
 
 
+@router.put("/accounts/{user_id}/score")
+def update_score(
+    user_id: int,
+    score: int,
+    response: Response,
+    repo: AccountQueries = Depends(),
+    data: dict = Depends(authenticator.try_get_current_account_data),
+):
+    if data:
+        return repo.update_score(user_id, score)
+    else:
+        response.status_code = 401
+        return {"message": "invalid token"}
+
+
 @router.delete("/accounts/{user_id}", response_model=bool)
 def delete_user(
     user_id: int,
