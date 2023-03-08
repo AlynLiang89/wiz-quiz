@@ -87,7 +87,21 @@ const Quiz = () => {
 
   useEffect(() => {
     if (secondsLeft === 0) {
-      handleAnswer("");
+      const handleAnswer = (selectedOption) => {
+        clearInterval(timerRef.current);
+
+        const currentQuestion = questions[currentQuestionIndex];
+        if (selectedOption === currentQuestion.answer) {
+          setScore(score + 1);
+        }
+
+        if (currentQuestionIndex === questions.length - 1) {
+          setShowResults(true);
+        } else {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
+      }; handleAnswer();
+      // handleAnswer("");
     }
   }, [secondsLeft]);
 

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AuthProvider, useToken } from "./auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogInForm from "./Login";
