@@ -2,8 +2,9 @@
 
 ## Accounts
 
-![accounts](apidesign/getmap.PNG)
-![accounts](apidesign/getmap1.PNG)
+![accounts](apidesign\getaccountslist.png)
+![accounts](apidesign\postcreateaccount.png)
+![accounts](apidesign\putupdateaccount.png)
 
 ```json
 {
@@ -16,10 +17,9 @@
 
 ## Tokens
 
-![tokens](apidesign/getmap.PNG)
-![tokens](apidesign/getmap1.PNG)
+![tokens](apidesign\gettoken.png)
 
-```json GET
+```json
 {
   "access_token": "string",
   "token_type": "Bearer",
@@ -32,17 +32,12 @@
 }
 ```
 
-```json POST
-{
-  "access_token": "string",
-  "token_type": "Bearer"
-}
-```
-
 ## Questions
 
-![questions](apidesign/getmap.PNG)
-![questions](apidesign/getmap1.PNG)
+![questions](apidesign\deletequestion.png)
+![questions](apidesign\getquestion.png)
+![questions](apidesign\postcreatequestion.png)
+![questions](apidesign\putupdatequestion.png)
 
 ```json
 {
@@ -57,8 +52,9 @@
 
 ## Leader-board
 
-![leader-board](apidesign/getmap.PNG)
-![leader-board](apidesign/getmap1.PNG)
+![leader-board](apidesign\getleaderboardlist.png)
+![leader-board](apidesign\postcreateleaderboard.png)
+![leader-board](apidesign\putupdateleaderboard.png)
 
 ```json
 {
