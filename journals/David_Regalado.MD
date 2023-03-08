@@ -80,3 +80,9 @@
 
 - Finished the update profile.js file
 - gonna do a final merge for front and backend stuff and hopefully the mvp is done
+
+## March-7-2023
+
+- Starting docs for the project
+- Finished the api design part of the docs
+- Running into some issues, realized we needed to change a table far into the project and it's causing a little trouble
