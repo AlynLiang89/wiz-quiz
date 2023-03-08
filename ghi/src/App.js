@@ -8,7 +8,7 @@ import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
 
 function GetToken() {
-
+  // Get token from cookie only if logged in
   useToken();
   return null;
 }
