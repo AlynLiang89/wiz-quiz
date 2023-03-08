@@ -11,27 +11,33 @@ function GetToken() {
   useToken();
   return null;
 }
-
-function App() {
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, "");
   return (
-    <div>
-      <BrowserRouter>
-        <AuthProvider>
-          <GetToken />
-          <div className="container"></div>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LogInForm />} />
-            <Route path="/signup" element={<SignupForm />} />
-            <Route path="/quiz" element={<Quiz />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/update" element={<UpdateProfile />} />
-          </Routes>
-          <div />
-        </AuthProvider>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter basename={basename}>
+      {function App() {
+        return (
+          <div>
+            <BrowserRouter>
+              <AuthProvider>
+                <GetToken />
+                <div className="container"></div>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/login" element={<LogInForm />} />
+                  <Route path="/signup" element={<SignupForm />} />
+                  <Route path="/quiz" element={<Quiz />} />
+                  <Route path="/leaderboard" element={<Leaderboard />} />
+                  <Route path="/update" element={<UpdateProfile />} />
+                </Routes>
+                <div />
+              </AuthProvider>
+            </BrowserRouter>
+          </div>
+        );
+      }}
+    </BrowserRouter>
   );
-}
+
 
 export default App;
