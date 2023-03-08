@@ -8,7 +8,6 @@ import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
 
 function GetToken() {
-
   useToken();
   return null;
 }
