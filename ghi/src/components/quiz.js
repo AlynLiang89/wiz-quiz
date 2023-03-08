@@ -44,32 +44,33 @@ const Quiz = () => {
   // }, []);
 
   useEffect(() => {
-     const fetchQuestions = () => {
-       fetch("http://localhost:8000/api/questions")
-         .then((response) => {
-           if (!response.ok) {
-             throw new Error("Network response was not ok");
-           }
-           return response.json();
-         })
-         .then((data) => {
-           const shuffledQuestions = shuffleQuestions(data.questions)
-             .slice(0, 10)
-             .map((question) => {
-               const shuffledOptions = shuffleArray([
-                 question.option_1,
-                 question.option_2,
-                 question.option_3,
-                 question.answer,
-               ]);
-               return { ...question, options: shuffledOptions };
-             });
-           setQuestions(shuffledQuestions);
-         })
-         .catch((error) => {
-           console.error("Error fetching data: ", error);
-         });
-     }; fetchQuestions();
+    const fetchQuestions = () => {
+      fetch("http://localhost:8000/api/questions")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const shuffledQuestions = shuffleQuestions(data.questions)
+            .slice(0, 10)
+            .map((question) => {
+              const shuffledOptions = shuffleArray([
+                question.option_1,
+                question.option_2,
+                question.option_3,
+                question.answer,
+              ]);
+              return { ...question, options: shuffledOptions };
+            });
+          setQuestions(shuffledQuestions);
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    };
+    fetchQuestions();
   }, []);
 
   useEffect(() => {
@@ -96,10 +97,11 @@ const Quiz = () => {
         } else {
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
-      }; handleAnswer();
+      };
+      handleAnswer();
       // handleAnswer("");
     }
-  }, [secondsLeft, currentQuestionIndex, score, questions ]);
+  }, [secondsLeft, currentQuestionIndex, score, questions]);
 
   const shuffleQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
@@ -137,33 +139,33 @@ const Quiz = () => {
     setScore(0);
     setShowResults(false);
     // fetchQuestions();
-         const fetchQuestions = () => {
-           fetch("http://localhost:8000/api/questions")
-             .then((response) => {
-               if (!response.ok) {
-                 throw new Error("Network response was not ok");
-               }
-               return response.json();
-             })
-             .then((data) => {
-               const shuffledQuestions = shuffleQuestions(data.questions)
-                 .slice(0, 10)
-                 .map((question) => {
-                   const shuffledOptions = shuffleArray([
-                     question.option_1,
-                     question.option_2,
-                     question.option_3,
-                     question.answer,
-                   ]);
-                   return { ...question, options: shuffledOptions };
-                 });
-               setQuestions(shuffledQuestions);
-             })
-             .catch((error) => {
-               console.error("Error fetching data: ", error);
-             });
-         };
-         fetchQuestions();
+    const fetchQuestions = () => {
+      fetch("http://localhost:8000/api/questions")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const shuffledQuestions = shuffleQuestions(data.questions)
+            .slice(0, 10)
+            .map((question) => {
+              const shuffledOptions = shuffleArray([
+                question.option_1,
+                question.option_2,
+                question.option_3,
+                question.answer,
+              ]);
+              return { ...question, options: shuffledOptions };
+            });
+          setQuestions(shuffledQuestions);
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    };
+    fetchQuestions();
   };
 
   if (showResults) {
