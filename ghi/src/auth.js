@@ -22,6 +22,21 @@ export async function getTokenInternal() {
   return false;
 }
 
+export async function getTokenData() {
+  const url = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
+  try {
+    const response = await fetch(url, {
+      credentials: "include",
+    });
+    if (response.ok) {
+      const data = await response.json();
+
+      return data;
+    }
+  } catch (e) {}
+  return false;
+}
+
 function handleErrorMessage(error) {
   if ("error" in error) {
     error = error.error;

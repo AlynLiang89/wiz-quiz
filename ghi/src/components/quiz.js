@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./quiz.css";
+import { getTokenData } from "../auth";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -9,6 +10,21 @@ const Quiz = () => {
   const [showResults, setShowResults] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(10);
   const navigate = useNavigate();
+
+  const [account, setAccount] = useState("");
+  useEffect(() => {
+  const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
+  const fetchConfig = {
+    method: "GET",
+    credentials: "include",
+  };
+  fetch(accountsUrl, fetchConfig)
+    .then((response) => response.json())
+    .then((data) => {
+      const accountData = data.account.id;
+      setAccount(accountData);
+      console.log(account)
+    });},[account])
 
   const timerRef = useRef(null);
 
@@ -79,7 +95,28 @@ const Quiz = () => {
     return array.sort(() => Math.random() - 0.5);
   };
 
-  const handleAnswer = (selectedOption) => {
+  const updateScoreOnServer = () => {
+    fetch(`http://localhost:8000/accounts/${account}/score?score=${score}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ score: score }),
+      credentials: "include",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("sucess");
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Error updating score: ", error);
+      });
+  };
+
+  const handleAnswer = (selectedOption, user_id) => {
     clearInterval(timerRef.current);
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -89,10 +126,14 @@ const Quiz = () => {
 
     if (currentQuestionIndex === questions.length - 1) {
       setShowResults(true);
+
+        updateScoreOnServer(user_id, score);
+
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
+
 
   const handleHomeClick = () => {
     navigate("/");
