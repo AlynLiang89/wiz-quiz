@@ -178,7 +178,7 @@ class AccountQueries:
                             info.username,
                             hashed_password,
                             info.avatar_img,
-                            0
+                            0,
                         ],
                     )
                     id = result.fetchone()[0]
