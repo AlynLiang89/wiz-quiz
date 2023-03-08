@@ -18,6 +18,10 @@ function HomePage() {
     window.location.href = "/update";
   }
 
+  function handleboardClick() {
+    window.location.href = "/leaderboard";
+  }
+
   return (
     <div className="header">
       <div className="logo">
