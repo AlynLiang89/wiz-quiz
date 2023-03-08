@@ -6,6 +6,7 @@ import HomePage from "./homepage";
 import Quiz from "./components/quiz";
 import Leaderboard from "./leaderboard";
 import UpdateProfile from "./update";
+import NavBar from "./NavBar";
 
 function GetToken() {
   useToken();
@@ -13,12 +14,15 @@ function GetToken() {
 }
 
 function App() {
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+
   return (
-    <div>
-      <BrowserRouter>
+    <div className="container">
+      <BrowserRouter basename={basename}>
         <AuthProvider>
           <GetToken />
-          <div className="container"></div>
+          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogInForm />} />
@@ -27,7 +31,6 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/update" element={<UpdateProfile />} />
           </Routes>
-          <div />
         </AuthProvider>
       </BrowserRouter>
     </div>

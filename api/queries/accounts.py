@@ -23,15 +23,13 @@ class AccountOut(BaseModel):
     email: str
     username: str
     avatar_img: str | None = None
-
+    score: int | None = None
 
 class AccountsOut(BaseModel):
     accounts: list[AccountOut]
 
-
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
-
 
 class AccountQueries:
     def get(self, username: str) -> Optional[AccountOutWithPassword]:
@@ -45,6 +43,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         WHERE username = %s
                         """,
@@ -68,6 +67,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         WHERE id = %s
                         """,
@@ -92,6 +92,7 @@ class AccountQueries:
                             , username
                             , password
                             , avatar_img
+                            , score
                         FROM accounts
                         ORDER BY username;
                         """
@@ -104,6 +105,7 @@ class AccountQueries:
                             email=record[3],
                             username=record[4],
                             avatar_img=record[5],
+                            score=record[6],
                         )
                         for record in db
                     ]
@@ -163,9 +165,9 @@ class AccountQueries:
                     result = db.execute(
                         """
                         INSERT INTO accounts
-                            (email, username, password, avatar_img)
+                            (email, username, password, avatar_img, score)
                         VALUES
-                            (%s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -173,6 +175,7 @@ class AccountQueries:
                             info.username,
                             hashed_password,
                             info.avatar_img,
+                            0,
                         ],
                     )
                     id = result.fetchone()[0]
@@ -200,6 +203,7 @@ class AccountQueries:
             username=record[2],
             hashed_password=record[3],
             avatar_img=record[4],
+            score=record[5],
         )
 
     def get_all_accounts(self):
