@@ -103,7 +103,7 @@ const Quiz = () => {
       }; handleAnswer();
       // handleAnswer("");
     }
-  }, [secondsLeft]);
+  }, [secondsLeft, currentQuestionIndex, score, questions ]);
 
   const shuffleQuestions = (questions) => {
     return questions.sort(() => Math.random() - 0.5);
