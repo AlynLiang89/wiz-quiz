@@ -18,6 +18,12 @@ from queries.accounts import (
 )
 
 
+from queries.leaderboard import (
+    LeaderboardIn,
+    LeaderboardQueries,
+)
+
+
 class AccountForm(BaseModel):
     username: str
     password: str
@@ -52,6 +58,7 @@ async def create_account(
     request: Request,
     response: Response,
     accounts: AccountQueries = Depends(),
+    leaderboard_queries: LeaderboardQueries = Depends(),
 ):
     hashed_password = authenticator.hash_password(info.password)
     try:
@@ -67,6 +74,7 @@ async def create_account(
         avatar_img=info.avatar_img,
     )
     token = await authenticator.login(response, request, form, accounts)
+    leaderboard_queries.create_leaderboard(LeaderboardIn(account_id=account.id, score=0))
     return AccountToken(account=account, **token.dict())
 
 
@@ -114,3 +122,18 @@ def delete_user(
 ):
     if data:
         return queries.delete(user_id)
+
+
+@router.put("/accounts/{user_id}/score")
+def update_score(
+    user_id: int,
+    score: int,
+    response: Response,
+    repo: AccountQueries = Depends(),
+    data: dict = Depends(authenticator.try_get_current_account_data),
+):
+    if data:
+        return repo.update_score(user_id, score)
+    else:
+        response.status_code = 401
+        return {"message": "invalid token"}
