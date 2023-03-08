@@ -349,6 +349,7 @@ body{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-right: 12px;
 }
 
 .logout-button:before {
@@ -419,6 +420,7 @@ body{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-right: 12px;
 }
 
 .update-button:before {
@@ -444,7 +446,7 @@ body{
   -webkit-filter: blur(5px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  animation: glowing-logout-button 20s linear infinite;
+  animation: glowing-update-button 20s linear infinite;
   transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
@@ -459,4 +461,16 @@ body{
   100% {
     background-position: 0 0;
   }
+}
+
+.update-button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
