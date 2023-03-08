@@ -25,6 +25,7 @@ This website is to see how good your movie knowledge really is. Take a quiz to c
   - each question is timed (10 seconds)
   - if the user is signed in, there score will be put on the leaderboard
   - for each question the user gets correct, a point will be added for them on the leaderboard
+  - during the quiz a user can see how many questions they've answered correctly
 - the leaderboard will have the users rank, username, profile picture, and score
 - Users can create an account with a username, email, password, and profile picture
 - Users not signed in can see the leaderboard, but will not be able to get their quiz scores on it
@@ -33,7 +34,18 @@ This website is to see how good your movie knowledge really is. Take a quiz to c
 
 ### Project Initialization
 
-1. Fork and clone the project
+1. Clone the project
+2. Open the command terminal and run the following commands
+   a. 'git clone <HTTPS Link>'
+   b. 'cd wiz-quiz'
+   c. 'docker volume create postgres-data'
+   b. 'docker-compose build'
+   d. 'docker-compose up'
+3. Go your browser and go to http://localhost:3000
+
+### Intended Market
+
+The intended market is for any movie enjoyer and/or quiz enjoyer. It's for people looking to test their knowledge and see where they rank amoung others.
 
 # Module3 Project Gamma
 

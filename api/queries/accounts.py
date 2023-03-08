@@ -25,14 +25,11 @@ class AccountOut(BaseModel):
     avatar_img: str | None = None
     score: int | None = None
 
-
 class AccountsOut(BaseModel):
     accounts: list[AccountOut]
 
-
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
-
 
 class AccountQueries:
     def get(self, username: str) -> Optional[AccountOutWithPassword]:
@@ -178,7 +175,7 @@ class AccountQueries:
                             info.username,
                             hashed_password,
                             info.avatar_img,
-                            0
+                            0,
                         ],
                     )
                     id = result.fetchone()[0]
@@ -231,3 +228,19 @@ class AccountQueries:
                     ]
         except Exception:
             return {"message": "Could not get all accounts"}
+
+    def update_score(self, account_id: int, score: int):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE accounts
+                        SET score = score + %s
+                        WHERE id = %s
+                        """,
+                        [score, account_id],
+                    )
+                    return True
+        except Exception:
+            return {"message": "Could not update score."}
