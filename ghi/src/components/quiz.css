@@ -1,254 +1,111 @@
-body {
-  font-family: Arial, sans-serif;
-}
-
-.container {
+.question-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  position: relative;
 }
 
 .question-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 3rem;
   text-align: center;
-  font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
+  margin-bottom: 2rem;
 }
 
 .question-text {
-  font-size: 1.6rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
+  font-size: 2rem;
   font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
-  margin-top: 4rem;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
 .answer-button {
-  font-size: 2.5rem;
-  padding: 4.5rem 1.5rem;
-  border: none;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   border-radius: 5px;
+  border: 3px solid #000000; /* add a black border */
   background-color: #ffffff;
   color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  width: 450px;
+  height: 130px;
   text-align: center;
-  width: 40%;
-  margin-top: 3.5rem;
-  margin-left: 7.9rem;
-  font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
-  position: relative;
+  line-height: 60px;
 }
-
-.answer-button:before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: 5px;
-  z-index: -1;
-  border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
-  background-size: 1000%;
-  animation: rainbow 2s ease infinite;
-}
-
-@keyframes rainbow {
-  0% {
-    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
-  }
-  25% {
-    border-image: linear-gradient(to right, orange, yellow, green, blue, indigo, violet, red) 1;
-  }
-  50% {
-    border-image: linear-gradient(to right, yellow, green, blue, indigo, violet, red, orange) 1;
-  }
-  75% {
-    border-image: linear-gradient(to right, green, blue, indigo, violet, red, orange, yellow) 1;
-  }
-  100% {
-    border-image: linear-gradient(to right, blue, indigo, violet, red, orange, yellow, green) 1;
-  }
-}
-
 
 .answer-button:hover {
   background-color: #b6b6b6;
 }
 
 .time-left {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 1.5em;
+  margin-top: -635px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
 }
+
+
+.score-result {
+  font-size: 2.5rem;
+  position: fixed;
+  bottom: 6px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
 
 .results-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: "Lucida Console", "Courier New", monospace;
-  position: relative;
 }
 
 .results-score {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
 }
 
-.score-result {
-  font-size: 3.5rem;
-  margin-top: 2rem;
-  text-align: center;
+.restart-button,
+.go-home,
+.see-leaderboard {
+  display: block;
+  margin: 1rem auto 1.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
-}
-
-
-.restart-button {
-  font-size: 3rem;
-  padding: 3.5rem 1.5rem;
   border: none;
   border-radius: 5px;
   background-color: #ffffff;
   color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  text-align: center;
-  width: 40%;
-  margin-top: 3rem; /* added to separate buttons */
-  margin-left: 37rem;
-  font-family: "Lucida Console", "Courier New", monospace;
-  position: relative;
-  animation: rainbow 2s ease-in-out infinite;
-}
-
-@keyframes rainbow {
-  0% {
-    border: 3px solid red;
-  }
-  20% {
-    border: 3px solid orange;
-  }
-  40% {
-    border: 3px solid yellow;
-  }
-  60% {
-    border: 3px solid green;
-  }
-  80% {
-    border: 3px solid blue;
-  }
-  100% {
-    border: 3px solid violet;
-  }
-}
-
-.restart-button:hover {
-  background-color: #a29ca5;
+  width: 550px;
+  height: 120px;
+  margin-top: 80px;
 }
 
 
-.go-home {
-  font-size: 3rem;
-  padding: 3.5rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #ffffff;
-  color: #000000;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  text-align: center;
-  width: 40%;
-  margin-top: 5rem;
-  margin-left: 37rem;
-  font-family: "Lucida Console", "Courier New", monospace;
-  position: relative;
-  
-  /* Rainbow animated border */
-  animation: rainbow 2s ease-in-out infinite;
-}
-
-@keyframes rainbow {
-  0% {
-    border: 3px solid red;
-  }
-  20% {
-    border: 3px solid orange;
-  }
-  40% {
-    border: 3px solid yellow;
-  }
-  60% {
-    border: 3px solid green;
-  }
-  80% {
-    border: 3px solid blue;
-  }
-  100% {
-    border: 3px solid violet;
-  }
-}
-
-.go-home:hover {
-  background-color: #a29ca5;
-}
-
-.see-leaderboard  {
-  font-size: 3rem;
-  padding: 3.5rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #ffffff;
-  color: #000000;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  text-align: center;
-  width: 40%;
-  margin-top: 5rem; /* added to separate buttons */
-  margin-left: 37rem;
-  font-family: "Lucida Console", "Courier New", monospace;
-  position: relative;
-  animation: rainbow 2s ease-in-out infinite;
-}
-
-@keyframes rainbow {
-  0% {
-    border: 3px solid red;
-  }
-  20% {
-    border: 3px solid orange;
-  }
-  40% {
-    border: 3px solid yellow;
-  }
-  60% {
-    border: 3px solid green;
-  }
-  80% {
-    border: 3px solid blue;
-  }
-  100% {
-    border: 3px solid violet;
-  }
-}
-
+.restart-button:hover,
+.go-home:hover,
 .see-leaderboard:hover {
-  background-color: #a29ca5;
+  background-color: #b6b6b6;
 }
+
