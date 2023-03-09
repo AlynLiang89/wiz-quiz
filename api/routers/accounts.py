@@ -27,7 +27,6 @@ from queries.leaderboard import (
 class AccountForm(BaseModel):
     username: str
     password: str
-    avatar_img: str | None = None
 
 
 class AccountToken(Token):
@@ -68,13 +67,11 @@ async def create_account(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(
-        username=info.username,
-        password=info.password,
-        avatar_img=info.avatar_img,
-    )
+    form = AccountForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
-    leaderboard_queries.create_leaderboard(LeaderboardIn(account_id=account.id, score=0))
+    leaderboard_queries.create_leaderboard(
+        LeaderboardIn(account_id=account.id, score=0)
+    )
     return AccountToken(account=account, **token.dict())
 
 

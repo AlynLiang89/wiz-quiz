@@ -1,4 +1,4 @@
-from main import app 
+from main import app
 from fastapi.testclient import TestClient
 from queries.questions import QuestionQueries
 
@@ -13,14 +13,12 @@ class PostCreateQuestionQueries:
             "option_2": "string",
             "option_3": "string",
         }
-
         result.post(question)
         return result
 
+
 def post_create_question():
-
     app.dependency_overrides[QuestionQueries] = PostCreateQuestionQueries
-
     json = {
         "question": "which of these pokemons were caught first by ash",
         "answer": "caterpie",
@@ -28,27 +26,12 @@ def post_create_question():
         "option_2": "turtwig",
         "option_3": "charmander",
     }
-
     expected = {
-        "detail": [
-        {
-            "loc": [
-                "string",
-                0
-        ],
-        "msg": "string",
-        "type": "string"
+        "detail": [{"loc": ["string", 0], "msg": "string", "type": "string"}]
     }
-  ]
-}
-    
-    
     response = client.post("/api/questions/", json=json)
-
     app.dependency_overrides = {}
-
     assert response.status_code == 200
-
     assert response.json() == expected
 
 

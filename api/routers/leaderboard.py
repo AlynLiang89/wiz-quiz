@@ -5,7 +5,7 @@ from queries.leaderboard import (
     Error,
     LeaderboardGoingOut,
 )
-from fastapi import APIRouter, Depends, Response, status
+from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel
 from typing import Union
 
@@ -26,23 +26,6 @@ def leaderboard_list(queries: LeaderboardQueries = Depends()):
     return {
         "leader_boards": queries.get_all(),
     }
-
-
-@router.put("/api/leaderboards/", response_model=LeaderboardOut)
-def update_leaderboard(
-    leaderboard_id: int,
-    leaderboard: LeaderboardUpdate,
-    response: Response,
-    queries: LeaderboardQueries = Depends(),
-):
-    record = queries.get_by_id(leaderboard_id)
-    if record is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-    else:
-        updated_leaderboard = queries.update(
-            leaderboard_id, leaderboard.dict()
-        )
-        return updated_leaderboard
 
 
 @router.post("/api/leaderboards", response_model=Union[LeaderboardOut, Error])

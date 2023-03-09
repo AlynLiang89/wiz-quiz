@@ -25,11 +25,14 @@ class AccountOut(BaseModel):
     avatar_img: str | None = None
     score: int | None = None
 
+
 class AccountsOut(BaseModel):
     accounts: list[AccountOut]
 
+
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
+
 
 class AccountQueries:
     def get(self, username: str) -> Optional[AccountOutWithPassword]:
@@ -41,7 +44,7 @@ class AccountQueries:
                         SELECT id
                             , email
                             , username
-                            , password
+                            , hashed_password
                             , avatar_img
                             , score
                         FROM accounts
@@ -65,7 +68,7 @@ class AccountQueries:
                         SELECT id
                             , email
                             , username
-                            , password
+                            , hashed_password
                             , avatar_img
                             , score
                         FROM accounts
@@ -90,7 +93,7 @@ class AccountQueries:
                         SELECT id
                             , email
                             , username
-                            , password
+                            , hashed_password
                             , avatar_img
                             , score
                         FROM accounts
@@ -123,7 +126,7 @@ class AccountQueries:
                         UPDATE accounts
                         SET email = %s
                          , username = %s
-                         , password = %s
+                         , hashed_password = %s
                          , avatar_img = %s
                         WHERE id = %s
                         """,
@@ -165,7 +168,7 @@ class AccountQueries:
                     result = db.execute(
                         """
                         INSERT INTO accounts
-                            (email, username, password, avatar_img, score)
+                            (email, username, hashed_password, avatar_img, score)
                         VALUES
                             (%s, %s, %s, %s, %s)
                         RETURNING id;
@@ -179,10 +182,14 @@ class AccountQueries:
                         ],
                     )
                     id = result.fetchone()[0]
-                    old_data = info.dict()
-
+                    # old_data = info.dict()
                     return AccountOutWithPassword(
-                        id=id, hashed_password=hashed_password, **old_data
+                        id=id,
+                        hashed_password=hashed_password,
+                        email=info.email,
+                        username=info.username,
+                        avatar_img=info.avatar_img,
+                        score=0,
                     )
 
         except Exception:

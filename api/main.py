@@ -11,7 +11,7 @@ origins = [
     "https://wizquiz.gitlab.io",
     "http://localhost",
     "http://localhost:3000",
-    os.environ.get("CORS_HOST", None),
+    os.environ.get("CORS_HOST"),
 ]
 
 
