@@ -88,5 +88,3 @@ def create_question(
     record = queries.create(new_question)
     response.status_code = status.HTTP_201_CREATED
     return record
-
-
