@@ -9,17 +9,10 @@ from routers import accounts, questions, leaderboard
 app = FastAPI()
 
 # origins = [
-<<<<<<< HEAD
-    # "https://wizquiz.gitlab.io",
-    # "http://localhost",
-    # "http://localhost:3000",
-    # os.environ.get("CORS_HOST", None),
-=======
 # "https://wizquiz.gitlab.io",
 # "http://localhost",
 # "http://localhost:3000",
 # os.environ.get("CORS_HOST", None),
->>>>>>> 82dfbcf17d11aa32ecd0c8616735bfbfee8661b4
 # ]
 
 origins = ["*"]
