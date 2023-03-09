@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS accounts;
-DROP TABLE IF EXISTS questions;
 DROP TABLE IF EXISTS leaderboard;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS accounts;
+
 
 
 CREATE TABLE accounts (
@@ -8,7 +9,7 @@ CREATE TABLE accounts (
             avatar_img VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
             username VARCHAR(255)  NOT NULL UNIQUE,
-            password TEXT NOT NULL,
+            hashed_password TEXT NOT NULL,
             score INTEGER NOT NULL
         );
 
