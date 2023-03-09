@@ -28,7 +28,7 @@ class LeaderboardQueries:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT *
+                        SELECT username, avatar_img, score
                         FROM leaderboard
                         LEFT JOIN accounts ON leaderboard.account_id=accounts.id
                         ORDER BY accounts.score DESC;
