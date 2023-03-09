@@ -5,7 +5,7 @@ from queries.leaderboard import (
     Error,
     LeaderboardGoingOut,
 )
-from fastapi import APIRouter, Depends, Response, status
+from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel
 from typing import Union
 
