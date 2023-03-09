@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./leaderboard.css";
+import { useToken } from "./auth";
 
 function Leaderboard() {
   const [leaderboards, setLeaderboards] = useState([]);
+  const { token } = useToken();
+  const isLoggedIn = Boolean(token);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/leaderboards/")
-      .then((res) => res.json())
-      .then((data) => setLeaderboards(data.leader_boards))
-      .catch((err) => console.log(err));
-  }, []);
+    const fetchLeaderboards = async () => {
+      try {
+        const headers = {};
+        if (isLoggedIn) {
+          headers.Authorization = `Bearer ${token}`;
+        }
+        const res = await fetch("http://localhost:8000/api/leaderboards/", {
+          headers,
+        });
+        const data = await res.json();
+        setLeaderboards(data.leader_boards);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchLeaderboards();
+  }, [isLoggedIn, token]);
 
   return (
     <div className="leaderboard-container">
@@ -39,13 +54,15 @@ function Leaderboard() {
       >
         Main Page
       </button>
-      <button
-        className="leaderboard-btn"
-        onClick={() => (window.location.href = "/quiz")}
-        key="take-quiz-btn"
-      >
-        Take Quiz
-      </button>
+      {isLoggedIn ? (
+        <button
+          className="leaderboard-btn"
+          onClick={() => (window.location.href = "/quiz")}
+          key="take-quiz-btn"
+        >
+          Take Quiz
+        </button>
+      ) : null}
     </div>
   );
 }
