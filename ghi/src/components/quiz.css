@@ -77,16 +77,17 @@
 }
 
 .results-score {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .restart-button,
 .go-home,
 .see-leaderboard {
   display: block;
-  margin: 1rem auto;
+  margin: 1rem auto 1.5rem;
   padding: 1rem 2rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -96,7 +97,11 @@
   color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  width: 550px;
+  height: 120px;
+  margin-top: 80px;
 }
+
 
 .restart-button:hover,
 .go-home:hover,
