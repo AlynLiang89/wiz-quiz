@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./update.css";
 
 function UpdateProfile() {
-  const { updateProfile } = useToken();
+  const { update } = useToken();
   const [username, setUserName] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [password, setNewPassword] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -15,11 +14,6 @@ function UpdateProfile() {
   const handleUserNameChange = (e) => {
     const value = e.target.value;
     setUserName(value);
-  };
-
-  const handleCurrentPasswordChange = (e) => {
-    const value = e.target.value;
-    setCurrentPassword(value);
   };
 
   const handleNewPasswordChange = (e) => {
@@ -35,7 +29,7 @@ function UpdateProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateProfile(email, currentPassword, newPassword, username);
+      await update(username, password, email);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -57,21 +51,12 @@ function UpdateProfile() {
         <div className="Auth-form-content">
           <h2 className="Auth-form-title">Update your account</h2>
           <div className="Auth-form-field">
-            <label htmlFor="username">Update Username:</label>
+            <label htmlFor="username">New Username:</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={handleUserNameChange}
-            />
-          </div>
-          <div className="Auth-form-field">
-            <label htmlFor="current-password">Current Password:</label>
-            <input
-              type="password"
-              id="current-password"
-              value={currentPassword}
-              onChange={handleCurrentPasswordChange}
             />
           </div>
           <div className="Auth-form-field">
