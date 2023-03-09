@@ -25,11 +25,14 @@ class AccountOut(BaseModel):
     avatar_img: str | None = None
     score: int | None = None
 
+
 class AccountsOut(BaseModel):
     accounts: list[AccountOut]
 
+
 class AccountOutWithPassword(AccountOut):
     hashed_password: str
+
 
 class AccountQueries:
     def get(self, username: str) -> Optional[AccountOutWithPassword]:
