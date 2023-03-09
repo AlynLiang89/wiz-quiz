@@ -15,6 +15,7 @@ services:
       WAIT_HOSTS: postgres:5432
       PORT: 8000
       SIGNING_KEY: 5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)
+      CORS_HOST: https://grupo-cinco.gitlab.io
 
   ghi:
     image: node:lts-bullseye
