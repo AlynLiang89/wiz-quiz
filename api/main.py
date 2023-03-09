@@ -7,13 +7,14 @@ import os
 
 app = FastAPI()
 
-origins = [
-    "https://wizquiz.gitlab.io",
-    "http://localhost",
-    "http://localhost:3000",
-    os.environ.get("CORS_HOST", None),
-]
+# origins = [
+    # "https://wizquiz.gitlab.io",
+    # "http://localhost",
+    # "http://localhost:3000",
+    # os.environ.get("CORS_HOST", None),
+# ]
 
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
