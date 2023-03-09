@@ -5,7 +5,7 @@ function Leaderboard() {
   const [leaderboards, setLeaderboards] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/leaderboards/")
+    fetch(`${process.env.REACT_APP_WIZQUIZ_API_HOST}/api/leaderboards`)
       .then((res) => res.json())
       .then((data) => setLeaderboards(data.leader_boards))
       .catch((err) => console.log(err));

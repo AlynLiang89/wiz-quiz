@@ -29,7 +29,7 @@ const Quiz = () => {
 
   useEffect(() => {
     const fetchQuestions = () => {
-      fetch("http://localhost:8000/api/questions")
+      fetch(`${process.env.REACT_APP_WIZQUIZ_API_HOST}/api/questions`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -95,7 +95,7 @@ const Quiz = () => {
   };
 
   const updateScoreOnServer = () => {
-    fetch(`http://localhost:8000/accounts/${account}/score?score=${score}`, {
+    fetch(`${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account}/score?score=${score}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -147,7 +147,7 @@ const Quiz = () => {
     setScore(0);
     setShowResults(false);
     const fetchQuestions = () => {
-      fetch("http://localhost:8000/api/questions")
+      fetch(`${process.env.REACT_APP_WIZQUIZ_API_HOST}/api/questions`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
