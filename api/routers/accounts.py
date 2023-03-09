@@ -29,7 +29,6 @@ class AccountForm(BaseModel):
     password: str
 
 
-
 class AccountToken(Token):
     account: AccountOut
 
@@ -68,10 +67,7 @@ async def create_account(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create an account with those credentials",
         )
-    form = AccountForm(
-        username=info.username,
-        password=info.password
-    )
+    form = AccountForm(username=info.username, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     leaderboard_queries.create_leaderboard(
         LeaderboardIn(account_id=account.id, score=0)

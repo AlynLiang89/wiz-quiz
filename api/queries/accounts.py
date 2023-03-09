@@ -184,7 +184,12 @@ class AccountQueries:
                     id = result.fetchone()[0]
                     # old_data = info.dict()
                     return AccountOutWithPassword(
-                        id=id, hashed_password=hashed_password, email=info.email, username=info.username, avatar_img=info.avatar_img, score=0
+                        id=id,
+                        hashed_password=hashed_password,
+                        email=info.email,
+                        username=info.username,
+                        avatar_img=info.avatar_img,
+                        score=0,
                     )
 
         except Exception:
