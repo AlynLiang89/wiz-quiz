@@ -2,20 +2,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
 from routers import accounts, questions, leaderboard
-
-# import os
+import os
 
 
 app = FastAPI()
 
-# origins = [
-# "https://wizquiz.gitlab.io",
-# "http://localhost",
-# "http://localhost:3000",
-# os.environ.get("CORS_HOST", None),
-# ]
+origins = [
+"https://wizquiz.gitlab.io",
+"http://localhost",
+"http://localhost:3000",
+os.environ.get("CORS_HOST"),
+]
 
-origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
