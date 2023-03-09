@@ -31,12 +31,12 @@ CREATE TABLE leaderboard (
 
 
 INSERT INTO accounts VALUES
-  (1, '1780000.jpeg', 'David@aol.com', 'DavReg', 'test', 19),
-  (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', 'test', 16),
-  (3, '17800.jpeg', 'chrissy@yahoo.com', 'cupcake', 'test', 2),
-  (4, '10000.jpeg', 'sean@gmail.com', 'funwithmckee', 'test', 20),
-  (5, '170000.jpeg', 'christian@gmail.com', 'moo', 'test', 14),
-  (6, '1678000.jpeg', 'alyn@aol.com', 'Drilleranew', 'test', 22);
+  (1, '1780000.jpeg', 'David@aol.com', 'DavReg', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 19),
+  (2, '178030988.jpeg', 'Gio@hotmail.com', 'Gio', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 16),
+  (3, '17800.jpeg', 'chrissy@yahoo.com', 'cupcake', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 2),
+  (4, '10000.jpeg', 'sean@gmail.com', 'funwithmckee', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 20),
+  (5, '170000.jpeg', 'christian@gmail.com', 'moo', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 14),
+  (6, '1678000.jpeg', 'alyn@aol.com', 'Drilleranew', '$2b$12$ONAOZRqCWPScnCFSNRBffu2iw7dKMcqqrvF9S/sANR0JLF57wkdv6', 22);
 
 
 INSERT INTO questions VALUES
