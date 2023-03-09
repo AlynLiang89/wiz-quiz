@@ -64,7 +64,7 @@ function UpdateProfile() {
             <input
               type="password"
               id="new-password"
-              value={newPassword}
+              value={password}
               onChange={handleNewPasswordChange}
             />
           </div>
