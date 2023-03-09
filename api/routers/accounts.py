@@ -60,12 +60,9 @@ async def create_account(
     accounts: AccountQueries = Depends(),
     leaderboard_queries: LeaderboardQueries = Depends(),
 ):
-    print(info, "INFO FROM ACCOUNTS ROUTE")
     hashed_password = authenticator.hash_password(info.password)
-    print(hashed_password, "HASHED PASSWORD")
     try:
         account = accounts.create(info, hashed_password)
-        print(account, "in route")
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -75,9 +72,7 @@ async def create_account(
         username=info.username,
         password=info.password
     )
-    print(form, "PRINTING FORM")
     token = await authenticator.login(response, request, form, accounts)
-    print(token, "PRINT TOKEN")
     leaderboard_queries.create_leaderboard(
         LeaderboardIn(account_id=account.id, score=0)
     )

@@ -162,8 +162,6 @@ class AccountQueries:
     def create(
         self, info: AccountIn, hashed_password: str
     ) -> AccountOutWithPassword:
-        # print(info, "in create info")
-        # print(hashed_password, "in create hashed password")
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

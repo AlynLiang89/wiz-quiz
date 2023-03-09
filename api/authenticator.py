@@ -10,7 +10,6 @@ class MyAuthenticator(Authenticator):
         username: str,
         accounts: AccountQueries,
     ):
-        print(accounts.get(username), "PRINT ACCOUNTS.GET")
         return accounts.get(username)
 
     def get_account_getter(
@@ -20,8 +19,6 @@ class MyAuthenticator(Authenticator):
         return accounts
 
     def get_hashed_password(self, account: AccountOutWithPassword):
-        print(account, "authenticator account")
-        print(account.hashed_password, "account hashed password")
         return account.hashed_password
 
     def get_account_data_for_cookie(self, account: AccountOut):
