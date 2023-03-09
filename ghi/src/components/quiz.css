@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: relative;
 }
 
 .question-title {
@@ -14,11 +15,14 @@
 
 .question-text {
   font-size: 2rem;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 4rem;
 }
 
 .answer-button {
+  margin-top: 20px;
+  margin-bottom: 30px;
   display: block;
   margin: 1rem auto;
   padding: 1rem 2rem;
@@ -26,32 +30,43 @@
   font-weight: bold;
   border: none;
   border-radius: 5px;
+  border-color: #000000;
   background-color: #ffffff;
   color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  width: 450px;
+  height: 120px;
+  text-align: center;
+  line-height: 60px;
 }
-
 .answer-button:hover {
   background-color: #b6b6b6;
 }
 
 .time-left {
-  font-size: 1rem;
-  margin-top: 1rem;
+  font-size: 1.5em;
+  margin-top: -595px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
+
 .score-result {
-  font-size: 1rem;
-  margin-top: 1rem;
+  font-size: 2.5rem;
+  position: absolute;
+  bottom: 65px;
+  left: 0;
+  right: 0;
+  margin: auto;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
 .results-title {
@@ -64,6 +79,7 @@
 .results-score {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .restart-button,
