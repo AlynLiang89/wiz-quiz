@@ -30,11 +30,9 @@ function HomePage() {
       <div className="buttons">
         {token ? (
           <>
-            <Link to="/update">
-              <button className="update-button" onClick={handleupdateClick}>
-                Update account
-              </button>
-            </Link>
+            <button className="update-button" onClick={handleupdateClick}>
+              Update account
+            </button>
             <button className="logout-button" onClick={logout}>
               Logout
             </button>
@@ -52,11 +50,9 @@ function HomePage() {
         <button className="quiz-button" onClick={handleQuizClick}>
           Start Quiz
         </button>
-        <Link to="/leaderboard">
-          <button className="view-leaderboard" onClick={handleboardClick}>
-            View Leaderboard
-          </button>
-        </Link>
+        <button className="view-leaderboard" onClick={handleboardClick}>
+          View Leaderboard
+        </button>
       </div>
     </div>
   );
