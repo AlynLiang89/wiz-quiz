@@ -19,7 +19,7 @@ function HomePage() {
   }
 
   function handleboardClick() {
-    window.location.href = "/leaderboard";
+    navigate("/wiz-quiz/leaderboard");
   }
 
   return (
