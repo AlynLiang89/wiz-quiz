@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useToken } from "./auth";
 import "./homepage.css";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const { token, logout } = useToken();
@@ -19,7 +20,7 @@ function HomePage() {
   }
 
   function handleboardClick() {
-    navigate("/wiz-quiz/leaderboard");
+    useNavigate("/wiz-quiz/leaderboard");
   }
 
   return (
