@@ -14,9 +14,12 @@ function Leaderboard() {
         if (isLoggedIn) {
           headers.Authorization = `Bearer ${token}`;
         }
-        const res = await fetch("http://localhost:8000/api/leaderboards/", {
-          headers,
-        });
+        const res = await fetch(
+          `${process.env.REACT_APP_WIZQUIZ_API_HOST}/api/leaderboards/`,
+          {
+            headers,
+          }
+        );
         const data = await res.json();
         setLeaderboards(data.leader_boards);
       } catch (err) {
