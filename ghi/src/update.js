@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./update.css";
 
 function UpdateProfile() {
-  const { token } = useToken();
+  const { token, logout} = useToken();
   const [username, setUserName] = useState("");
   const [password, setNewPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -35,12 +35,14 @@ function UpdateProfile() {
         Authorization: `Bearer ${token}`,
       },
     };
-    fetch(accountsUrl, fetchConfig)
-      .then((response) => response.json())
-      .then((data) => {
-        const accountData = data.account.id;
-        setAccount(accountData);
-      });
+    if (token) {
+      fetch(accountsUrl, fetchConfig)
+        .then((response) => response.json())
+        .then((data) => {
+          const accountData = data.account.id;
+          setAccount(accountData);
+        });
+    }
   }, [token]);
 
   const handleSubmit = async (e) => {
@@ -65,6 +67,29 @@ function UpdateProfile() {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    console.log(account_id);
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete account");
+      }
+      navigate("/");
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -110,6 +135,18 @@ function UpdateProfile() {
           </div>
           <button type="submit" className="Auth-form-submit">
             Update your profile!
+          </button>
+        </div>
+      </form>
+      <form onSubmit={handleDelete} className="delete-form">
+        <div className="Auth-form-content">
+          <h2 className="Auth-form-title">Delete your account</h2>
+          <p>
+            Warning: this will permanently delete your account and all
+            associated data.
+          </p>
+          <button className="delete-button" onClick={logout}>
+           Delete Account
           </button>
         </div>
       </form>

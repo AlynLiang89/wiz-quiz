@@ -17,15 +17,24 @@
 -Recreated project and purged old data
 -Connected database to beekeeper
 -Updated the yaml
+-Connected database to beekeeper
+-Updated the yaml
 ## Feb-23-2023
+-Work on database
+-Fixed merge issues
 -Work on database
 -Fixed merge issues
 ## Feb-24-2023
 -Worked on back end and creating account information
 -Worked on Authentication
+-Worked on back end and creating account information
+-Worked on Authentication
 ## Feb-27-2023
 -Worked on Authentication
+-Worked on Authentication
 ## Feb-28-2023
+-Worked on Authentication
+-Troubleshooting of leaderboard
 -Worked on Authentication
 -Troubleshooting of leaderboard
 ## Mar-1-2023

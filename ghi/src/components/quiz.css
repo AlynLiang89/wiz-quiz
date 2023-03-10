@@ -91,7 +91,8 @@
   padding: 1rem 2rem;
   font-size: 1.5rem;
   font-weight: bold;
-  border: none;
+  border: 3px solid;
+  border-color: #000000;
   border-radius: 5px;
   background-color: #ffffff;
   color: #000000;
