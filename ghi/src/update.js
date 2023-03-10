@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useToken } from "./auth";
 import { useNavigate } from "react-router-dom";
 import "./update.css";
 
 function UpdateProfile() {
-  const { updateProfile } = useToken();
+  const { token } = useToken();
   const [username, setUserName] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [password, setNewPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [account_id, setAccount] = useState("");
   const navigate = useNavigate();
 
   const handleUserNameChange = (e) => {
     const value = e.target.value;
     setUserName(value);
-  };
-
-  const handleCurrentPasswordChange = (e) => {
-    const value = e.target.value;
-    setCurrentPassword(value);
   };
 
   const handleNewPasswordChange = (e) => {
@@ -32,14 +26,45 @@ function UpdateProfile() {
     setEmail(value);
   };
 
+  useEffect(() => {
+    const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
+    const fetchConfig = {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    fetch(accountsUrl, fetchConfig)
+      .then((response) => response.json())
+      .then((data) => {
+        const accountData = data.account.id;
+        setAccount(accountData);
+      });
+  }, [token]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateProfile(email, currentPassword, newPassword, username);
-      navigate("/");
+      const response = await fetch(
+        `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account_id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ username, password, email }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.ok) {
+        navigate("/");
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
     } catch (error) {
       console.log(error);
-      setErrorMessage(String(error));
     }
   };
 
@@ -57,33 +82,6 @@ function UpdateProfile() {
         <div className="Auth-form-content">
           <h2 className="Auth-form-title">Update your account</h2>
           <div className="Auth-form-field">
-            <label htmlFor="username">Update Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={handleUserNameChange}
-            />
-          </div>
-          <div className="Auth-form-field">
-            <label htmlFor="current-password">Current Password:</label>
-            <input
-              type="password"
-              id="current-password"
-              value={currentPassword}
-              onChange={handleCurrentPasswordChange}
-            />
-          </div>
-          <div className="Auth-form-field">
-            <label htmlFor="new-password">New Password:</label>
-            <input
-              type="password"
-              id="new-password"
-              value={newPassword}
-              onChange={handleNewPasswordChange}
-            />
-          </div>
-          <div className="Auth-form-field">
             <label htmlFor="email">Update Email:</label>
             <input
               type="text"
@@ -92,12 +90,29 @@ function UpdateProfile() {
               onChange={handleEmailChange}
             />
           </div>
+          <div className="Auth-form-field">
+            <label htmlFor="username">New Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUserNameChange}
+            />
+          </div>
+          <div className="Auth-form-field">
+            <label htmlFor="new-password">New Password:</label>
+            <input
+              type="password"
+              id="new-password"
+              value={password}
+              onChange={handleNewPasswordChange}
+            />
+          </div>
           <button type="submit" className="Auth-form-submit">
             Update your profile!
           </button>
         </div>
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 }
