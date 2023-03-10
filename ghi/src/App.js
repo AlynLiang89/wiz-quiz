@@ -26,7 +26,7 @@ function App() {
             <Route path="/login" element={<LogInForm />} />
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/wiz-quiz/leaderboard" element={<Leaderboard />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/update" element={<UpdateProfile />} />
           </Routes>
         </AuthProvider>

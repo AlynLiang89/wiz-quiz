@@ -10,7 +10,7 @@ function HomePage() {
 
   function handleQuizClick() {
     if (token) {
-      navigate("/wiz-quiz/quiz");
+      navigate("/quiz");
     } else {
       window.alert("You need to be logged in to take the quiz.");
     }
@@ -21,7 +21,7 @@ function HomePage() {
   }
 
   function handleboardClick() {
-    navigate("/wiz-quiz/leaderboard");
+    navigate("/leaderboard");
   }
 
   return (
