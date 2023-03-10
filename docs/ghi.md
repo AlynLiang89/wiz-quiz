@@ -3,24 +3,24 @@
 ## Main Page
 
 The Home Page.
-![Main Page](ghi/Landing-page.PNG)
+![Main Page](ghidesign\homepage.png)
 
 ## Login
 
 A user log-in form that prompts for account information.
-![Login](ghi/Login-page.PNG)
+![Login](ghidesign\loginpage.png)
 
 ## Update Account
 
 A user update form that allows user to update account information.
-![Update](ghi/Login-page.PNG)
+![Update](ghidesign\updateaccountpage.png)
 
 ## Quiz
 
 The quiz page interface.
-![Quiz](ghi/Login-page.PNG)
+![Quiz](ghidesign\quizpage.png)
 
 ## Leader-board
 
 The leader-board interface.
-![Leader-board](ghi/Login-page.PNG)
+![Leader-board](ghidesign\leaderboardpage.png)

@@ -1,5 +1,7 @@
 # APIs
 
+# wizquiz
+
 ## Accounts
 
 ![accounts](apidesign\getaccountslist.png)
