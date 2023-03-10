@@ -8,18 +8,18 @@ function HomePage() {
 
   function handleQuizClick() {
     if (token) {
-      window.location.href = "/quiz";
+      window.location.href = "wiz-quiz/quiz";
     } else {
       window.alert("You need to be logged in to take the quiz.");
     }
   }
 
   function handleupdateClick() {
-    window.location.href = "/update";
+    window.location.href = "wiz-quiz/update";
   }
 
   function handleboardClick() {
-    window.location.href = "/leaderboard";
+    window.location.href = "wiz-quiz/leaderboard";
   }
 
   return (
