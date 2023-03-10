@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const { token, logout } = useToken();
+  const navigate = useNavigate();
 
   function handleQuizClick() {
     if (token) {
@@ -20,7 +21,7 @@ function HomePage() {
   }
 
   function handleboardClick() {
-    useNavigate("/wiz-quiz/leaderboard");
+    navigate("/wiz-quiz/leaderboard");
   }
 
   return (
