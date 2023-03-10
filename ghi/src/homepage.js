@@ -10,14 +10,14 @@ function HomePage() {
 
   function handleQuizClick() {
     if (token) {
-      window.location.href = "/quiz";
+      navigate("/wiz-quiz/quiz");
     } else {
       window.alert("You need to be logged in to take the quiz.");
     }
   }
 
   function handleupdateClick() {
-    window.location.href = "/update";
+    navigate("/update");
   }
 
   function handleboardClick() {
