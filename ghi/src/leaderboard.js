@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./leaderboard.css";
 import { useToken } from "./auth";
+import { useNavigate } from "react-router-dom";
 
 function Leaderboard() {
   const [leaderboards, setLeaderboards] = useState([]);
   const { token } = useToken();
   const isLoggedIn = Boolean(token);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchLeaderboards = async () => {
@@ -52,7 +54,7 @@ function Leaderboard() {
       </table>
       <button
         className="leaderboard-btn"
-        onClick={() => (window.location.href = "/")}
+        onClick={() => navigate("/")}
         key="main-page-btn"
       >
         Main Page
@@ -60,7 +62,7 @@ function Leaderboard() {
       {isLoggedIn ? (
         <button
           className="leaderboard-btn"
-          onClick={() => (window.location.href = "/quiz")}
+          onClick={() => navigate("/quiz")}
           key="take-quiz-btn"
         >
           Take Quiz

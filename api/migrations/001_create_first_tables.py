@@ -3,10 +3,11 @@ steps = [
         """
         CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
-            avatar_img VARCHAR(1000) NOT NULL,
+            avatar_img VARCHAR(255) NULL,
             email VARCHAR(255) NOT NULL UNIQUE,
-            username VARCHAR(255)  NOT NULL,
-            password TEXT NOT NULL
+            username VARCHAR(255)  NOT NULL UNIQUE,
+            hashed_password TEXT NOT NULL,
+            score INTEGER NOT NULL
         );
         """,
         """
@@ -32,8 +33,7 @@ steps = [
         """
        CREATE TABLE leaderboard (
             id SERIAL PRIMARY KEY NOT NULL,
-            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE,
-            score INTEGER NOT NULL
+            account_id INTEGER NOT NULL REFERENCES accounts("id") ON DELETE CASCADE
         );
         """,
         """
