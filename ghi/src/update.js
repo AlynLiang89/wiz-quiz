@@ -66,13 +66,11 @@ function UpdateProfile() {
         throw new Error(errorData.message);
       }
     } catch (error) {
-      console.log(error);
     }
   };
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    console.log(account_id);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account_id}`,

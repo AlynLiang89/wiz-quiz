@@ -22,7 +22,6 @@ const Quiz = () => {
     .then((data) => {
       const accountData = data.account.id;
       setAccount(accountData);
-      console.log(account)
     });},[account])
 
   const timerRef = useRef(null);
@@ -107,7 +106,6 @@ const Quiz = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        console.log("sucess");
         return response.json();
       })
       .catch((error) => {
