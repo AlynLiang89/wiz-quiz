@@ -38,7 +38,6 @@ function UpdateProfile() {
       await updateProfile(email, currentPassword, newPassword, username);
       navigate("/");
     } catch (error) {
-      console.log(error);
       setErrorMessage(String(error));
     }
   };

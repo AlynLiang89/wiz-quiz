@@ -12,6 +12,12 @@ Do you have what it takes to be a Quizard?
 
 This website is to see how good your movie knowledge really is. Take a quiz to challenge what you know and see where you rank among others.
 
+## Design:
+
+- ![GHI](https://gitlab.com/grupo-cinco/wiz-quiz/-/blob/main/docs/ghi.md)
+- ![SCHEMAS](https://gitlab.com/grupo-cinco/wiz-quiz/-/blob/main/docs/schemas.md)
+- ![APIDESIGN](https://gitlab.com/grupo-cinco/wiz-quiz/-/blob/main/docs/apidesign.md)
+
 ### Functionality
 
 - A user will be able to take a multiple choice quiz
