@@ -3,24 +3,29 @@
 ## Main Page
 
 The Home Page.
-![Main Page](ghidesign\homepage.png)
+![Main Page](https://i.imgur.com/ffyBIcT.png)
+
+## Sign-Up
+
+A user sign-up form that prompts user to create an account.
+![Login](https://i.imgur.com/GwQo8gQ.png)
 
 ## Login
 
 A user log-in form that prompts for account information.
-![Login](ghidesign\loginpage.png)
+![Login](https://i.imgur.com/fE36gwP.png)
 
 ## Update Account
 
 A user update form that allows user to update account information.
-![Update](ghidesign\updateaccountpage.png)
+![Update](https://i.imgur.com/yzfDFFG.png)
 
 ## Quiz
 
 The quiz page interface.
-![Quiz](ghidesign\quizpage.png)
+![Quiz](https://i.imgur.com/hX2Fzcs.png)
 
 ## Leader-board
 
 The leader-board interface.
-![Leader-board](ghidesign\leaderboardpage.png)
+![Leader-board](https://i.imgur.com/3X76WLA.png)
