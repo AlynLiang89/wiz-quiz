@@ -24,10 +24,7 @@ function LogInForm() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("======================================");
-    console.log(username, password);
     await login(username, password);
-    console.log("login successful +++++++++++++++");
     navigate("/");
   };
 
@@ -78,7 +75,7 @@ function LogInForm() {
           </div>
           <div className="home-button">
             <button onClick={handleClickhome}>
-              <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+              <img src="https://i.imgur.com/NcspCcg.png" alt="wizard" />
             </button>
           </div>
         </div>
