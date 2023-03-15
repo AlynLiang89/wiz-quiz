@@ -32,7 +32,6 @@ function SignUpForm() {
       await signup(username, password, email);
       navigate("/");
     } catch (error) {
-      console.log(error);
       setErrorMessage(String(error));
     }
   };

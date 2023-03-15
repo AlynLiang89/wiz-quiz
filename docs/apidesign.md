@@ -1,10 +1,13 @@
 # APIs
 
+# wizquiz
+
 ## Accounts
 
-![accounts](apidesign\getaccountslist.png)
-![accounts](apidesign\postcreateaccount.png)
-![accounts](apidesign\putupdateaccount.png)
+![accounts](https://i.imgur.com/ru8Y2g1.png) - GET
+![accounts](https://i.imgur.com/xBi0uGk.png) - DELETE
+![accounts](https://i.imgur.com/t8hGmiG.png) - PUT
+![accounts](https://i.imgur.com/xUaBQ2c.png) - POST
 
 ```json
 {
@@ -17,7 +20,8 @@
 
 ## Tokens
 
-![tokens](apidesign\gettoken.png)
+![tokens](https://i.imgur.com/4sOIHFz.png) - GET
+![tokens](https://i.imgur.com/cQx9GSt.png) - DELETE
 
 ```json
 {
@@ -34,10 +38,11 @@
 
 ## Questions
 
-![questions](apidesign\deletequestion.png)
-![questions](apidesign\getquestion.png)
-![questions](apidesign\postcreatequestion.png)
-![questions](apidesign\putupdatequestion.png)
+![questions](https://i.imgur.com/nkVlRaI.png) - DELETE
+![questions](https://i.imgur.com/X6aIT0u.png) - GET question list
+![questions](https://i.imgur.com/9jQiE3V.png) - POST
+![questions](https://i.imgur.com/Z1Pb2Bf.png) - PUT
+![questions](https://i.imgur.com/xN79eIu.png) - GET Question by i.d.
 
 ```json
 {
@@ -52,9 +57,9 @@
 
 ## Leader-board
 
-![leader-board](apidesign\getleaderboardlist.png)
-![leader-board](apidesign\postcreateleaderboard.png)
-![leader-board](apidesign\putupdateleaderboard.png)
+![leader-board](https://i.imgur.com/oxCcSRy.png) - GET
+![leader-board](https://i.imgur.com/huOmkHd.png) - POST
+![leader-board](https://i.imgur.com/YIzVRVk.png) - PUT
 
 ```json
 {

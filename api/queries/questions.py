@@ -40,7 +40,6 @@ class QuestionQueries:
                     )
                     return new_question
         except Exception as e:
-            print(e)
             return {"message": "Could not create question."}
 
     def get_by_id(self, question_id: int) -> Union[Error, Question]:
@@ -75,7 +74,6 @@ class QuestionQueries:
                         )
                     )
         except Exception as e:
-            print(e)
             return {"message": "Could not get question."}
 
     def get_all(self) -> Union[Error, List[Question]]:
@@ -88,7 +86,6 @@ class QuestionQueries:
                         FROM questions
                         """
                     )
-                    print(List[Question])
                     return [
                         Question(
                             **dict(
@@ -108,7 +105,6 @@ class QuestionQueries:
                         for record in db
                     ]
         except Exception as e:
-            print(e)
             return {"message": "Could not get all questions."}
 
     def update(
@@ -138,7 +134,6 @@ class QuestionQueries:
                     )
                     return updated_question
         except Exception as e:
-            print(e)
             return {"message": "Could not update question."}
 
     def delete(self, question_id: int) -> Union[Error, str]:
@@ -156,5 +151,4 @@ class QuestionQueries:
                         return Error(message="Question not found.")
                     return "Question deleted successfully."
         except Exception as e:
-            print(e)
             return {"message": "Could not delete question."}

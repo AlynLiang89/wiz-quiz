@@ -25,7 +25,6 @@ function Leaderboard() {
         const data = await res.json();
         setLeaderboards(data.leader_boards);
       } catch (err) {
-        console.log(err);
       }
     };
     fetchLeaderboards();

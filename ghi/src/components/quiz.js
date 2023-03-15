@@ -12,18 +12,17 @@ const Quiz = () => {
 
   const [account, setAccount] = useState("");
   useEffect(() => {
-    const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
-    const fetchConfig = {
-      method: "GET",
-      credentials: "include",
-    };
-    fetch(accountsUrl, fetchConfig)
-      .then((response) => response.json())
-      .then((data) => {
-        const accountData = data.account.id;
-        setAccount(accountData);
-      });
-  }, [account]);
+  const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
+  const fetchConfig = {
+    method: "GET",
+    credentials: "include",
+  };
+  fetch(accountsUrl, fetchConfig)
+    .then((response) => response.json())
+    .then((data) => {
+      const accountData = data.account.id;
+      setAccount(accountData);
+    });},[account])
 
   const timerRef = useRef(null);
 

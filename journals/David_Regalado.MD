@@ -91,3 +91,19 @@
 - Continuing docs
 - Helping debug some pipeline job errors
 - Hoping the app will be done today
+
+## March-9-23
+
+- Got the deployment up today which is huge
+- Having some route issues trying to debug
+- Had to redeploy because tables migrations were out dated
+- Tomorrow gonna have to fix some route issues
+
+## March-10-23
+
+- Today is the day it's due let's hope we can get everything in working order
+- Route paths are working had to change the windows to navigate
+- Now having a CORS error which is no fun
+- Everything is working!!!!
+- Even added a delete account button
+- Victory!!!
