@@ -27,7 +27,7 @@ function HomePage() {
   return (
     <div className="header">
       <div className="logo">
-        <img src="https://i.imgur.com/NcspCcg.png" alt="wizard" />
+        <img src="https://i.imgur.com/NcspCcg.png" alt="wizards" />
       </div>
       <div className="buttons">
         {token ? (
