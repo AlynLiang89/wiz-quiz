@@ -100,7 +100,7 @@ function UpdateProfile() {
   return (
     <div className="Auth-form-container">
       <button onClick={handleClickhome4} className="update-home-button">
-        <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+        <img src="https://i.imgur.com/NcspCcg.png" alt="wizard" />
       </button>
       <h1 className="Quizard-text">Update your Quizardry!</h1>
       <form onSubmit={handleSubmit} className="Auth-form">
@@ -146,7 +146,7 @@ function UpdateProfile() {
             associated data.
           </p>
           <button className="delete-button" onClick={logout}>
-           Delete Account
+            Delete Account
           </button>
         </div>
       </form>

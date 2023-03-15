@@ -12,17 +12,18 @@ const Quiz = () => {
 
   const [account, setAccount] = useState("");
   useEffect(() => {
-  const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
-  const fetchConfig = {
-    method: "GET",
-    credentials: "include",
-  };
-  fetch(accountsUrl, fetchConfig)
-    .then((response) => response.json())
-    .then((data) => {
-      const accountData = data.account.id;
-      setAccount(accountData);
-    });},[account])
+    const accountsUrl = `${process.env.REACT_APP_WIZQUIZ_API_HOST}/token`;
+    const fetchConfig = {
+      method: "GET",
+      credentials: "include",
+    };
+    fetch(accountsUrl, fetchConfig)
+      .then((response) => response.json())
+      .then((data) => {
+        const accountData = data.account.id;
+        setAccount(accountData);
+      });
+  }, [account]);
 
   const timerRef = useRef(null);
 
@@ -57,7 +58,7 @@ const Quiz = () => {
   }, []);
 
   useEffect(() => {
-    setSecondsLeft(10);
+    setSecondsLeft(20);
     timerRef.current = setInterval(() => {
       setSecondsLeft((prevSeconds) => prevSeconds - 1);
     }, 1000);
@@ -94,14 +95,17 @@ const Quiz = () => {
   };
 
   const updateScoreOnServer = () => {
-    fetch(`${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account}/score?score=${score}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ score: score }),
-      credentials: "include",
-    })
+    fetch(
+      `${process.env.REACT_APP_WIZQUIZ_API_HOST}/accounts/${account}/score?score=${score}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score: score }),
+        credentials: "include",
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -124,13 +128,11 @@ const Quiz = () => {
     if (currentQuestionIndex === questions.length - 1) {
       setShowResults(true);
 
-        updateScoreOnServer(user_id, score);
-
+      updateScoreOnServer(user_id, score);
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
-
 
   const handleHomeClick = () => {
     navigate("/");
