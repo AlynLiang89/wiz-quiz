@@ -88,7 +88,7 @@ function SignUpForm() {
             </button>
             <div className="home-button2">
               <button onClick={handleClickhome2}>
-                <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+                <img src="https://i.imgur.com/NcspCcg.png" alt="wizard" />
               </button>
             </div>
           </div>
