@@ -27,7 +27,7 @@ function HomePage() {
   return (
     <div className="header">
       <div className="logo">
-        <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+        <img src="https://i.imgur.com/NcspCcg.png" alt="wizards" />
       </div>
       <div className="buttons">
         {token ? (
@@ -55,6 +55,11 @@ function HomePage() {
         <button className="view-leaderboard" onClick={handleboardClick}>
           View Leaderboard
         </button>
+      </div>
+      <div>
+        <div className="wave"></div>
+        <div className="wave"></div>
+        <div className="wave"></div>
       </div>
     </div>
   );

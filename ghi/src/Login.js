@@ -75,7 +75,7 @@ function LogInForm() {
           </div>
           <div className="home-button">
             <button onClick={handleClickhome}>
-              <img src="https://i.imgur.com/gzLv9C9.png" alt="wizard" />
+              <img src="https://i.imgur.com/NcspCcg.png" alt="wizard" />
             </button>
           </div>
         </div>
